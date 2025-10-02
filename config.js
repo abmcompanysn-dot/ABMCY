@@ -3,7 +3,7 @@ const config = {
      * URL de votre script Google Apps Script pour la gestion des formulaires.
      * REMPLACEZ 'VOTRE_URL_APPS_SCRIPT_ICI' par votre véritable URL.
      */
-    scriptUrl: 'VOTRE_URL_APPS_SCRIPT_ICI',
+    scriptUrl: 'https://script.google.com/macros/s/AKfycby42lBIO9mBK19kxYEbVmf8Nu1un3cuasNrFE981d2fr3zENHme0Jed0HG3WUbZecAV0w/exec',
 
     /**
      * Liens vers les pages de détail INTERNES de vos réalisations.
@@ -42,4 +42,5 @@ const config = {
         'realisation_abmedu': 'feuille-vierge.html',
         // 'realisation_reseau': 'feuille-vierge.html' // La page 'realisation-reseau.html' existe, donc on ne met pas de lien externe ici.
     }
+
 };
