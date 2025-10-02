@@ -2,123 +2,1529 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png">
-    <title>Devenir Partenaire - ABMCY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Favicon du site -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png"> 
+
+    <!-- =================================================================
+         OPTIMISATIONS SEO (Référencement)
+         ================================================================= -->
+    <title>ABMCY Sénégal - Votre Partenaire en Transformation Digitale</title>
+    <meta name="description" content="ABMCY, agence digitale basée au Sénégal, est votre partenaire pour la transformation numérique. Nous offrons des solutions sur mesure : sites web, e-commerce, automatisation, et stratégie digitale pour les entreprises en Afrique.">
+    <meta name="keywords" content="ABMCY, Sénégal, Dakar, agence digitale, transformation numérique, création de site web, e-commerce, marketing digital, automatisation, Afrique">
+    <meta name="author" content="Africa Business Manager Company (ABMCY)">
+    <link rel="canonical" href="https://abmcy.vercel.app/">
+
+    <!-- Open Graph (pour le partage sur Facebook, WhatsApp, etc.) -->
+    <meta property="og:title" content="ABMCY Sénégal - Votre Partenaire en Transformation Digitale">
+    <meta property="og:description" content="Solutions digitales sur mesure pour les entreprises en Afrique : sites web, e-commerce, automatisation et plus.">
+    <meta property="og:image" content="https://i.postimg.cc/cJ4h8YXt/Une-image-repr-sentant-la-technologie-et-l-innovation-avec-des-l-ments-futuristes-et-des-lumi-res.jpg">
+    <meta property="og:url" content="https://abmcy.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ABMCY Sénégal">
+
+    <!-- Pré-connexion aux domaines externes pour accélérer le chargement des polices et images -->
+    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chargement asynchrone de Font Awesome pour ne pas bloquer l'affichage -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <style>
+        /* =================================================================
+           Système de Thèmes (Mode Sombre / Clair)
+           ================================================================= */
         :root {
             --bg-color: #000000;
             --text-color: #e5e7eb;
             --text-muted-color: #d1d5db;
+            --text-subtle-color: #9ca3af;
             --card-bg: linear-gradient(145deg, #1a1a1a, #0f0f0f);
             --card-border: #2d2d2d;
+            --card-hover-border: #404040;
             --gold-color: #FFD700;
-            --input-bg: #1f2937;
-            --input-border: #4b5563;
+            --nav-bg: rgba(0, 0, 0, 0.9);
+            --input-bg: #1f2937; /* gray-800 */
+            --input-border: #4b5563; /* gray-600 */
         }
+
+        /* Définition des couleurs pour le mode clair */
         body.light-mode {
-            --bg-color: #f9fafb;
-            --text-color: #111827;
-            --text-muted-color: #374151;
+            --bg-color: #f9fafb; /* gray-50 */
+            --text-color: #111827; /* gray-900 */
+            --text-muted-color: #374151; /* gray-700 */
+            --text-subtle-color: #6b7280; /* gray-500 */
             --card-bg: linear-gradient(145deg, #ffffff, #f3f4f6);
-            --card-border: #e5e7eb;
-            --input-bg: #f3f4f6;
-            --input-border: #d1d5db;
+            --card-border: #e5e7eb; /* gray-200 */
+            --card-hover-border: #d1d5db; /* gray-300 */
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --input-bg: #f3f4f6; /* gray-100 */
+            --input-border: #d1d5db; /* gray-300 */
         }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Inter', sans-serif; }
-        .gradient-gold { background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00); }
-        .text-gold { color: var(--gold-color); }
-        .luxury-card { background: var(--card-bg); border: 1px solid var(--card-border); }
+
+        /* =================================================================
+           Styles Généraux
+           ================================================================= */
+        body {
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            overflow-x: hidden; /* NOUVEAU: Empêche le défilement horizontal */
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .gradient-gold {
+            background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+        }
+        
+        .gradient-black {
+            background: var(--card-bg);
+        }
+        
+        .text-gold {
+            color: var(--gold-color);
+        }
+        
+        .border-premium {
+            border-color: #2d2d2d;
+        }
+        
+        .hover-premium:hover {
+            background-color: #FFD700;
+            color: #000000;
+        }
+        
+        .luxury-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .luxury-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+        
+        .luxury-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--card-hover-border);
+        }
+        
+        .nav-sticky {
+            background: var(--nav-bg);
+        }
+        
+        /* =================================================================
+           Styles des Carrousels
+           ================================================================= */
+        .carousel-slide, .services-slide, .realisations-slide {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.2s ease-in-out, visibility 1.2s;
+            position: absolute;
+            inset: 0;
+        }
+        
+        .carousel-slide.active, .services-slide.active, .realisations-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .carousel-bg-image {
+            transition: background-image 1.5s ease-in-out;
+            animation: kenburns 10s infinite;
+        }
+
+        @keyframes kenburns {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(1deg); }
+        }
+
+        .carousel-bg-image {
+            transition: filter 1.2s ease-in-out;
+            filter: blur(0px);
+            transform: scale(1.1); /* Pour éviter les bords flous */
+        }
+        
+        .carousel-dot.active, .services-dot.active, .realisations-dot.active {
+            background-color: var(--gold-color);
+        }
+
+        /* =================================================================
+           Styles des Composants d'Interface (UI)
+           ================================================================= */
+        .hamburger-line {
+            width: 24px; height: 2px; background-color: white; border-radius: 10px; transition: all 0.3s linear; position: relative; transform-origin: 1px;
+        }
+        .hamburger-button.open .hamburger-line:nth-child(1) { transform: rotate(45deg); }
+        .hamburger-button.open .hamburger-line:nth-child(2) { opacity: 0; transform: translateX(20px); }
+        .hamburger-button.open .hamburger-line:nth-child(3) { transform: rotate(-45deg); }
+
+        /* Styles pour le bouton de changement de thème (soleil/lune) */
+        #theme-toggle .sun-icon { display: none; }
+        #theme-toggle .moon-icon { display: block; }
+        body.light-mode #theme-toggle .sun-icon { display: block; }
+        body.light-mode #theme-toggle .moon-icon { display: none; }
+
+
+        
+        @media (max-width: 768px) {
+        }
+
+        /* =================================================================
+           Animations
+           ================================================================= */
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            animation: marquee 90s linear infinite;
+        }
+
+        /* Animation pour la bande des partenaires (sens inverse) */
+        @keyframes marquee-reverse {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-marquee-reverse {
+            animation: marquee-reverse 90s linear infinite;
+        }
+
+        /* Animations pour l'apparition des éléments au défilement */
+        .animate-on-scroll { opacity: 0; transition: opacity 1s ease-out, transform 1s ease-out; }
+        .animate-on-scroll.slide-in-left { transform: translateX(-50px); }
+        .animate-on-scroll.slide-in-right { transform: translateX(50px); }
+        .animate-on-scroll.fade-in { transform: translateY(30px); }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateX(0) translateY(0); }
+
+        /* Styles pour les icônes du menu hamburger en mode clair */
+        body.light-mode .hamburger-line {
+            background-color: #111827; /* gray-900 */
+        }
+
+        /* Styles pour les boutons de carrousel en mode clair */
+        body.light-mode .services-dot, body.light-mode .realisations-dot {
+            background-color: var(--text-subtle-color);
+        }
+        body.light-mode .services-dot.active, body.light-mode .realisations-dot.active {
+            background-color: var(--gold-color);
+        }
     </style>
 </head>
 <body class="font-sans">
-
-    <!-- Header -->
-    <nav class="sticky top-0 w-full z-50 backdrop-filter backdrop-blur-lg border-b" style="background-color: rgba(0,0,0,0.8); border-color: var(--card-border);">
+    <!-- Header Navigation -->
+    <nav class="fixed w-full z-50 nav-sticky backdrop-filter backdrop-blur-lg border-b" style="border-color: var(--card-border);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="flex items-center space-x-4"> 
+                <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 flex items-center justify-center bg-white rounded-lg p-1">
                         <img src="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png" alt="Logo ABMCY" class="h-10 w-auto">
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-gold">ABMCY</h1>
-                        <p class="text-xs" style="color: var(--text-muted-color);">African business manager company</p>
+                        <p class="text-xs" style="color: var(--text-muted-color);">African Business Manager Company</p>
                     </div>
-                </a>
-                <a href="/" class="gradient-gold text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                    &larr; Retour au site
-                </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#accueil" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Accueil</a>
+                    <a href="#apropos" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">À Propos</a>
+                    <a href="#services" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Services</a>
+                    <a href="#plateformes" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Plateformes</a>
+                    <a href="#realisations" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Réalisations</a>
+                    <a href="#contact" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Contact</a>
+                    
+                    <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-700" style="color: var(--text-muted-color);">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </button>
+
+                    <button id="openModal" class="gradient-gold text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                        Demander un Devis
+                    </button>
+                </div>
+
+                <!-- NOUVEAU: Bouton Hamburger pour mobile -->
+                <div class="md:hidden">
+                    <button id="hamburger-button" class="hamburger-button flex flex-col justify-around w-6 h-6 bg-transparent border-none cursor-pointer p-0 z-50">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto p-6 sm:p-10 mt-10">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl sm:text-6xl font-bold">
-                ABMCY : L'Aventure qui <span class="text-gold">Évolue</span>
-            </h1>
-            <p class="text-gray-400 mt-4 text-lg max-w-3xl mx-auto">
-                Notre objectif est de créer un large réseau de partenaires compétents et engagés, pour servir l’Afrique avec qualité et passion.
-            </p>
-        </header>
+    <!-- NOUVEAU: Menu Mobile -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 hidden flex-col space-y-6 px-12 py-24 overflow-y-auto" style="background-color: var(--bg-color); opacity: 0.98;">
+        <a href="#accueil" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Accueil</a>
+        <a href="#apropos" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">À Propos</a>
+        <a href="devenir-partenaire.html" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Devenir Partenaire</a>
+        <a href="#plateformes" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Plateformes</a>
+        <a href="#realisations" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Réalisations</a>
+        <a href="#contact" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Contact</a>
+        <a href="#" id="openFaqModalMobile" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">FAQ</a>
+        <button id="theme-toggle-mobile" type="button" class="p-3 mt-4 rounded-lg" style="color: var(--text-muted-color); background-color: var(--input-bg);">
+            <i class="fas fa-sun sun-icon text-xl"></i>
+            <i class="fas fa-moon moon-icon text-xl"></i>
+        </button>
+        <button id="openModalMobile" class="mt-6 gradient-gold text-black px-8 py-3 rounded-lg font-semibold">Demander un Devis</button>
+    </div>
 
-        <!-- Section "Qui peut nous rejoindre ?" -->
-        <div class="luxury-card p-8 rounded-xl mb-12">
-            <h3 class="text-3xl font-bold text-gold mb-6 text-center"> Qui Peut Nous Rejoindre ?</h3>
-            <p class="text-center text-lg mb-8" style="color: var(--text-muted-color);">Tout le monde ! Que vous soyez jeune, étudiant, professionnel ou une entreprise, si vous avez l'envie de faire partie de l’aventure, vous pouvez nous rejoindre gratuitement.</p>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-user-graduate text-3xl text-black"></i></div>
-                    <h4 class="text-xl font-bold">Étudiants & Jeunes Talents</h4>
-                    <p class="text-sm" style="color: var(--text-subtle-color);">Gagnez de l'expérience sur des projets réels.</p>
+    <!-- Hero Section with Mosaic Carousel -->
+    <section id="accueil" class="min-h-screen relative overflow-hidden">
+        <!-- Titre H1 caché pour le SEO -->
+        <h1 class="sr-only">ABMCY Sénégal - Agence de Transformation Digitale pour l'Afrique</h1>
+
+        <!-- Mosaic Carousel Background -->
+        <div class="absolute inset-0">
+            <div id="heroCarousel" class="w-full h-full relative overflow-hidden">
+                <div class="carousel-bg-image absolute inset-0"></div>
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "L'innovation distingue un leader d'un suiveur"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Steve Jobs</cite>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-user-tie text-3xl text-black"></i></div>
-                    <h4 class="text-xl font-bold">Professionnels & Freelances</h4>
-                    <p class="text-sm" style="color: var(--text-subtle-color);">Accédez à un flux de projets qualifiés.</p>
-                </div>
-                <div>
-                    <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-building text-3xl text-black"></i></div>
-                    <h4 class="text-xl font-bold">Agences & Entreprises</h4>
-                    <p class="text-sm" style="color: var(--text-subtle-color);">Collaborez sur des mandats d'envergure.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section "Comment ça fonctionne ?" -->
-        <div class="mb-12">
-            <h3 class="text-3xl font-bold text-gold mb-8 text-center"> Comment Ça Fonctionne ?</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="luxury-card p-6 text-center"><span class="text-gold text-3xl font-bold block mb-2">1.</span> Postulez via le formulaire ci-dessous en présentant votre savoir-faire.</div>
-                <div class="luxury-card p-6 text-center"><span class="text-gold text-3xl font-bold block mb-2">2.</span> Notre équipe évalue votre candidature pour assurer l'alignement avec nos standards de qualité.</div>
-                <div class="luxury-card p-6 text-center"><span class="text-gold text-3xl font-bold block mb-2">3.</span> Si votre profil est retenu, vous intégrez officiellement notre réseau de partenaires.</div>
-                <div class="luxury-card p-6 text-center"><span class="text-gold text-3xl font-bold block mb-2">4.</span> Vous recevez des opportunités de projets et êtes rémunéré pour chaque service rendu.</div>
-            </div>
-        </div>
-
-        <!-- Section "Pourquoi ABMCY ?" -->
-        <div class="mb-16">
-            <h3 class="text-3xl font-bold text-gold mb-8 text-center"> Pourquoi Rejoindre l'Écosystème ABMCY ?</h3>
-            <ul class="space-y-4 max-w-2xl mx-auto">
-                <li class="flex items-start"><i class="fas fa-check-circle text-gold mt-1 mr-3"></i><span><strong>Impact Continental :</strong> Participez à des projets qui façonnent l'avenir digital de l'Afrique.</span></li>
-                <li class="flex items-start"><i class="fas fa-check-circle text-gold mt-1 mr-3"></i><span><strong>Croissance et Collaboration :</strong> Évoluez au sein d'une communauté qui valorise le talent, l'engagement et la solidarité.</span></li>
-                <li class="flex items-start"><i class="fas fa-check-circle text-gold mt-1 mr-3"></i><span><strong>Flexibilité et Rémunération :</strong> Gagnez de l'argent en rendant des services de qualité, selon vos disponibilités et votre expertise.</span></li>
-            </ul>
-        </div>
-
-        <!-- Formulaire de Partenariat -->
-        <div class="luxury-card p-8 rounded-xl">
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-gold">Prêt à nous rejoindre ?</h3>
-                <p class="text-center text-lg mt-2" style="color: var(--text-muted-color);">La question clé est : que pouvez-vous nous fournir en tant que service de qualité et de luxe ?</p>
-            </div>
-            <form id="partnerForm" class="space-y-6">
-                <input type="hidden" name="form_type" value="partnership">
                 
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "Le futur appartient à ceux qui croient en la beauté de leurs rêves"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Eleanor Roosevelt</cite>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "La technologie n'est rien. L'important c'est d'avoir confiance en les gens"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Steve Jobs</cite>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "L'Afrique de demain se construit aujourd'hui avec la technologie"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Vision ABM</cite>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Winston Churchill</cite>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 6 -->
+                <div class="carousel-slide">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+                        <div class="text-center max-w-4xl px-6" style="color: white;">
+                            <blockquote class="text-3xl md:text-5xl font-bold mb-6 italic">
+                                "L'excellence n'est pas un acte, mais une habitude"
+                            </blockquote>
+                            <cite class="text-xl text-gold">- Aristote</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col lg:flex-row gap-4 justify-center z-20 w-11/12 max-w-5xl">
+                <!-- Bouton 1: Simulateur (Icône modifiée) -->
+                <a href="#simulateur" class="gradient-gold text-black px-6 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full lg:w-auto">
+                    <i class="fas fa-compass"></i>
+                    <span>Trouver votre solution</span>
+                </a>
+                <!-- Bouton 2: Devis -->
+                <button id="openModalHero" class="border-2 border-gray-300 text-gray-200 px-6 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black hover:border-white transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full lg:w-auto">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Obtenir un devis</span>
+                </button>
+                <!-- Bouton 3: Partenariat -->
+                <a href="devenir-partenaire.html" class="border-2 border-gold text-gold px-6 py-4 rounded-lg font-semibold text-lg hover:bg-gold hover:text-black transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full lg:w-auto">
+                    <i class="fas fa-handshake"></i>
+                    <span>Rejoindre notre réseau</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Hero Content Overlay -->
+        <div class="relative z-10 min-h-screen flex flex-col justify-center items-center">
+            <div class="text-center max-w-4xl mx-auto px-6 mb-16">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrousel Services -->
+    <section id="services" class="py-20 hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 ">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nos <span class="text-gold">Services</span> Premium
+                </h2>
+            </div>
+            
+            <!-- Services Carousel -->
+            <div class="relative">
+                <div id="servicesCarousel" class="w-full h-96 relative overflow-hidden rounded-xl">
+                    <div class="carousel-bg-image absolute inset-0"></div>
+                    <!-- Service Slide 1 -->
+                    <div class="services-slide active">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">Sites Web Premium</h3>
+                                <p class="text-xl mb-6">Création de sites web luxueux et performants avec design sur mesure</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Slide 2 -->
+                    <div class="services-slide">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">Automatisation </h3>
+                                <p class="text-xl mb-6">Solutions d'automatisation  pour optimiser vos services</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Slide 3 -->
+                    <div class="services-slide">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">Dashboards Intelligents</h3>
+                                <p class="text-xl mb-6">Tableaux de bord personnalisés pour le monitoring en temps réel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Services Carousel Controls -->
+                <div class="flex justify-center mt-8 space-x-3">
+                    <button class="services-dot active w-3 h-3 rounded-full transition-all" data-slide="0" style="background-color: var(--gold-color);"></button>
+                    <button class="services-dot w-3 h-3 rounded-full bg-gray-500 hover:bg-gray-300 transition-all" data-slide="1" style="background-color: var(--text-subtle-color);"></button>
+                    <button class="services-dot w-3 h-3 rounded-full bg-gray-500 hover:bg-gray-300 transition-all" data-slide="2" style="background-color: var(--text-subtle-color);"></button>
+                </div>
+            </div>
+
+            <!-- NOUVEAU: Grille des services déplacée ici -->
+            <!-- POUR AJOUTER UN SERVICE : Copiez l'un des blocs <div class="luxury-card..."> ci-dessous, collez-le à la suite, -->
+            <!-- et modifiez l'icône, le titre, la description, et les points. N'oubliez pas de mettre à jour le `data-service-value`. -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+                <!-- Événementiel -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="evenementiel" data-service-name="Événementiel">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-check text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Événementiel</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Organisation sur mesure d’événements privés et professionnels : mariages, conférences, lancements de produits...</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Coordination complète</li>
+                        <li>• Création de concepts uniques</li>
+                        <li>• Gestion des prestataires</li>
+                        <li>• Expérience client mémorable</li>
+                    </ul>
+                </div>
+                <!-- Décoration Artistique -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="decoration-artistique" data-service-name="Décoration Artistique">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-palette text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Décoration Artistique</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Décoration créative et personnalisée pour espaces intérieurs et événements : chambres, bureaux, salles de fête...</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Ambiances sur mesure</li>
+                        <li>• Adaptation à tous types d’espaces</li>
+                        <li>• Thématiques artistiques variées</li>
+                        <li>• Conception et réalisation</li>
+                    </ul>
+                </div>
+                <!-- Automatisation Workflow -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="automatisation-workflow" data-service-name="Automatisation Workflow">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Automatisation Workflow</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Automatisation de vos processus métier via WhatsApp, n8n et l'IA pour améliorer l'efficacité et la relation client.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Chatbots personnalisés</li>
+                        <li>• Scénarios automatisés (n8n)</li>
+                        <li>• Analyse comportementale (IA)</li>
+                        <li>• Gestion multi-canaux</li>
+                    </ul>
+                </div>
+                <!-- Dashboards Intelligents -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="dashboards-intelligents" data-service-name="Dashboards Intelligents">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Dashboards Intelligents</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Création de tableaux de bord interactifs pour suivre vos indicateurs clés en temps réel et prendre des décisions éclairées.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Visualisation dynamique</li>
+                        <li>• Rapports automatiques</li>
+                        <li>• Alertes personnalisées</li>
+                        <li>• Exportation multi-formats</li>
+                    </ul>
+                </div>
+                <!-- Branding Premium -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="branding-premium" data-service-name="Branding Premium">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-gem text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Branding Premium</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Développement d’une identité visuelle forte pour positionner votre marque avec impact et professionnalisme.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Création de logo & charte</li>
+                        <li>• Supports de communication</li>
+                        <li>• Définition de stratégie de marque</li>
+                        <li>• Guide d'image cohérente</li>
+                    </ul>
+                </div>
+                <!-- Intégration QR/NFC -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="integration-qr-nfc" data-service-name="Intégration QR/NFC">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-qrcode text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Intégration QR/NFC</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Solutions interactives et sans contact pour moderniser vos paiements, présentations et supports marketing.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Paiements rapides et sécurisés</li>
+                        <li>• Cartes de visite numériques</li>
+                        <li>• Menus et supports interactifs</li>
+                        <li>• Suivi et analyse des interactions</li>
+                    </ul>
+                </div>
+                <!-- Communication & Audiovisuel -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="communication-audiovisuel" data-service-name="Communication & Audiovisuel">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-video text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Communication & Audiovisuel</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Solutions complètes pour renforcer votre visibilité à travers des contenus percutants et une couverture médiatique.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Production vidéo et audio</li>
+                        <li>• Stratégie de communication</li>
+                        <li>• Couverture d'événements</li>
+                        <li>• Gestion des réseaux sociaux</li>
+                    </ul>
+                </div>
+                <!-- Stratégie Digitale -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="strategie-digitale" data-service-name="Stratégie Digitale">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Stratégie Digitale</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Accompagnement global pour définir et mettre en œuvre une stratégie numérique efficace et rentable.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Audit digital complet</li>
+                        <li>• Plan de communication en ligne</li>
+                        <li>• Campagnes publicitaires</li>
+                        <li>• Analyse et optimisation</li>
+                    </ul>
+                </div>
+                <!-- Développement Mobile -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="developpement-mobile" data-service-name="Développement Mobile">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Développement Mobile</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Création d’applications mobiles sur mesure pour Android et iOS, adaptées à vos besoins métier.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Applications natives ou hybrides</li>
+                        <li>• Interface utilisateur intuitive</li>
+                        <li>• Intégration API et bases de données</li>
+                        <li>• Maintenance et mises à jour</li>
+                    </ul>
+                </div>
+                <!-- E-commerce & Ventes en ligne -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="ecommerce-ventes-ligne" data-service-name="E-commerce & Ventes en ligne">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shopping-cart text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">E-commerce & Ventes en ligne</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Solutions pour lancer ou améliorer votre boutique en ligne et booster vos ventes sur le digital.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Création de site e-commerce</li>
+                        <li>• Intégration de paiements</li>
+                        <li>• Gestion des stocks et commandes</li>
+                        <li>• Optimisation du tunnel de vente</li>
+                    </ul>
+                </div>
+                <!-- Formation & Coaching -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="formation-coaching" data-service-name="Formation & Coaching">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Formation & Coaching</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Sessions personnalisées pour vous ou votre équipe dans les domaines du digital, de la communication et de l'automatisation.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Formation en marketing digital</li>
+                        <li>• Coaching en branding</li>
+                        <li>• Ateliers sur l'automatisation</li>
+                        <li>• Transformation digitale</li>
+                    </ul>
+                </div>
+                <!-- Cybersécurité & Protection des données -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="cybersecurite-protection" data-service-name="Cybersécurité & Protection">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Cybersécurité & Protection</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Sécurisation de vos outils numériques et mise en conformité de vos données avec les normes en vigueur.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Audit de sécurité</li>
+                        <li>• Protection contre les attaques</li>
+                        <li>• Sauvegarde et récupération</li>
+                        <li>• Mise en conformité légale</li>
+                    </ul>
+                </div>
+                <!-- Traduction & Localisation -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="traduction-localisation" data-service-name="Traduction & Localisation">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-language text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Traduction & Localisation</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Adaptation professionnelle et culturelle de vos contenus pour toucher un public international.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Traduction multilingue</li>
+                        <li>• Localisation culturelle</li>
+                        <li>• Relecture et correction</li>
+                        <li>• Sous-titrage et doublage</li>
+                    </ul>
+                </div>
+                <!-- NOUVEAU: Service Réseau & Marketing Digital -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="reseau-marketing-digital" data-service-name="Réseau & Marketing Digital">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Réseau & Marketing Digital</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Création de systèmes de marketing d'affiliation et de réseaux de vente pour démultiplier votre force commerciale et automatiser vos revenus.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Plateforme d'affiliation</li>
+                        <li>• Marketing de réseau (MLM)</li>
+                        <li>• Tunnels de vente automatisés</li>
+                        <li>• Suivi des performances</li>
+                    </ul>
+                </div>
+                <!-- NOUVEAU: Service Voyage, Transport & Hébergement -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="voyage-transport-hebergement" data-service-name="Voyage & Tourisme">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-plane-departure text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Voyage & Tourisme</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Solutions digitales pour les agences de voyage, les transporteurs et les hôteliers afin d'optimiser les réservations et l'expérience client.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Plateformes de réservation</li>
+                        <li>• Applications mobiles</li>
+                        <li>• Marketing digital ciblé</li>
+                        <li>• Paiements en ligne sécurisés</li>
+                    </ul>
+                </div>
+                <!-- NOUVEAU: Carte pour les solutions sur mesure -->
+                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="autre" data-service-name="Solution Sur Mesure">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-puzzle-piece text-3xl text-black"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gold mb-4">Solution Sur Mesure</h3>
+                    <p class="mb-6 justify-improved" style="color: var(--text-muted-color);">Vous avez un besoin qui ne correspond à aucun service listé ? Décrivez-nous votre projet et nous mobiliserons notre large gamme de partenaires pour vous construire une offre unique.</p>
+                    <ul class="text-sm space-y-2" style="color: var(--text-subtle-color);">
+                        <li>• Analyse de besoin approfondie</li>
+                        <li>• Mobilisation de notre réseau</li>
+                        <li>• Proposition personnalisée</li>
+                        <li>• Gestion de projet de A à Z</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulateur de besoin (maintenant dans sa propre section) -->
+    <section id="simulateur" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="luxury-card p-8 rounded-xl max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold text-gold mb-6 text-center">Commencez par ici : notre simulateur de besoin</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-3" style="color: var(--text-muted-color);">Vous êtes :</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="radio" name="user_type_simulator" value="entreprise" class="form-radio h-4 w-4 text-gold focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);" checked>
+                                <span style="color: var(--text-muted-color);">Une Entreprise</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="radio" name="user_type_simulator" value="particulier" class="form-radio h-4 w-4 text-gold focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);">
+                                <span style="color: var(--text-muted-color);">Un Particulier</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">
+                            <i class="fas fa-briefcase mr-2 text-gold"></i>
+                            Votre besoin concerne le secteur :
+                        </label>
+                        <select id="secteur-select" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                            <option value="">Sélectionnez votre secteur</option>
+                            <option value="communication-digitale">Communication Digitale</option>
+                            <option value="voyage-transport-hebergement">Voyage, Transport & Hébergement</option>
+                            <option value="marketing-strategique">Marketing Stratégique</option>
+                            <option value="developpement-mobile">Développement Mobile</option>
+                            <option value="automatisation-intelligente">Automatisation Intelligente</option>
+                            <option value="design-graphique">Design Graphique</option>
+                            <option value="decoration-artistique">Décoration Artistique</option>
+                            <option value="evenementiel-professionnel">Événementiel Professionnel</option>
+                            <option value="audiovisuel-creatif">Audiovisuel Créatif</option>
+                            <option value="ecommerce-moderne">E-commerce Moderne</option>
+                            <option value="formation-digitale">Formation Digitale</option>
+                            <option value="cybersecurite-numerique">Cybersécurité Numérique</option>
+                            <option value="reseau-marketing-digital">Réseau & Marketing Digital</option>
+                            <option value="traduction-multilingue">Traduction Multilingue</option>
+                            <option value="branding-premium">Branding Premium</option>
+                            <option value="tableaux-dynamiques">Tableaux Dynamiques</option>
+                            <option value="paiement-connecte">Paiement Connecté</option>
+                            <option value="agriculture-intelligente">Agriculture Intelligente</option>
+                        </select>
+                    </div>
+                    <button id="recommander-btn" class="w-full gradient-gold text-black py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                        Voir les Solutions Recommandées
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plateformes Section -->
+    <section id="plateformes" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nos <span class="text-gold">Plateformes</span> Innovantes
+                </h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--text-muted-color);">
+                    Écosystème complet de solutions digitales pour tous les secteurs d'activité
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- E-Commerce -->
+                <a href="plateforme-ecommerce.html" class="luxury-card text-center p-6 rounded-xl flex flex-col justify-between block">
+                    <div>
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-shopping-cart text-3xl text-black"></i></div>
+                        <h3 class="text-xl font-bold text-gold mb-2">E-Commerce</h3>
+                        <p class="text-sm mb-6" style="color: var(--text-subtle-color);">Boutiques en ligne premium</p>
+                    </div>
+                </a>
+                <!-- Valorisation Pro -->
+                <a href="plateforme-valorisation-pro.html" class="luxury-card text-center p-6 rounded-xl flex flex-col justify-between block">
+                    <div>
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-user-tie text-3xl text-black"></i></div>
+                        <h3 class="text-xl font-bold text-gold mb-2">Valorisation Pro</h3>
+                        <p class="text-sm mb-6" style="color: var(--text-subtle-color);">CV intelligent & digital</p>
+                    </div>
+                </a>
+                <!-- Gestion -->
+                <a href="plateforme-gestion.html" class="luxury-card text-center p-6 rounded-xl flex flex-col justify-between block">
+                    <div>
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-cogs text-3xl text-black"></i></div>
+                        <h3 class="text-xl font-bold text-gold mb-2">Gestion</h3>
+                        <p class="text-sm mb-6" style="color: var(--text-subtle-color);">Systèmes administratifs</p>
+                    </div>
+                </a>
+                <!-- Événementiel -->
+                <a href="plateforme-evenementiel.html" class="luxury-card text-center p-6 rounded-xl flex flex-col justify-between block">
+                    <div>
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-paint-brush text-3xl text-black"></i></div>
+                        <h3 class="text-xl font-bold text-gold mb-2">Événementiel</h3>
+                        <p class="text-sm mb-6" style="color: var(--text-subtle-color);">Création artistique & events</p>
+                    </div>
+                </a>
+                <!-- E-learning -->
+                <a href="plateforme-elearning.html" class="luxury-card text-center p-6 rounded-xl flex flex-col justify-between block">
+                    <div>
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-graduation-cap text-3xl text-black"></i></div>
+                        <h3 class="text-xl font-bold text-gold mb-2">E-learning</h3>
+                        <p class="text-sm mb-6" style="color: var(--text-subtle-color);">Formation en ligne</p>
+                    </div>
+                </a>
+                <!-- Plus de plateformes -->
+            
+               <a href="feuille-vierge.html"class="luxury-card text-center p-6 rounded-xl flex flex-col justify-center items-center" >
+
+                <div >
+                    <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-plus text-3xl text-black"></i></div>
+                    <h3 class="text-xl font-bold text-gold mb-2">Et bien plus...</h3>
+                    <p class="text-sm" style="color: var(--text-subtle-color);">Découvrez toutes nos solutions sur mesure.</p>
+                </div>
+                </a>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- Carrousel Réalisations -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nos <span class="text-gold">Réalisations</span> d'Excellence
+                </h2>
+            </div>
+            
+            <!-- Realisations Carousel -->
+            <div class="relative">
+                <div id="realisationsCarousel" class="w-full h-96 relative overflow-hidden rounded-xl">
+                    <div class="carousel-bg-image absolute inset-0"></div>
+                    <!-- Realisation Slide 1 -->
+                    <div class="realisations-slide active">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">E-commerce Premium</h3>
+                                <p class="text-xl mb-4" style="color: white;">Boutique en ligne haut de gamme avec +300% d'augmentation des ventes</p>
+                                <p class="text-lg text-gray-300 mb-6">Secteur: Mode & Lifestyle</p>
+                                <a href="#" id="realisation-link-realisation_ecommerce" class="gradient-gold text-black px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                                    Voir le Projet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Realisation Slide 2 -->
+                    <div class="realisations-slide">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">CV Pro+ Digital</h3>
+                                <p class="text-xl mb-4" style="color: white;">CV intelligent et sécurisé, prêt pour l'IA des recruteurs.</p>
+                                <p class="text-lg text-gray-300 mb-6">Secteur: Valorisation Professionnelle</p>
+                                <a href="#" id="realisation-link-realisation_cvpro" class="gradient-gold text-black px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                                    Voir le Projet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Realisation Slide 3 -->
+                    <div class="realisations-slide">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">ABM EduPilote</h3>
+                                <p class="text-xl mb-4" style="color: white;">Application de gestion universitaire complète avec suivi par QR Code.</p>
+                                <p class="text-lg text-gray-300 mb-6">Secteur: Éducation & Technologie</p>
+                                <a href="#" id="realisation-link-realisation_edupilote" class="gradient-gold text-black px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                                    Voir le Projet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOUVEAU: Realisation Slide 4 -->
+                    <div class="realisations-slide">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+                            <div class="text-center max-w-3xl px-6" style="color: white;">
+                                <h3 class="text-4xl font-bold mb-4 text-gold">Mon Vehicule SN</h3>
+                                <p class="text-xl mb-4" style="color: white;">Plateforme de vente et réservation de véhicules neufs et d'occasion.</p>
+                                <p class="text-lg text-gray-300 mb-6">Secteur: Automobile & E-commerce</p>
+                                <a href="#" id="realisation-link-realisation_vehicule" class="gradient-gold text-black px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                                    Voir le Projet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Realisations Carousel Controls -->
+                <div class="flex justify-center mt-8 space-x-3">
+                    <button class="realisations-dot active w-3 h-3 rounded-full transition-all" data-slide="0" style="background-color: var(--gold-color);"></button>
+                    <button class="realisations-dot w-3 h-3 rounded-full transition-all" data-slide="1" style="background-color: var(--text-subtle-color);"></button>
+                    <button class="realisations-dot w-3 h-3 rounded-full transition-all" data-slide="2" style="background-color: var(--text-subtle-color);"></button>
+                    <button class="realisations-dot w-3 h-3 rounded-full transition-all" data-slide="3" style="background-color: var(--text-subtle-color);"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Réalisations Section -->
+    <section id="realisations" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nos <span class="text-gold">Réalisations</span> d'Excellence
+                </h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--text-muted-color);">
+                    Découvrez comment nous avons transformé les entreprises africaines
+                </p>
+            </div>
+            
+            <!-- POUR AJOUTER UNE REALISATION : Copiez l'un des blocs <div class="luxury-card..."> ci-dessous, collez-le à la suite, -->
+            <!-- et modifiez l'image, le titre, la description, et les liens. -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <a href="plateforme-ecommerce.html"  class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://i.postimg.cc/rFyY4KgT/Une-image-de-bosite-ecomerce-en-ligne-ou-de-commerce-lectronique-avec-des-produits-et-une-interfa.jpg" alt="Projet E-commerce" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">E-commerce Premium</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Boutique en ligne haut de gamme avec +300% d'augmentation des ventes</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: Mode</span>
+                    </div>
+                </a>
+                
+                <a href="plateforme-valorisation-pro.html" class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://i.postimg.cc/B4wCpYv0/logo-cv-propulse.png" alt="Projet CV Pro+ Digital" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">CV Pro+</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Stratégie de visibilité pour passer les filtres ATS et séduire les recruteurs.</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: Carrière</span>
+                    </div>
+                </a>
+                
+                <a href="plateforme-elearning.html"class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://i.postimg.cc/t95KK8fs/abmedu-polote.jpg" alt="Projet ABM EduPilote" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">ABM EduPilote</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Plateforme de gestion universitaire simplifiée pour l'Afrique.</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: Éducation</span>
+                    </div>
+                </a>
+
+                <!-- NOUVEAU: Carte Projet Vehicule -->
+                <a href="feuille-vierge.html"  class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop" alt="Projet Mon Vehicule SN" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">Mon Vehicule SN</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Marketplace automobile avec recherche avancée et système de réservation.</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: Automobile</span>
+                    </div>
+                </a>
+
+                <a href="plateforme-elearning.html"  class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://i.postimg.cc/t95KK8fs/abmedu-polote.jpg" alt="Projet ABMedu" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">ABMedu</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Plateforme e-learning pour la formation et le partage de connaissances.</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: E-learning</span>
+                    </div>
+                </a>
+
+                <!-- NOUVEAU: Carte Réseau ABMCY -->
+                <a href="realisation-reseau.html" id="realisation-link-realisation_reseau" class="luxury-card rounded-xl overflow-hidden block">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop" alt="Projet Réseau ABMCY" class="h-48 w-full object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gold mb-2">Réseau ABMCY</h3>
+                        <p class="mb-4" style="color: var(--text-muted-color);">Écosystème de partenaires et d'experts pour des solutions complètes et intégrées.</p>
+                        <span class="text-sm font-semibold" style="color: var(--text-subtle-color);">Secteur: Partenariat</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVEAU: Section "À Propos" -->
+    <section id="apropos" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Notre <span class="text-gold">Histoire</span>, Votre <span class="text-gold">Futur</span>
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--text-muted-color);">
+                    Africa Business Manager Company (ABMCY) est née d'une vision : utiliser la technologie comme un levier pour catalyser le développement et l'innovation en Afrique.
+                </p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Section Vision (Texte à gauche, Image à droite) -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center animate-on-scroll">
+                    <div class="space-y-6 animate-on-scroll fade-in">
+                        <h3 class="text-3xl font-bold text-gold">Notre Vision</h3>
+                        <p class="leading-relaxed justify-improved" style="color: var(--text-muted-color);">
+                            Nous aspirons à être le moteur de la transformation digitale en Afrique, en créant un écosystème où chaque entreprise, quelle que soit sa taille, a accès à des outils technologiques de classe mondiale pour innover, croître et prospérer.
+                        </p>
+                        <p class="leading-relaxed justify-improved" style="color: var(--text-muted-color);">
+                            Nous imaginons un continent où la technologie n'est pas une barrière, mais un pont vers de nouvelles opportunités, connectant les talents locaux aux marchés mondiaux.
+                        </p>
+                    </div>
+                    <div class="luxury-card rounded-xl overflow-hidden h-96 animate-on-scroll slide-in-right">
+                        <img src="https://i.postimg.cc/63K83DQN/generem-moi-une-image-e-qudun-groupe-de-jeune-qui-soulebve-lafrique-maisn-n-ve-voi-pa-rleur-visage.jpg" alt="Vision d'une Afrique soulevée par sa jeunesse" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Section Mission (Image à gauche, Texte à droite) -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center animate-on-scroll">
+                    <div class="luxury-card rounded-xl overflow-hidden lg:order-first order-last h-96 animate-on-scroll slide-in-left">
+                        <img src="https://i.postimg.cc/8Cj2v5jr/IMG-MISSIOSN.jpg" alt="Notre mission de construire l'avenir digital" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="space-y-6 lg:order-last order-first animate-on-scroll fade-in">
+                        <h3 class="text-3xl font-bold text-gold">Notre Mission</h3>
+                        <p class="leading-relaxed justify-improved" style="color: var(--text-muted-color);">
+                            Notre mission est de concevoir et de déployer des solutions digitales sur mesure, robustes et élégantes. Nous transformons les idées de nos clients en plateformes performantes grâce à une approche fondée sur l'écoute, la collaboration et une quête incessante de l'excellence. Chaque ligne de code, chaque pixel et chaque stratégie est pensée pour créer de la valeur durable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NOUVEAU: Section Nos Valeurs -->
+            <div class="mt-20 animate-on-scroll fade-in">
+                <h3 class="text-3xl font-bold text-gold text-center mb-12">Nos Valeurs Fondamentales</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Valeur 1: Excellence -->
+                    <div class="luxury-card text-center p-6 rounded-xl">
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-award text-3xl text-black"></i>
+                        </div>
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">Excellence</h4>
+                        <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous visons la plus haute qualité dans chaque projet, sans compromis.</p>
+                    </div>
+                    <!-- Valeur 2: Innovation -->
+                    <div class="luxury-card text-center p-6 rounded-xl">
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-3xl text-black"></i>
+                        </div>
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">Innovation</h4>
+                        <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous repoussons les limites pour créer des solutions technologiques d'avenir.</p>
+                    </div>
+                    <!-- Valeur 3: Partenariat -->
+                    <div class="luxury-card text-center p-6 rounded-xl">
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-handshake text-3xl text-black"></i>
+                        </div>
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">Partenariat</h4>
+                        <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous croyons en la force de la collaboration pour atteindre des objectifs communs.</p>
+                    </div>
+                    <!-- Valeur 4: Impact -->
+                    <div class="luxury-card text-center p-6 rounded-xl">
+                        <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe-africa text-3xl text-black"></i>
+                        </div>
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">Impact</h4>
+                        <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Chaque action est guidée par notre volonté de contribuer positivement au développement de l'Afrique.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION ÉQUIPE MISE EN COMMENTAIRE - À réactiver plus tard -->
+            <!--
+            <div class="mt-20 animate-on-scroll fade-in">
+                <h3 class="text-3xl font-bold text-gold text-center mb-12">L'Équipe Dirigeante</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="luxury-card text-center p-8 rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" alt="Portrait du CEO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gold" loading="lazy">
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">ATEKOSSI Brunel</h4>
+                        <p class="text-gold mb-2">CEO & Fondateur</p>
+                        <p class="text-sm" style="color: var(--text-subtle-color);">Visionnaire et stratège, passionné par l'impact de la technologie en Afrique.</p>
+                    </div>
+                    <div class="luxury-card text-center p-8 rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop" alt="Portrait du CTO" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gold" loading="lazy">
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">[Nom du Membre]</h4>
+                        <p class="text-gold mb-2">Directeur Technique (CTO)</p>
+                        <p class="text-sm" style="color: var(--text-subtle-color);">Architecte de nos solutions, garant de la qualité et de l'innovation technique.</p>
+                    </div>
+                    <div class="luxury-card text-center p-8 rounded-xl">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" alt="Portrait du Chef de Projet" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gold" loading="lazy">
+                        <h4 class="text-xl font-bold" style="color: var(--text-color);">[Nom du Membre]</h4>
+                        <p class="text-gold mb-2">Chef de Projet</p>
+                        <p class="text-sm" style="color: var(--text-subtle-color);">Assure le lien entre vos besoins et notre équipe, pour une livraison parfaite.</p>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- NOUVEAU: Section Partenaires -->
+    <section id="partenaires" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Nos <span class="text-gold">Entreprises Partenaires</span>
+                </h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--text-muted-color);">
+                    Ils nous font confiance pour leur transformation digitale.
+                </p>
+            </div>
+
+            <div class="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <div class="flex w-max animate-marquee-reverse hover:[animation-play-state:paused]">
+                    <!-- Partenaires dupliqués pour un défilement infini -->
+                    <!-- POUR AJOUTER UN PARTENAIRE : Copiez le bloc de code d'un partenaire, collez-le ici, et modifiez le logo et le nom. -->
+                    <!-- N'oubliez pas de faire la même chose dans la section dupliquée ci-dessous (marquée 'aria-hidden="true"'). -->
+                    <div class="flex items-center">
+                        <!-- Partenaire 1: ABM Tech -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);" >
+                                <img src="https://i.postimg.cc/TwSM9HqG/ABMTech-Logo-with-Circuit-Pattern-Emblem.png" alt="Logo ABM Tech" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">ABM Tech</p>
+                        </div>
+                        <!-- Partenaire 2: ABM Edu Pilote -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);">
+                                <img src="https://i.postimg.cc/t95KK8fs/abmedu-polote.jpg" alt="Logo ABM Edu Pilote" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">ABM Edu Pilote</p>
+                        </div>
+                        <!-- Partenaire 3: CV Pro Plus -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);">
+                                <img src="https://i.postimg.cc/B4wCpYv0/logo-cv-propulse.png" alt="Logo CV Pro Plus" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">CV Pro Plus</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center" aria-hidden="true">
+                        <!-- Partenaire 1: ABM Tech (copie) -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);">
+                                <img src="https://i.postimg.cc/TwSM9HqG/ABMTech-Logo-with-Circuit-Pattern-Emblem.png" alt="Logo ABM Tech" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">ABM Tech</p>
+                        </div>
+                        <!-- Partenaire 2: ABM Edu Pilote (copie) -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);">
+                                <img src="https://i.postimg.cc/t95KK8fs/abmedu-polote.jpg" alt="Logo ABM Edu Pilote" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">ABM Edu Pilote</p>
+                        </div>
+                        <!-- Partenaire 3: CV Pro Plus (copie) -->
+                        <div class="text-center mx-12 flex-shrink-0">
+                            <div class="w-32 h-32 rounded-full bg-gray-800 flex items-center justify-center mb-4 border-2" style="border-color: var(--card-border);">
+                                <img src="https://i.postimg.cc/B4wCpYv0/logo-cv-propulse.png" alt="Logo CV Pro Plus" class="w-28 h-28 object-contain rounded-full" loading="lazy">
+                            </div>
+                            <p class="font-semibold" style="color: var(--text-muted-color);">CV Pro Plus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section id="temoignages" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Ce que disent nos <span class="text-gold">Clients</span>
+                </h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--text-muted-color);">
+                    La satisfaction de nos clients est notre plus grande récompense.
+                </p>
+            </div>
+
+            <div class="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                <div class="flex w-max animate-marquee hover:[animation-play-state:paused]">
+                    <!-- POUR AJOUTER UN TEMOIGNAGE : Copiez le bloc de code d'un témoignage, collez-le ici, et modifiez le contenu. -->
+                    <!-- N'oubliez pas de faire la même chose dans la section dupliquée ci-dessous (marquée 'aria-hidden="true"'). -->
+                    <!-- Témoignages dupliqués pour un défilement infini -->
+                    <div class="flex">
+                        <!-- Témoignage 1: CADJA Manuella -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“J’ai découvert CV Pro+ sur les réseaux sociaux. Ce que j’ai le plus apprécié, c’est leur volonté de bien faire et de respecter le client. Le service est rapide et professionnel. Je recommande sans hésiter.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">CADJA Manuella</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 2: Hanifah KONE -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“Recommandé par un ami, j’ai été bluffée par l’efficacité et la rapidité du service. Un travail sérieux et très satisfaisant, vraiment rien à dire !”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Hanifah KONE</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 3: Mouna Ana Mariam NIAMBA -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“CV Pro+ m’a été conseillé par une connaissance. Leur détermination à aider les autres est remarquable. Tout est bien pensé. Je recommande vivement.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Mouna Ana Mariam NIAMBA</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 4: Kouton Emmanuelle -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“J’ai apprécié la disponibilité de l’équipe. Le service est fluide et professionnel. Je recommande sans hésiter.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Kouton Emmanuelle</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 5: Georges ENZANZA -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“Ce que j’ai aimé chez CV Pro+, c’est leur implication et leur réactivité dans les échanges. Le contenu des messages est clair et pertinent.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Georges ENZANZA</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Client CV Pro+</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex" aria-hidden="true">
+                        <!-- Témoignage 1: CADJA Manuella (copie) -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“J’ai découvert CV Pro+ sur les réseaux sociaux. Ce que j’ai le plus apprécié, c’est leur volonté de bien faire et de respecter le client. Le service est rapide et professionnel. Je recommande sans hésiter.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">CADJA Manuella</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 2: Hanifah KONE (copie) -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“Recommandé par un ami, j’ai été bluffée par l’efficacité et la rapidité du service. Un travail sérieux et très satisfaisant, vraiment rien à dire !”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Hanifah KONE</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 3: Mouna Ana Mariam NIAMBA (copie) -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“CV Pro+ m’a été conseillé par une connaissance. Leur détermination à aider les autres est remarquable. Tout est bien pensé. Je recommande vivement.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Mouna Ana Mariam NIAMBA</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 4: Kouton Emmanuelle (copie) -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“J’ai apprécié la disponibilité de l’équipe. Le service est fluide et professionnel. Je recommande sans hésiter.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Kouton Emmanuelle</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Cliente CV Pro+</p>
+                            </div>
+                        </div>
+
+                        <!-- Témoignage 5: Georges ENZANZA (copie) -->
+                        <div class="luxury-card p-8 rounded-xl flex flex-col w-96 lg:w-[500px] mx-4 flex-shrink-0">
+                            <div class="flex-grow mb-6">
+                                <div class="text-gold mb-2">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star text-gray-600"></i>
+                                </div>
+                                <p class="italic" style="color: var(--text-muted-color);">“Ce que j’ai aimé chez CV Pro+, c’est leur implication et leur réactivité dans les échanges. Le contenu des messages est clair et pertinent.”</p>
+                            </div>
+                            <div class="mt-auto">
+                                <p class="font-bold" style="color: var(--text-color);">Georges ENZANZA</p>
+                                <p class="text-sm" style="color: var(--text-subtle-color);">Client CV Pro+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Démarrons Votre <span class="text-gold">Transformation</span>
+                </h2>
+                <p class="text-xl max-w-2xl mx-auto" style="color: var(--text-muted-color);">
+                    Contactez-nous pour une consultation gratuite et un devis personnalisé
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="luxury-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gold mb-6">Demande de Devis</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom complet</label>
+                                <input type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Entreprise</label>
+                                <input type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Nom de l'entreprise">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Email</label>
+                                <input type="email" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Téléphone</label>
+                                <input type="tel" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="+221 XX XXX XX XX">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Service souhaité</label>
+                            <select class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                                <option value="">Sélectionnez un service</option>
+                                <option value="evenementiel">Événementiel</option>
+                                <option value="decoration-artistique">Décoration Artistique</option>
+                                <option value="automatisation-workflow">Automatisation Workflow</option>
+                                <option value="dashboards-intelligents">Dashboards Intelligents</option>
+                                <option value="branding-premium">Branding Premium</option>
+                                <option value="integration-qr-nfc">Intégration QR/NFC</option>
+                                <option value="communication-audiovisuel">Communication & Audiovisuel</option>
+                                <option value="strategie-digitale">Stratégie Digitale</option>
+                                <option value="developpement-mobile">Développement Mobile</option>
+                                <option value="ecommerce-ventes-ligne">E-commerce & Ventes en ligne</option>
+                                <option value="formation-coaching">Formation & Coaching</option>
+                                <option value="cybersecurite-protection">Cybersécurité & Protection des données</option>
+                                <option value="traduction-localisation">Traduction & Localisation</option>
+                                <option value="plateforme-sur-mesure">Plateforme sur mesure</option>
+                                <option value="autre">Autre consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Décrivez votre projet</label>
+                            <textarea rows="4" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Détaillez vos besoins et objectifs..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full gradient-gold text-black py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
+                            Envoyer ma Demande
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="luxury-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gold mb-6">Informations de Contact</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Adresse</p>
+                                    <p style="color: var(--text-muted-color);">Dakar, Sénégal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">WhatsApp</p>
+                                    <p style="color: var(--text-muted-color);">+221 76 904 79 99</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p style="color: var(--text-muted-color);">abmcompanysn@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gold mb-4">Horaires</h3>
+                        <div class="space-y-2" style="color: var(--text-muted-color);">
+                            <div class="flex justify-between">
+                                <span>Lundi - Vendredi</span>
+                                <span>8h00 - 18h00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Samedi</span>
+                                <span>9h00 - 15h00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Dimanche</span>
+                                <span>Fermé</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVEAU: Section Devenir Partenaire -->
+    <section id="devenir-partenaire-section" class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Devenez un <span class="text-gold">Partenaire</span> ABMCY
+            </h2>
+            <p class="text-xl max-w-3xl mx-auto mb-8" style="color: var(--text-muted-color);">
+                Vous êtes un expert dans votre domaine et partagez notre vision de l'excellence ? Rejoignez notre réseau de partenaires et accédez à de nouvelles opportunités de projets.
+            </p>
+            <a href="devenir-partenaire.html" class="gradient-gold text-black px-10 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-block">
+                Postuler Maintenant
+            </a>
+        </div>
+    </section>
+
+    <!-- Modal Devis -->
+    <div id="devisModal" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background-color: rgba(0,0,0,0.75);">
+        <div class="luxury-card p-8 rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gold">Demande de Devis Premium</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white text-2xl">×</button>
+            </div>
+            
+            <form id="devisForm" class="space-y-6">
                 <div>
+                    <input type="hidden" name="form_type" value="devis">
                     <label class="block text-sm font-medium mb-3" style="color: var(--text-muted-color);">Vous êtes *</label>
                     <div class="flex flex-wrap gap-4">
                         <label class="flex items-center space-x-2 cursor-pointer">
@@ -127,115 +1533,708 @@
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input type="radio" name="user_type" value="particulier" class="form-radio h-4 w-4 text-gold focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);">
-                            <span style="color: var(--text-muted-color);">Un Particulier / Freelance</span>
+                            <span style="color: var(--text-muted-color);">Un Particulier</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom du Contact *</label>
-                        <input name="contact_name" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom complet">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom complet *</label>
+                        <input name="nom-complet" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom de l'Entreprise (si applicable)</label>
-                        <input name="company_name" type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Le nom de votre société">
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Entreprise *</label>
+                        <input name="entreprise" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Nom de l'entreprise">
                     </div>
                 </div>
+                
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Email *</label>
-                        <input name="email" type="email" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
+                        <input name="email" type="email" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Téléphone *</label>
-                        <input name="phone" type="tel" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="+221 XX XXX XX XX">
+                        <input name="telephone" type="tel" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="+221 XX XXX XX XX">
                     </div>
                 </div>
+                
                 <div>
-                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Votre principal secteur d'expertise *</label>
-                    <select name="sector" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
-                        <option value="">Sélectionnez un secteur</option>
-                        <option value="communication-digitale">Communication Digitale</option>
-                        <option value="marketing-strategique">Marketing Stratégique</option>
-                        <option value="automatisation-intelligente">Automatisation Intelligente</option>
-                        <option value="design-graphique">Design Graphique</option>
-                        <option value="voyage-transport-hebergement">Voyage, Transport & Hébergement</option>
-                        <option value="autre">Autre (précisez ci-dessous)</option>
+                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Service souhaité *</label>
+                    <select name="service" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                        <option value="">Sélectionnez un service</option>
+                        <optgroup label="Plateformes">
+                            <option value="plateforme-ecommerce">Plateforme E-commerce</option>
+                            <option value="plateforme-valorisation-pro">Plateforme Valorisation Pro</option>
+                            <option value="plateforme-gestion">Plateforme de Gestion</option>
+                            <option value="plateforme-evenementiel">Plateforme Événementiel</option>
+                            <option value="plateforme-elearning">Plateforme E-learning</option>
+                        </optgroup>
+                        <optgroup label="Services">
+                            <option value="evenementiel">Événementiel</option>
+                            <option value="decoration-artistique">Décoration Artistique</option>
+                            <option value="automatisation-workflow">Automatisation Workflow</option>
+                            <option value="dashboards-intelligents">Dashboards Intelligents</option>
+                            <option value="branding-premium">Branding Premium</option>
+                            <option value="integration-qr-nfc">Intégration QR/NFC</option>
+                            <option value="communication-audiovisuel">Communication & Audiovisuel</option>
+                            <option value="strategie-digitale">Stratégie Digitale</option>
+                            <option value="developpement-mobile">Développement Mobile</option>
+                            <option value="ecommerce-ventes-ligne">E-commerce & Ventes en ligne</option>
+                            <option value="formation-coaching">Formation & Coaching</option>
+                            <option value="voyage-transport-hebergement">Voyage, Transport & Hébergement</option>
+                            <option value="cybersecurite-protection">Cybersécurité & Protection</option>
+                            <option value="reseau-marketing-digital">Réseau & Marketing Digital</option>
+                            <option value="traduction-localisation">Traduction & Localisation</option>
+                        </optgroup>
+                        <option value="autre">Autre service ou consultation</option>
                     </select>
                 </div>
+                
                 <div>
-                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Présentez votre activité et votre valeur ajoutée *</label>
-                    <textarea name="message" rows="4" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Décrivez ce que vous faites et pourquoi vous seriez un partenaire de choix..."></textarea>
+                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Budget estimé</label>
+                    <select name="budget" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                        <option value="">Sélectionnez votre budget</option>
+                        <option value="5-10">5 000 - 10 000 FCFA</option>
+                        <option value="10-50">10 000 - 50 000 FCFA</option>
+                        <option value="50-100">50 000 - 100 000 FCFA</option>
+                        <option value="100-500">100 000 - 500 000 FCFA</option>
+                        <option value="500-2000">500 000 - 2 000 000 FCFA</option>
+                        <option value="2000-5000">2 000 000 - 5 000 000 FCFA</option>
+                        <option value="5000-10000">5 000 000 - 10 000 000 FCFA</option>
+                        <option value="10000+">Plus de 10 000 000 FCFA</option>
+                    </select>
                 </div>
-
-                <div class="pt-6 border-t" style="border-color: var(--card-border);">
-                    <h4 class="text-xl font-semibold text-gold mb-4">Exemples de réalisations</h4>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Lien vers une réalisation (Portfolio, site web, projet...)</label>
-                            <input name="example1" type="url" class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="https://exemple.com/projet1">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Lien vers une deuxième réalisation (optionnel)</label>
-                            <input name="example2" type="url" class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="https://exemple.com/projet2">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Lien vers une troisième réalisation (optionnel)</label>
-                            <input name="example3" type="url" class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="https://exemple.com/projet3">
-                        </div>
-                    </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Délai souhaité</label>
+                    <select name="delai" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                        <option value="">Sélectionnez un délai</option>
+                        <option value="urgent">Urgent (1-2 semaines)</option>
+                        <option value="rapide">Rapide (3-4 semaines)</option>
+                        <option value="standard">Standard (1-2 mois)</option>
+                        <option value="flexible">Flexible (2+ mois)</option>
+                    </select>
                 </div>
-
-                <button type="submit" class="w-full gradient-gold text-black py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
-                    Envoyer ma Candidature
-                </button>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Décrivez votre projet *</label>
+                    <textarea name="description" rows="4" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Détaillez vos besoins, objectifs et spécificités..."></textarea>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <input name="newsletter" type="checkbox" id="newsletter" class="w-4 h-4 text-gold rounded focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);">
+                    <label for="newsletter" class="text-sm" style="color: var(--text-muted-color);">Je souhaite recevoir les actualités ABMCY</label>
+                </div>
+                
+                <div class="flex gap-4">
+                    <button type="button" id="cancelModal" class="flex-1 py-3 rounded-lg font-semibold transition-colors" style="border: 1px solid var(--input-border); color: var(--text-muted-color);">
+                        Annuler
+                    </button>
+                    <button type="submit" class="flex-1 gradient-gold text-black py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                        Envoyer ma Demande
+                    </button>
+                </div>
             </form>
         </div>
-    </main>
+    </div>
 
-    <script src="config.js"></script>
+    <!-- NOUVEAU: Modal FAQ -->
+    <div id="faqModal" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background-color: rgba(0,0,0,0.75);">
+        <div class="luxury-card p-8 rounded-xl max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gold">Foire Aux Questions (FAQ)</h3>
+                <button id="closeFaqModal" class="text-gray-400 hover:text-white text-2xl">×</button>
+            </div>
+            
+            <div id="faq-accordion" class="space-y-4">
+                <!-- Question 1 -->
+                <div class="faq-item luxury-card !border-0 !shadow-none p-0">
+                    <button class="faq-question flex justify-between items-center w-full text-left p-4 rounded-lg" style="background-color: var(--input-bg);">
+                        <span class="font-semibold" style="color: var(--text-color);">Quels types de services proposez-vous ?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4" style="color: var(--text-muted-color);">
+                        <p>Nous offrons une large gamme de services digitaux, incluant la création de sites web, le développement d'applications mobiles, l'automatisation de processus, le branding, la stratégie digitale, et bien plus. Consultez notre section "Services" pour une liste complète.</p>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="faq-item luxury-card !border-0 !shadow-none p-0">
+                    <button class="faq-question flex justify-between items-center w-full text-left p-4 rounded-lg" style="background-color: var(--input-bg);">
+                        <span class="font-semibold" style="color: var(--text-color);">Travaillez-vous uniquement au Sénégal ?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4" style="color: var(--text-muted-color);">
+                        <p>Bien que basés à Dakar, au Sénégal, notre vision est panafricaine. Nous travaillons avec des clients et des partenaires à travers tout le continent pour mener à bien des projets de transformation digitale.</p>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="faq-item luxury-card !border-0 !shadow-none p-0">
+                    <button class="faq-question flex justify-between items-center w-full text-left p-4 rounded-lg" style="background-color: var(--input-bg);">
+                        <span class="font-semibold" style="color: var(--text-color);">Comment puis-je obtenir un devis ?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4" style="color: var(--text-muted-color);">
+                        <p>Le plus simple est de cliquer sur le bouton "Demander un Devis" en haut de la page ou d'utiliser notre "Simulateur de besoin" pour une première estimation. Vous pouvez également nous contacter directement via le formulaire de contact.</p>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="faq-item luxury-card !border-0 !shadow-none p-0">
+                    <button class="faq-question flex justify-between items-center w-full text-left p-4 rounded-lg" style="background-color: var(--input-bg);">
+                        <span class="font-semibold" style="color: var(--text-color);">Comment devenir partenaire ?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-4" style="color: var(--text-muted-color);">
+                        <p>Nous sommes toujours à la recherche de talents et d'experts pour rejoindre notre réseau. Visitez notre page "Devenir Partenaire" et remplissez le formulaire de candidature. Notre équipe examinera votre profil et vous contactera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="hidden lg:block py-12 border-t" style="background-color: var(--bg-color); border-color: var(--card-border);">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-4 mb-6"> 
+                        <div class="w-12 h-12 flex items-center justify-center bg-white rounded-lg p-1">
+                            <img src="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png" alt="Logo ABMCY" class="h-10 w-auto">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gold">ABMCY</h3>
+                            <p class="text-xs" style="color: var(--text-muted-color);">African business manager company</p>
+                        </div>
+                    </div>
+                    <p class="text-sm" style="color: var(--text-muted-color);">
+                        Votre partenaire de confiance pour la transformation digitale en Afrique.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-gold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-muted-color);">
+                        <li><a href="#services" class="hover:text-gold transition-colors">Événementiel</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Automatisation Workflow</a></li>
+                        <li><a href="#services" class="hover:text-gold transition-colors">Branding Premium</a></li>
+                        <li><a href="#simulateur" class="hover:text-gold transition-colors">Simulateur de Besoin</a></li>
+                        <li><a href="devenir-partenaire.html" class="hover:text-gold transition-colors">Devenir Partenaire</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-gold mb-4">Liens Utiles</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-muted-color);">
+                        <li><a href="#apropos" class="hover:text-gold transition-colors">À Propos de Nous</a></li>
+                        <li><a href="#partenaires" class="hover:text-gold transition-colors">Nos Partenaires</a></li>
+                        <li><a href="#temoignages" class="hover:text-gold transition-colors">Témoignages</a></li>
+                        <li><a href="#" id="openFaqModal" class="hover:text-gold transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-gold mb-4">Réalisations</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-muted-color);">
+                        <li><a href="#realisations" class="hover:text-gold transition-colors">E-commerce Premium</a></li>
+                        <li><a href="#realisations" class="hover:text-gold transition-colors">CV Pro+ Digital</a></li>
+                        <li><a href="#realisations" class="hover:text-gold transition-colors">ABM EduPilote</a></li>
+                        <li><a href="#realisations" class="hover:text-gold transition-colors">Mon Vehicule SN</a></li>
+                        <li><a href="#realisations" class="hover:text-gold transition-colors">ABMedu</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-gold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-muted-color);">
+                        <li><i class="fas fa-map-marker-alt w-4"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">Dakar</span>, <span itemprop="addressCountry">Sénégal</span></span></li>
+                        <li><i class="fab fa-whatsapp w-4"></i> +221 76 904 79 99</li>
+                        <li><i class="fas fa-envelope w-4"></i> abmcompanysn@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t mt-8 pt-8 text-center" style="border-color: var(--card-border);">
+                <p class="text-sm" style="color: var(--text-muted-color);">
+                    <a href="mentions-legales.html" class="hover:text-gold transition-colors">Mentions Légales</a>
+                </p>
+                <p class="text-sm mt-2" style="color: var(--text-subtle-color);">
+                    © 2024 Africa Business Manager Company (ABMCY). Tous droits réservés.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="config.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Appliquer le thème clair si nécessaire
-            if (localStorage.getItem('theme') === 'light') {
-                document.body.classList.add('light-mode');
+        /* =================================================================
+           DONNÉES ET LOGIQUE DES CARROUSELS
+           ================================================================= */
+        // Données (images, citations) pour chaque carrousel
+        const carouselData = {
+            hero: [
+                { // Image de technologie et innovation en Afrique
+                    image: 'url(https://i.postimg.cc/cJ4h8YXt/Une-image-repr-sentant-la-technologie-et-l-innovation-avec-des-l-ments-futuristes-et-des-lumi-res.jpg)',
+                    quote: "L'innovation distingue un leader d'un suiveur",
+                    author: "Steve Jobs"
+                },
+                { // Image d'étudiants africains utilisant la technologie
+                    image: 'url(https://i.postimg.cc/0jfrm6tz/Des-jeunes-tudiants-africains-utilisant-des-ordinateurs-portables-illustrant-l-ducation-et-l-adop.jpg)',
+                    quote: "Le futur appartient à ceux qui croient en la beauté de leurs rêves",
+                    author: "Eleanor Roosevelt"
+                },
+                { // Image d'un bureau moderne avec une vue sur une ville africaine
+                    image: 'url(https://i.postimg.cc/s2Yz1kHD/Un-bureau-moderne-et-pur-avec-un-ordinateur-potentiellement-avec-une-vue-sur-une-ville-voquant.jpg)',
+                    quote: "La technologie n'est rien. L'important c'est d'avoir confiance en les gens",
+                    author: "Steve Jobs"
+                },
+                { // Image symbolisant la croissance et le futur en Afrique
+                    image: 'url(https://i.postimg.cc/0yxRFW2B/Une-image-symbolique-de-la-croissance-et-du-futur-avec-des-l-ments-lumineux-et-dynamiques-repr-s.jpg)',
+                    quote: "L'Afrique de demain se construit aujourd'hui avec la technologie",
+                    author: "Vision ABM"
+                },
+                { // Image de collaboration et de travail d'équipe
+                    image: 'url(https://i.postimg.cc/YSZXK0z4/ne-sc-ne-de-collaboration-et-de-travail-d-quipe-avec-des-personnes-interagissant-autour-d-un-proje.jpg)',
+                    quote: "Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte",
+                    author: "Winston Churchill"
+                },
+                { // Image abstraite de lignes de code ou de données
+                    image: 'url(https://i.postimg.cc/1XjXJxQ3/Une-image-de-lignes-de-code-ou-de-donn-es-num-riques-symbolisant-l-expertise-technique-et-la-pr-ci.jpg)',
+                    quote: "L'excellence n'est pas un acte, mais une habitude",
+                    author: "Aristote"
+                }
+            ],
+            services: [
+                { image: 'url(https://i.postimg.cc/Y9JqW6fK/Une-image-li-e-au-marketing-digital-ou-l-analyse-de-donn-es-avec-des-graphiques-et-des-crans-d-o.jpg)' },
+                { image: 'url(https://i.postimg.cc/YCn7FNtM/Une-image-repr-sentant-la-communication-ou-l-automatisation-potentiellement-avec-des-ic-nes-de-mess.jpg)' },
+                { image: 'url(https://i.postimg.cc/sgtnb1Jk/Une-image-de-tableau-de-bord-ou-de-visualisation-de-donn-es-illustrant-l-intelligence-d-affaires-et.jpg)' }
+            ],
+            realisations: [
+                { image: 'url(https://i.postimg.cc/rFyY4KgT/Une-image-de-bosite-ecomerce-en-ligne-ou-de-commerce-lectronique-avec-des-produits-et-une-interfa.jpg)' },
+                { image: 'url(https://i.postimg.cc/B4wCpYv0/logo-cv-propulse.png)' },
+                { image: 'url(https://i.postimg.cc/t95KK8fs/abmedu-polote.jpg)' },
+                { image: 'url(https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop)' }
+            ]
+        };
+
+        // Objet pour suivre l'état de chaque carrousel (diapositive actuelle, en transition ou non)
+        const carouselStates = {
+            hero: { currentSlide: 0, isTransitioning: false },
+            services: { currentSlide: 0, isTransitioning: false },
+            realisations: { currentSlide: 0, isTransitioning: false }
+        };
+
+        // Fonction pour initialiser un carrousel au chargement de la page
+        function initCarousel(carouselType) {
+            const slideClass = carouselType === 'hero' ? '.carousel-slide' : `.${carouselType}-slide`;
+            const carouselElement = document.getElementById(carouselType === 'hero' ? 'heroCarousel' : `${carouselType}Carousel`);
+            const bgImageElement = carouselElement.querySelector('.carousel-bg-image');
+
+            // Set initial background
+            if (bgImageElement) {
+                bgImageElement.style.backgroundImage = carouselData[carouselType][0].image;
+                // Assurer que l'image initiale est nette
+                setTimeout(() => {
+                    bgImageElement.style.filter = 'blur(0px)';
+                }, 100);
+            }
+        }
+
+        // Fonction pour changer de diapositive
+        function changeSlide(carouselType, newSlide) {
+            const state = carouselStates[carouselType];
+            if (newSlide === state.currentSlide || state.isTransitioning) return;
+
+            state.isTransitioning = true;
+
+            const slideClass = carouselType === 'hero' ? '.carousel-slide' : `.${carouselType}-slide`;
+            const carouselElement = document.getElementById(carouselType === 'hero' ? 'heroCarousel' : `${carouselType}Carousel`);
+            const bgImageElement = carouselElement.querySelector('.carousel-bg-image');
+            const slides = document.querySelectorAll(slideClass);
+
+            const oldSlide = state.currentSlide;
+            state.currentSlide = newSlide;
+
+            // Update background image
+            if (bgImageElement) {
+                bgImageElement.style.backgroundImage = carouselData[carouselType][newSlide].image;
+                // Appliquer le flou, puis le retirer pour un effet de transition
+                bgImageElement.style.filter = 'blur(8px)';
+                setTimeout(() => {
+                    bgImageElement.style.filter = 'blur(0px)';
+                }, 100); // Un court délai pour s'assurer que le changement d'image est pris en compte
             }
 
-            // Gérer la soumission du formulaire
-            document.getElementById('partnerForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const form = this;
-                const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Envoi en cours...';
+            // Update active slide class
+            slides[oldSlide].classList.remove('active');
+            slides[newSlide].classList.add('active');
 
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
+            // Update dots
+            const dotClass = carouselType === 'hero' ? '.carousel-dot' : `.${carouselType}-dot`;
+            document.querySelectorAll(dotClass).forEach((dot, index) => {
+                dot.classList.toggle('active', index === state.currentSlide);
+            });
 
-                if (typeof config === 'undefined' || !config.scriptUrl || config.scriptUrl === 'VOTRE_URL_APPS_SCRIPT_ICI') {
-                    alert("Erreur: L'URL du script n'est pas configurée.");
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Envoyer ma Candidature';
+            setTimeout(() => {
+                state.isTransitioning = false;
+            }, 1200); // Match transition duration
+        }
+
+        // Fonction pour faire défiler automatiquement les carrousels
+        function startAutoCarousel(carouselType) {
+            setInterval(() => {
+                const state = carouselStates[carouselType];
+                if (!state.isTransitioning) {
+                    const nextSlide = (state.currentSlide + 1) % carouselData[carouselType].length;
+                    changeSlide(carouselType, nextSlide);
+                }
+            }, carouselType === 'hero' ? 7000 : 8000); // Temps d'affichage augmenté pour la lecture
+        }
+
+        /* =================================================================
+           INITIALISATION DE LA PAGE ET GESTION DES ÉVÉNEMENTS
+           ================================================================= */
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Initialiser tous les carrousels
+            initCarousel('hero');
+            initCarousel('services');
+            initCarousel('realisations');
+            
+            // 2. Démarrer le défilement automatique
+            startAutoCarousel('hero');
+            startAutoCarousel('services');
+            startAutoCarousel('realisations');
+            
+            // 3. Logique du changement de thème (sombre/clair)
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                }
+            };
+
+            const toggleTheme = () => {
+                const isLight = document.body.classList.toggle('light-mode');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            };
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+            // Appliquer le thème sauvegardé au chargement
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            }
+
+            // 4. Logique du menu hamburger pour mobile
+            const hamburgerBtn = document.getElementById('hamburger-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+ 
+            function toggleMenu() {
+                hamburgerBtn.classList.toggle('open');
+                mobileMenu.classList.toggle('hidden'); 
+                mobileMenu.classList.toggle('flex');
+                document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
+            }
+
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
+            // 5. Gestion des clics sur les points de contrôle des carrousels
+            document.querySelectorAll('.services-dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => changeSlide('services', index));
+            });
+            
+            document.querySelectorAll('.realisations-dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => changeSlide('realisations', index));
+            });
+
+            // 6. Gérer l'ouverture du modal de devis si demandé dans l'URL
+            // (utile pour les liens depuis les pages de service)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('openModal') === 'true') {
+                openDevisModal();
+                const service = urlParams.get('service');
+                if (service) { 
+                    // Pré-sélectionner le service dans le formulaire
+                    document.querySelector('#devisForm select[name="service"]').value = service;
+                }
+            }
+
+            // 7. Mettre à jour les liens "Visiter" depuis le fichier config.js
+            function updateVisitLinks() {
+                if (typeof config === 'undefined' || typeof config.platformLinks === 'undefined') {
+                    console.warn("Le fichier config.js ou une de ses variables de liens n'est pas défini.");
                     return;
                 }
 
-                fetch(config.scriptUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-                    .then(() => {
-                        // Le message de succès est maintenant géré par le script backend qui envoie un email.
-                        // On affiche un message générique ici.
-                        alert('Merci pour votre intérêt ! Votre demande a bien été envoyée. Veuillez consulter vos emails pour la confirmation.');
-                        form.reset();
-                    })
-                    .catch(error => alert('Erreur lors de l\'envoi : ' + error))
-                    .finally(() => {
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Envoyer ma Candidature';
+                // Pour les plateformes et les réalisations
+                document.querySelectorAll('[id^="realisation-link-"]').forEach(link => {
+                    const key = link.id.replace('realisation-link-', '');
+
+                    // Priorité 1: Lien externe depuis externalProjectLinks
+                    // Correction: On vérifie si la clé existe dans externalProjectLinks
+                    if (config.externalProjectLinks && config.externalProjectLinks.hasOwnProperty(key)) {
+                        link.href = config.externalProjectLinks[key];
+                        link.target = '_blank';
+                    } 
+                    // Priorité 2: Lien interne depuis pageLinks
+                    else if (config.pageLinks && config.pageLinks[key]) {
+                        link.href = config.pageLinks[key] + '.html';
+                        link.target = '_self';
+                    }
+                });
+            }
+            updateVisitLinks();
+
+            // 8. Gérer le clic sur les cartes de service pour ouvrir le devis
+            document.querySelectorAll('.service-card-clickable').forEach(card => {
+                card.addEventListener('click', function() {
+                    const serviceValue = this.dataset.serviceValue;
+                    openDevisModal();
+                    document.querySelector('#devisForm select[name="service"]').value = serviceValue;
+                });
+            });
+
+            // 9. Gérer le clic sur le bouton du simulateur de besoin
+            document.getElementById('recommander-btn').addEventListener('click', function() {
+                const select = document.getElementById('secteur-select');
+                const secteur = select.value;
+                if (secteur) {
+                    window.location.href = `solution-recommandee.html?secteur=${secteur}`;
+                } else {
+                    alert('Veuillez sélectionner un secteur d\'activité.');
+                }
+            });
+
+            // 10. Gérer le clic sur les boutons de partage
+            document.querySelectorAll('.share-btn').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.stopPropagation(); // Empêche l'ouverture du modal de devis
+                    const card = button.closest('.service-card-clickable');
+                    const serviceName = card.dataset.serviceName;
+                    const shareUrl = window.location.href.split('?')[0] + '#services';
+
+                    const shareData = {
+                        title: `Découvrez le service ${serviceName} d'ABMCY`,
+                        text: `J'ai trouvé ce service intéressant chez ABMCY : ${serviceName}. Jetez-y un œil !`,
+                        url: shareUrl,
+                    };
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share(shareData);
+                        } catch (err) {
+                            console.error("Erreur de partage: ", err);
+                        }
+                    } else {
+                        alert("La fonction de partage n'est pas supportée sur ce navigateur. Vous pouvez copier le lien manuellement.");
+                    }
+                });
+            });
+
+            // NOUVEAU: Logique pour l'accordéon de la FAQ
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+
+                    // Fermer les autres réponses
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        if (ans !== answer) ans.classList.add('hidden');
                     });
+
+                    answer.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
             });
         });
+
+        /* =================================================================
+           FONCTIONS UTILITAIRES
+           ================================================================= */
+        // Fonction pour le défilement fluide vers les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // NOUVEAU: Vérifier que le lien n'est pas juste "#" et qu'il correspond à un élément existant
+                if (href.length > 1 && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Si la condition n'est pas remplie (ex: href="#" ou href="#non-existant"),
+                // le comportement par défaut du lien s'applique, ce qui ne cause pas d'erreur.
+            });
+        });
+
+        // Logique de la fenêtre modale (Devis)
+        const modal = document.getElementById('devisModal');
+        const openModalBtn = document.getElementById('openModal');
+        const openModalMobileBtn = document.getElementById('openModalMobile');
+        const openModalHeroBtn = document.getElementById('openModalHero'); // NOUVEAU: Bouton du Hero
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelModalBtn = document.getElementById('cancelModal');
+        
+        // Fonction pour ouvrir le modal
+        function openDevisModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+        
+        // Fonction pour fermer le modal
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        openModalBtn.addEventListener('click', openDevisModal);
+        openModalMobileBtn.addEventListener('click', openDevisModal);
+        openModalHeroBtn.addEventListener('click', openDevisModal); // NOUVEAU: Écouteur pour le bouton du Hero
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelModalBtn.addEventListener('click', closeModal);
+        
+        // Fermer le modal en cliquant à l'extérieur
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Fermer le modal avec la touche "Échap"
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // NOUVEAU: Logique du modal FAQ
+        const faqModal = document.getElementById('faqModal');
+        const openFaqModalBtn = document.getElementById('openFaqModal');
+        const openFaqModalMobileBtn = document.getElementById('openFaqModalMobile');
+        const closeFaqModalBtn = document.getElementById('closeFaqModal');
+
+        function openFaqModal() {
+            faqModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFaqModal() {
+            faqModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        openFaqModalBtn.addEventListener('click', openFaqModal);
+        openFaqModalMobileBtn.addEventListener('click', openFaqModal);
+        closeFaqModalBtn.addEventListener('click', closeFaqModal);
+        faqModal.addEventListener('click', e => {
+            if (e.target === faqModal) closeFaqModal();
+        });
+
+        // Gestion de la soumission du formulaire de devis (modal)
+        document.getElementById('devisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+
+            const formData = new FormData(this);
+            const data = {
+                nom: formData.get('nom-complet') || '',
+                user_type: formData.get('user_type') || 'entreprise', // NOUVEAU
+                entreprise: formData.get('entreprise') || '',
+                email: formData.get('email') || '',
+                telephone: formData.get('telephone') || '',
+                service: formData.get('service'),
+                budget: formData.get('budget'),
+                delai: formData.get('delai'),
+                description: formData.get('description'),
+                newsletter: formData.get('newsletter') === 'on'
+            };
+
+            if (typeof config === 'undefined' || !config.scriptUrl || config.scriptUrl === 'VOTRE_URL_APPS_SCRIPT_ICI') {
+                alert("Erreur: L'URL du script n'est pas configurée. Veuillez contacter l'administrateur.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Envoyer ma Demande';
+                return;
+            }
+
+            fetch(config.scriptUrl, { 
+                method: 'POST', 
+                mode: 'no-cors', // Important pour les requêtes vers Apps Script depuis un client
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    alert('Merci pour votre demande de devis ! Notre équipe vous contactera dans les 24h.');
+                    form.reset();
+                    closeModal();
+                })
+                .catch(error => {
+                    alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.');
+                    console.error('Error!', error.message);
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer ma Demande';
+                });
+        });
+
+        // Gestion de la soumission du formulaire de la section Contact (exemple simple)
+        document.querySelector('#contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Effet sur la barre de navigation au défilement (déjà géré par CSS)
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            // Le style est maintenant géré par nav-sticky et backdrop-blur-lg
+        });
+
+        // Logique pour animer les éléments à leur apparition lors du défilement
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Ne joue l'animation qu'une fois
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer l'observateur à tous les éléments ayant la classe 'animate-on-scroll'
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
     </script>
-
-</body>
-
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98650f8111a898d2',t:'MTc1OTA4MTU5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
