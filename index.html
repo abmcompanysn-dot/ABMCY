@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Favicon du site -->
     <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png"> 
 
@@ -248,7 +248,7 @@
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-gold">ABMCY</h1>
-                        <p class="text-xs" style="color: var(--text-muted-color);">African business manager company</p>
+                        <p class="text-xs" style="color: var(--text-muted-color);">African Business Manager Company</p>
                     </div>
                 </div>
                 
@@ -286,7 +286,6 @@
     <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 hidden flex-col space-y-6 px-12 py-24 overflow-y-auto" style="background-color: var(--bg-color); opacity: 0.98;">
         <a href="#accueil" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Accueil</a>
         <a href="#apropos" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">À Propos</a>
-        <a href="#services" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Services</a>
         <a href="devenir-partenaire.html" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Devenir Partenaire</a>
         <a href="#simulateur" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Simulateur</a>
         <a href="#plateformes" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Plateformes</a>
@@ -384,9 +383,9 @@
             
             <!-- Action Buttons -->
             <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col lg:flex-row gap-4 justify-center z-20 w-11/12 max-w-5xl">
-                <!-- Bouton 1: Simulateur -->
+                <!-- Bouton 1: Simulateur (Icône modifiée) -->
                 <a href="#simulateur" class="gradient-gold text-black px-6 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full lg:w-auto">
-                    <i class="fas fa-cogs"></i>
+                    <i class="fas fa-compass"></i>
                     <span>Trouver votre solution</span>
                 </a>
                 <!-- Bouton 2: Devis -->
@@ -411,8 +410,8 @@
     </section>
 
     <!-- Carrousel Services -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="services" class="py-20 hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 ">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
                     Nos <span class="text-gold">Services</span> Premium
