@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png">
+    <title>Solutions Recommandées - ABMCY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #e5e7eb;
+            --text-muted-color: #d1d5db;
+            --card-bg: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            --card-border: #2d2d2d;
+            --gold-color: #FFD700;
+            --input-bg: #1f2937;
+            --input-border: #4b5563;
+        }
+        body.light-mode {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --text-muted-color: #374151;
+            --card-bg: linear-gradient(145deg, #ffffff, #f3f4f6);
+            --card-border: #e5e7eb;
+            --input-bg: #f3f4f6;
+            --input-border: #d1d5db;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .gradient-gold { background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00); }
+        .text-gold { color: var(--gold-color); }
+        .luxury-card { background: var(--card-bg); border: 1px solid var(--card-border); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Header -->
+    <nav class="sticky top-0 w-full z-50 backdrop-filter backdrop-blur-lg border-b" style="background-color: rgba(0,0,0,0.8); border-color: var(--card-border);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="flex items-center space-x-4"> 
+                    <div class="w-12 h-12 flex items-center justify-center bg-white rounded-lg p-1">
+                        <img src="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png" alt="Logo ABMCY" class="h-10 w-auto">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gold">ABMCY</h1>
+                        <p class="text-xs" style="color: var(--text-muted-color);">African business manager company</p>
+                    </div>
+                </a>
+                <a href="/#plateformes" class="gradient-gold text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    &larr; Retour au site
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto p-6 sm:p-10 mt-10">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold">
+                Solutions pour le secteur <br><span id="secteur-titre" class="text-gold">...</span>
+            </h1>
+            <p class="text-gray-400 mt-3 text-lg">Voici les services que nous recommandons pour booster votre activité.</p>
+        </header>
+
+        <!-- Conteneur pour les solutions recommandées -->
+        <div id="solutions-container" class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Les cartes de solution seront injectées ici par JavaScript -->
+        </div>
+
+        <!-- Questionnaire de devis -->
+        <div class="luxury-card p-8 rounded-xl">
+            <h3 class="text-2xl font-bold text-gold mb-6 text-center">Affinez votre demande</h3>
+            <form id="questionnaire-form" class="space-y-6">
+                <!-- Les questions seront injectées ici par JavaScript -->
+                <div id="questions-container" class="space-y-6"></div>
+
+                <!-- Champs de contact -->
+                <div class="pt-6 border-t" style="border-color: var(--card-border);">
+                    <h4 class="text-xl font-semibold text-gold mb-4">Vos informations</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom complet *</label>
+                            <input name="nom-complet" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Email *</label>
+                            <input name="email" type="email" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Téléphone *</label>
+                            <input name="telephone" type="tel" required class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Ex: +221 77 123 45 67">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full gradient-gold text-black py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity">
+                    Envoyer et Obtenir un Devis
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Base de données des solutions et questions par secteur
+            const data = {
+                'communication-digitale': {
+                    titre: 'Communication Digitale',
+                    solutions: [
+                        { titre: 'Stratégie Digitale', desc: 'Définir une feuille de route claire pour votre présence en ligne.', icone: 'fa-lightbulb' },
+                        { titre: 'Branding Premium', desc: 'Créer une identité de marque forte et mémorable.', icone: 'fa-gem' },
+                        { titre: 'Communication & Audiovisuel', desc: 'Produire des contenus percutants pour engager votre audience.', icone: 'fa-video' }
+                    ],
+                    questions: [
+                        { name: 'goal', text: 'Quel est votre principal objectif de communication ?', type: 'radio', options: ['Augmenter ma notoriété', 'Générer des ventes', 'Engager ma communauté'] },
+                        { name: 'has_charte', text: 'Avez-vous déjà une charte graphique ?', type: 'radio', options: ['Oui', 'Non', 'En cours de création'] },
+                        { name: 'content_types', text: 'Quels types de contenus souhaitez-vous produire ? (Plusieurs choix possibles)', type: 'checkbox', options: ['Vidéos', 'Articles de blog', 'Podcasts', 'Publications sur les réseaux sociaux'] }
+                    ]
+                },
+                'ecommerce-moderne': {
+                    titre: 'E-commerce Moderne',
+                    solutions: [
+                        { titre: 'E-commerce & Ventes en ligne', desc: 'Lancer une boutique en ligne performante et optimisée.', icone: 'fa-shopping-cart' },
+                        { titre: 'Paiement Connecté (QR/NFC)', desc: 'Intégrer des solutions de paiement modernes et rapides.', icone: 'fa-qrcode' },
+                        { titre: 'Automatisation Workflow', desc: 'Automatiser la gestion des commandes et la relation client.', icone: 'fa-robot' }
+                    ],
+                    questions: [
+                        { name: 'interest_type', text: 'Vous souhaitez une solution clé en main ou un service sur mesure ?', type: 'radio', options: ['Solution clé en main (Plateforme)', 'Service sur mesure'] },
+                        { name: 'product_count', text: 'Combien de produits souhaitez-vous vendre environ ?', type: 'text', placeholder: 'Ex: 10-50 produits' },
+                        { name: 'features', text: 'Quelles fonctionnalités sont importantes pour vous ?', type: 'checkbox', options: ['Gestion des stocks', 'Facturation automatique', 'Suivi des livraisons', 'Programme de fidélité'] }
+                    ]
+                },
+                'marketing-strategique': {
+                    titre: 'Marketing Stratégique',
+                    solutions: [
+                        { titre: 'Stratégie Digitale', desc: 'Analyse de marché et définition de votre plan d\'action marketing.', icone: 'fa-lightbulb' },
+                        { titre: 'Branding Premium', desc: 'Positionner votre marque pour attirer et fidéliser votre clientèle cible.', icone: 'fa-gem' },
+                        { titre: 'Communication & Audiovisuel', desc: 'Créer des campagnes percutantes sur les bons canaux.', icone: 'fa-video' }
+                    ],
+                    questions: [
+                        { name: 'target_audience', text: 'Quelle est votre audience cible principale ?', type: 'text', placeholder: 'Ex: Jeunes adultes, professionnels B2B...' },
+                        { name: 'competitors', text: 'Quels sont vos concurrents directs et indirects ?', type: 'text', placeholder: 'Listez 2 ou 3 concurrents' },
+                        { name: 'budget', text: 'Quel est votre budget marketing mensuel approximatif ?', type: 'radio', options: ['Moins de 50 000 FCFA', '50 000 - 200 000 FCFA', 'Plus de 200 000 FCFA'] }
+                    ]
+                },
+                'developpement-mobile': {
+                    titre: 'Développement Mobile',
+                    solutions: [
+                        { titre: 'Développement Mobile', desc: 'Création d\'applications natives ou hybrides pour Android et iOS.', icone: 'fa-mobile-alt' },
+                        { titre: 'Stratégie Digitale', desc: 'Définir la stratégie de lancement et de monétisation de votre application.', icone: 'fa-lightbulb' },
+                        { titre: 'Branding Premium', desc: 'Créer une identité visuelle forte pour votre application.', icone: 'fa-gem' }
+                    ],
+                    questions: [
+                        { name: 'main_function', text: 'Quelle est la fonction principale de votre future application ?', type: 'text', placeholder: 'Ex: Réservation, information, jeu...' },
+                        { name: 'platforms', text: 'Sur quelles plateformes souhaitez-vous la déployer ?', type: 'checkbox', options: ['iOS (iPhone)', 'Android', 'Les deux'] },
+                        { name: 'features', text: 'Avez-vous besoin de fonctionnalités spécifiques ?', type: 'checkbox', options: ['Connexion utilisateur', 'Paiement intégré', 'Notifications push', 'Géolocalisation'] }
+                    ]
+                },
+                'automatisation-intelligente': {
+                    titre: 'Automatisation Intelligente',
+                    solutions: [
+                        { titre: 'Automatisation Workflow', desc: 'Optimiser vos processus répétitifs avec des outils comme n8n.', icone: 'fa-robot' },
+                        { titre: 'Dashboards Intelligents', desc: 'Suivre la performance de vos automatisations en temps réel.', icone: 'fa-chart-line' },
+                        { titre: 'Formation & Coaching', desc: 'Former vos équipes à l\'utilisation des nouveaux outils automatisés.', icone: 'fa-chalkboard-teacher' }
+                    ],
+                    questions: [
+                        { name: 'task_to_automate', text: 'Quelle est la tâche la plus répétitive et chronophage dans votre entreprise ?', type: 'text', placeholder: 'Ex: Envoyer des emails de suivi' },
+                        { name: 'current_tools', text: 'Quels logiciels utilisez-vous actuellement (CRM, messagerie, etc.) ?', type: 'text', placeholder: 'Ex: Gmail, Excel, WhatsApp' },
+                        { name: 'expected_result', text: 'Quel est le résultat attendu de cette automatisation ?', type: 'radio', options: ['Gain de temps', 'Réduction des erreurs', 'Meilleur suivi client'] }
+                    ]
+                },
+                'design-graphique': {
+                    titre: 'Design Graphique',
+                    solutions: [
+                        { titre: 'Branding Premium', desc: 'Création de votre logo et de votre charte graphique complète.', icone: 'fa-gem' },
+                        { titre: 'Communication & Audiovisuel', desc: 'Conception de tous vos supports de communication (flyers, bannières, etc.).', icone: 'fa-video' },
+                        { titre: 'Stratégie Digitale', desc: 'Création de visuels percutants pour vos campagnes publicitaires.', icone: 'fa-lightbulb' }
+                    ],
+                    questions: [
+                        { name: 'has_logo', text: 'Avez-vous déjà un logo ou une identité visuelle ?', type: 'radio', options: ['Oui', 'Non'] },
+                        { name: 'supports', text: 'Quels sont les supports dont vous avez besoin ?', type: 'checkbox', options: ['Logo', 'Carte de visite', 'Bannière web', 'Flyer'] },
+                        { name: 'message', text: 'Quel est le message ou l\'émotion que votre design doit transmettre ?', type: 'text', placeholder: 'Ex: Professionnel, jeune, luxueux...' }
+                    ]
+                },
+                'decoration-artistique': {
+                    titre: 'Décoration Artistique',
+                    solutions: [
+                        { titre: 'Décoration Artistique', desc: 'Conception et réalisation d\'ambiances uniques pour vos espaces.', icone: 'fa-palette' },
+                        { titre: 'Événementiel', desc: 'Création de décors thématiques pour vos événements.', icone: 'fa-calendar-check' }
+                    ],
+                    questions: [
+                        { name: 'space_type', text: 'Quel type d\'espace souhaitez-vous décorer ?', type: 'radio', options: ['Bureau', 'Chambre', 'Salle d\'événement', 'Autre'] },
+                        { name: 'theme', text: 'Avez-vous un thème ou un style en tête ?', type: 'text', placeholder: 'Ex: Moderne, traditionnel, coloré...' },
+                        { name: 'area', text: 'Quelle est la superficie approximative de l\'espace (en m²) ?', type: 'text', placeholder: 'Ex: 20m²' }
+                    ]
+                },
+                'evenementiel-professionnel': {
+                    titre: 'Événementiel Professionnel',
+                    solutions: [
+                        { titre: 'Événementiel', desc: 'Organisation de A à Z de vos conférences, séminaires, et lancements.', icone: 'fa-calendar-check' },
+                        { titre: 'Communication & Audiovisuel', desc: 'Couverture photo et vidéo professionnelle de votre événement.', icone: 'fa-video' },
+                        { titre: 'Décoration Artistique', desc: 'Création d\'un décor mémorable pour marquer les esprits.', icone: 'fa-palette' }
+                    ],
+                    questions: [
+                        { name: 'event_type', text: 'Quel type d\'événement organisez-vous ?', type: 'radio', options: ['Conférence', 'Mariage', 'Anniversaire', 'Lancement de produit'] },
+                        { name: 'guest_count', text: 'Quel est le nombre d\'invités attendus ?', type: 'text', placeholder: 'Ex: 50-100 personnes' },
+                        { name: 'date_location', text: 'Avez-vous déjà une date et un lieu ?', type: 'radio', options: ['Oui', 'Non, j\'ai besoin d\'aide'] }
+                    ]
+                },
+                'audiovisuel-creatif': {
+                    titre: 'Audiovisuel Créatif',
+                    solutions: [
+                        { titre: 'Communication & Audiovisuel', desc: 'Production de spots publicitaires, reportages, interviews, podcasts...', icone: 'fa-video' },
+                        { titre: 'Stratégie Digitale', desc: 'Diffusion stratégique de vos contenus sur les plateformes adaptées.', icone: 'fa-lightbulb' }
+                    ],
+                    questions: [
+                        { name: 'content_type', text: 'Quel type de contenu audiovisuel souhaitez-vous créer ?', type: 'radio', options: ['Vidéo publicitaire', 'Podcast', 'Reportage', 'Voix-off'] },
+                        { name: 'objective', text: 'Quel est l\'objectif de ce contenu ?', type: 'text', placeholder: 'Ex: Promouvoir un produit, informer...' },
+                        { name: 'script', text: 'Avez-vous un script ou une idée de scénario ?', type: 'radio', options: ['Oui', 'Non'] }
+                    ]
+                },
+                'formation-digitale': {
+                    titre: 'Formation Digitale',
+                    solutions: [
+                        { titre: 'Formation & Coaching', desc: 'Ateliers sur mesure pour monter en compétence sur les outils digitaux.', icone: 'fa-chalkboard-teacher' },
+                        { titre: 'E-commerce & Ventes en ligne', desc: 'Création de votre propre plateforme de formation en ligne (e-learning).', icone: 'fa-shopping-cart' }
+                    ],
+                    questions: [
+                        { name: 'topics', text: 'Sur quels sujets souhaitez-vous former vos équipes ?', type: 'text', placeholder: 'Ex: Marketing digital, automatisation...' },
+                        { name: 'people_count', text: 'Combien de personnes sont à former ?', type: 'text', placeholder: 'Ex: 1-5 personnes' },
+                        { name: 'format', text: 'Préférez-vous une formation en présentiel ou en ligne ?', type: 'radio', options: ['Présentiel', 'En ligne', 'Hybride'] }
+                    ]
+                },
+                'cybersecurite-numerique': {
+                    titre: 'Cybersécurité Numérique',
+                    solutions: [
+                        { titre: 'Cybersécurité & Protection', desc: 'Audit de sécurité, protection contre les intrusions et sauvegarde de données.', icone: 'fa-shield-alt' },
+                        { titre: 'Formation & Coaching', desc: 'Sensibilisation de vos équipes aux bonnes pratiques de cybersécurité.', icone: 'fa-chalkboard-teacher' }
+                    ],
+                    questions: [
+                        { name: 'had_attack', text: 'Avez-vous déjà subi une cyberattaque ou une perte de données ?', type: 'radio', options: ['Oui', 'Non', 'Je ne sais pas'] },
+                        { name: 'sensitive_data', text: 'Quels sont les types de données les plus sensibles que vous manipulez ?', type: 'text', placeholder: 'Ex: Données clients, financières...' },
+                        { name: 'need_audit', text: 'Souhaitez-vous un audit complet de votre infrastructure ?', type: 'radio', options: ['Oui', 'Non'] }
+                    ]
+                },
+                'traduction-multilingue': {
+                    titre: 'Traduction Multilingue',
+                    solutions: [
+                        { titre: 'Traduction & Localisation', desc: 'Adaptation de vos contenus (site web, documents, vidéos) pour un public international.', icone: 'fa-language' }
+                    ],
+                    questions: [
+                        { name: 'languages', text: 'Dans quelles langues souhaitez-vous traduire vos contenus ?', type: 'text', placeholder: 'Ex: Anglais, Chinois, Arabe...' },
+                        { name: 'content_type', text: 'Quel type de contenu est-ce ?', type: 'radio', options: ['Technique', 'Marketing', 'Juridique', 'Général'] },
+                        { name: 'volume', text: 'Quel est le volume approximatif à traduire ?', type: 'text', placeholder: 'Ex: 5 pages, 2000 mots...' }
+                    ]
+                },
+                'tableaux-dynamiques': {
+                    titre: 'Tableaux Dynamiques',
+                    solutions: [
+                        { titre: 'Dashboards Intelligents', desc: 'Création de tableaux de bord sur mesure pour suivre vos performances.', icone: 'fa-chart-line' }
+                    ],
+                    questions: [
+                        { name: 'kpis', text: 'Quels sont les 3 indicateurs les plus importants pour votre activité ?', type: 'text', placeholder: 'Ex: Chiffre d\'affaires, nouveaux clients...' },
+                        { name: 'data_source', text: 'D\'où proviennent les données à afficher ?', type: 'checkbox', options: ['Fichier Excel/CSV', 'Base de données', 'API externe', 'Google Analytics'] },
+                        { name: 'update_frequency', text: 'À quelle fréquence avez-vous besoin de mettre à jour ces rapports ?', type: 'radio', options: ['En temps réel', 'Quotidiennement', 'Hebdomadairement'] }
+                    ]
+                },
+                'paiement-connecte': {
+                    titre: 'Paiement Connecté',
+                    solutions: [
+                        { titre: 'Intégration QR/NFC', desc: 'Mise en place de solutions de paiement sans contact modernes.', icone: 'fa-qrcode' },
+                        { titre: 'E-commerce & Ventes en ligne', desc: 'Intégration de passerelles de paiement en ligne sur votre site.', icone: 'fa-shopping-cart' }
+                    ],
+                    questions: [
+                        { name: 'payment_location', text: 'Où souhaitez-vous accepter les paiements ?', type: 'checkbox', options: ['En ligne (site web)', 'En magasin (TPE)', 'Sur mobile (QR Code)'] },
+                        { name: 'payment_methods', text: 'Quels moyens de paiement sont les plus populaires auprès de vos clients ?', type: 'text', placeholder: 'Ex: Orange Money, Wave, Carte bancaire...' },
+                        { name: 'need_invoicing', text: 'Avez-vous besoin d\'un système de facturation automatique ?', type: 'radio', options: ['Oui', 'Non'] }
+                    ]
+                },
+                'agriculture-intelligente': {
+                    titre: 'Agriculture Intelligente',
+                    solutions: [
+                        { titre: 'Automatisation Workflow', desc: 'Automatisation de l\'irrigation ou du suivi des cultures.', icone: 'fa-robot' },
+                        { titre: 'Dashboards Intelligents', desc: 'Tableaux de bord pour suivre la météo, l\'humidité des sols et le rendement.', icone: 'fa-chart-line' },
+                        { titre: 'E-commerce & Ventes en ligne', desc: 'Création d\'une plateforme pour vendre votre production en direct.', icone: 'fa-shopping-cart' }
+                    ],
+                    questions: [
+                        { name: 'farming_type', text: 'Quel type de culture ou d\'élevage pratiquez-vous ?', type: 'text', placeholder: 'Ex: Maraîchage, élevage de volailles...' },
+                        { name: 'main_challenge', text: 'Quelle est la plus grande difficulté que vous rencontrez actuellement ?', type: 'text', placeholder: 'Ex: Irrigation, gestion des stocks...' },
+                        { name: 'real_time_tracking', text: 'Souhaitez-vous suivre vos données de production en temps réel ?', type: 'radio', options: ['Oui', 'Non'] }
+                    ]
+                },
+                'voyage-transport-hebergement': {
+                    titre: 'Voyage, Transport & Hébergement',
+                    solutions: [
+                        { titre: 'Recherche & Réservation Personnalisée', desc: 'Nous trouvons pour vous les meilleures offres (hôtels, vols, etc.) grâce à notre réseau de partenaires.', icone: 'fa-search-location' },
+                        { titre: 'Développement Mobile', desc: 'Application de réservation de billets et d\'hôtels pour une expérience utilisateur optimale.', icone: 'fa-mobile-alt' },
+                        { titre: 'E-commerce & Ventes en ligne', desc: 'Plateforme de réservation en ligne avec paiement sécurisé intégré.', icone: 'fa-shopping-cart' }
+                    ],
+                    questions: [
+                        { name: 'user_type', text: 'Vous êtes :', type: 'radio', options: ['Un Particulier (je cherche un service)', 'Une Entreprise (je veux une solution)'] },
+                        { name: 'service_needed', text: 'Quel service recherchez-vous ?', type: 'text', placeholder: 'Ex: Chambre à louer à Dakar, billet d\'avion...' },
+                        { name: 'details', text: 'Précisez vos dates, votre budget ou d\'autres détails importants.', type: 'text', placeholder: 'Ex: Du 10 au 20 décembre, budget max 30 000 FCFA/nuit...' }
+                    ]
+                },
+                // Ajouter d'autres secteurs ici sur le même modèle
+                'default': {
+                    titre: 'Général',
+                    solutions: [
+                        { titre: 'Stratégie Digitale', desc: 'Définir une feuille de route claire pour votre présence en ligne.', icone: 'fa-lightbulb' },
+                        { titre: 'Développement Mobile', desc: 'Créer une application pour engager vos utilisateurs.', icone: 'fa-mobile-alt' },
+                        { titre: 'Automatisation Workflow', desc: 'Optimiser vos processus internes pour gagner en efficacité.', icone: 'fa-robot' }
+                    ],
+                    questions: [
+                        { name: 'main_challenge', text: 'Quel est le principal défi que vous souhaitez résoudre ?', type: 'text', placeholder: 'Décrivez votre problème' },
+                        { name: 'target_audience', text: 'Quelle est votre cible principale ?', type: 'text', placeholder: 'Ex: Entreprises, grand public...' },
+                        { name: 'specific_project', text: 'Avez-vous un projet spécifique en tête ?', type: 'text', placeholder: 'Décrivez votre idée' }
+                    ]
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const secteur = urlParams.get('secteur') || 'default';
+            const secteurData = data[secteur] || data['default'];
+
+            // Mettre à jour le titre de la page
+            document.getElementById('secteur-titre').textContent = secteurData.titre;
+
+            // Afficher les solutions
+            const solutionsContainer = document.getElementById('solutions-container');
+            secteurData.solutions.forEach(sol => {
+                // NOUVEAU: Ajout du bouton de partage
+                const card = `
+                    <div class="luxury-card p-6 rounded-xl flex items-start space-x-4 relative">
+                        <button class="share-btn absolute top-3 right-3 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-muted-color);" data-title="${sol.titre}" data-text="${sol.desc}">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <div class="w-12 h-12 gradient-gold rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas ${sol.icone} text-2xl text-black"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gold">${sol.titre}</h4>
+                            <p class="text-sm" style="color: var(--text-muted-color);">${sol.desc}</p>
+                        </div>
+                    </div>
+                `;
+                solutionsContainer.innerHTML += card;
+            });
+
+            // Générer le questionnaire
+            const questionsContainer = document.getElementById('questions-container');
+            secteurData.questions.forEach(q => {
+                let inputHtml = '';
+                switch (q.type) {
+                    case 'radio':
+                        inputHtml = q.options.map(opt => `
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="radio" name="${q.name}" value="${opt}" class="form-radio h-4 w-4 text-gold focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);">
+                                <span style="color: var(--text-muted-color);">${opt}</span>
+                            </label>
+                        `).join('');
+                        inputHtml = `<div class="flex flex-wrap gap-4">${inputHtml}</div>`;
+                        break;
+                    case 'checkbox':
+                        inputHtml = q.options.map(opt => `
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" name="${q.name}" value="${opt}" class="form-checkbox h-4 w-4 text-gold rounded focus:ring-gold" style="background-color: var(--input-bg); border-color: var(--input-border);">
+                                <span style="color: var(--text-muted-color);">${opt}</span>
+                            </label>
+                        `).join('');
+                        inputHtml = `<div class="flex flex-wrap gap-4">${inputHtml}</div>`;
+                        break;
+                    default: // 'text'
+                        inputHtml = `<input type="text" name="${q.name}" class="w-full rounded-lg px-4 py-3 focus:outline-none" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="${q.placeholder || 'Votre réponse...'}">`;
+                        break;
+                }
+
+                const questionHtml = `
+                    <div>
+                        <label class="block text-sm font-medium mb-3" style="color: var(--text-muted-color);">${q.text}</label>
+                        ${inputHtml}
+                    </div>
+                `;
+                questionsContainer.innerHTML += questionHtml;
+            });
+
+            // NOUVEAU: Gérer le clic sur les boutons de partage
+            document.querySelectorAll('.share-btn').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.stopPropagation(); 
+                    const title = button.dataset.title;
+                    const text = button.dataset.text;
+                    const shareUrl = window.location.href;
+
+                    const shareData = {
+                        title: `Solution ABMCY : ${title}`,
+                        text: `Découvrez cette solution recommandée par ABMCY pour le secteur ${secteurData.titre} : ${title} - ${text}`,
+                        url: shareUrl,
+                    };
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share(shareData);
+                        } catch (err) {
+                            console.error("Erreur de partage: ", err);
+                        }
+                    } else {
+                        // Fallback pour les navigateurs non compatibles
+                        navigator.clipboard.writeText(shareData.url).then(() => {
+                            alert("La fonction de partage n'est pas supportée, mais le lien a été copié dans votre presse-papiers !");
+                        });
+                    }
+                });
+            });
+
+            // Gérer la soumission du formulaire
+            document.getElementById('questionnaire-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const form = this;
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Envoi en cours...';
+
+                const formData = new FormData(form);
+                
+                // Construire le message pour le devis
+                let message = `Demande pour le secteur : ${secteurData.titre}\n\n`;
+                secteurData.questions.forEach(q => {
+                    let reponse;
+                    if (q.type === 'checkbox') {
+                        reponse = formData.getAll(q.name).join(', ');
+                    } else {
+                        reponse = formData.get(q.name);
+                    }
+                    if (reponse) {
+                        message += `Q: ${q.text}\nR: ${reponse}\n\n`;
+                    }
+                });
+
+                const devisData = {
+                    nom: formData.get('nom-complet'),
+                    email: formData.get('email'),
+                    service: secteur, // Le service est le secteur choisi
+                    description: message, // Le message est le questionnaire rempli
+                    telephone: formData.get('telephone'),
+                    entreprise: '', // Champ non présent dans ce formulaire, envoyé vide
+                    budget: '',
+                    delai: '',
+                    newsletter: false
+                };
+
+                if (typeof config === 'undefined' || !config.scriptUrl || config.scriptUrl === 'VOTRE_URL_APPS_SCRIPT_ICI') {
+                    alert("Erreur: L'URL du script n'est pas configurée. Veuillez contacter l'administrateur.");
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer et Obtenir un Devis';
+                    return;
+                }
+
+                fetch(config.scriptUrl, { 
+                    method: 'POST', 
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(devisData)
+                })
+                .then(() => {
+                    alert('Merci ! Votre demande a été envoyée. Notre équipe vous contactera très prochainement.');
+                    form.reset();
+                })
+                .catch(error => {
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                    console.error('Erreur:', error);
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Envoyer et Obtenir un Devis';
+                });
+            });
+
+            // Appliquer le thème clair si nécessaire
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+            }
+        });
+    </script>
+
+</body>
+</html>

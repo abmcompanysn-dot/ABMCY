@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png">
+    <title>Réalisation : Réseau ABMCY - ABMCY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #e5e7eb;
+            --text-muted-color: #d1d5db;
+            --card-bg: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            --card-border: #2d2d2d;
+            --gold-color: #FFD700;
+        }
+        body.light-mode {
+            --bg-color: #f9fafb;
+            --text-color: #111827;
+            --text-muted-color: #374151;
+            --card-bg: linear-gradient(145deg, #ffffff, #f3f4f6);
+            --card-border: #e5e7eb;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Inter', sans-serif; }
+        .gradient-gold { background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00); }
+        .text-gold { color: var(--gold-color); }
+        .luxury-card { background: var(--card-bg); border: 1px solid var(--card-border); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Header -->
+    <nav class="sticky top-0 w-full z-50 backdrop-filter backdrop-blur-lg border-b" style="background-color: rgba(0,0,0,0.8); border-color: var(--card-border);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="flex items-center space-x-4"> 
+                    <div class="w-12 h-12 flex items-center justify-center bg-white rounded-lg p-1">
+                        <img src="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png" alt="Logo ABMCY" class="h-10 w-auto">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gold">ABMCY</h1>
+                        <p class="text-xs" style="color: var(--text-muted-color);">African business manager company</p>
+                    </div>
+                </a>
+                <a href="/#realisations" class="gradient-gold text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    &larr; Retour aux réalisations
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 sm:p-10 mt-10">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold">
+                Réalisation : <span class="text-gold">Réseau ABMCY</span>
+            </h1>
+            <p class="text-gray-400 mt-3 text-lg">Un écosystème d'experts pour des solutions intégrées.</p>
+        </header>
+
+        <div class="luxury-card rounded-xl overflow-hidden mb-12">
+            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop" alt="Projet Réseau ABMCY" class="w-full h-auto max-h-[500px] object-cover">
+        </div>
+
+        <div class="space-y-6 leading-relaxed" style="color: var(--text-muted-color);">
+            <h3 class="text-3xl font-bold text-gold border-b pb-3" style="border-color: var(--card-border);">Description du Projet</h3>
+            <p>
+                Le "Réseau ABMCY" est notre écosystème de partenaires, d'experts et de freelances triés sur le volet. Il représente notre engagement à fournir des solutions complètes et de haute qualité en mobilisant les meilleures compétences pour chaque projet.
+            </p>
+            <p>
+                Cette initiative nous permet de répondre à des besoins très variés, allant au-delà de nos services principaux, et de garantir à nos clients un interlocuteur unique pour des projets complexes. En rejoignant notre réseau, les partenaires accèdent à un flux de projets qualifiés et participent à la transformation digitale du continent.
+            </p>
+        </div>
+
+        <div class="mt-16 luxury-card p-8 rounded-xl text-center">
+            <h3 class="text-3xl font-bold text-gold mb-4">Vous êtes un expert ? Rejoignez l'aventure !</h3>
+            <p class="max-w-2xl mx-auto mb-6" style="color: var(--text-muted-color);">
+                Si vous partagez notre vision de l'excellence et souhaitez contribuer à des projets ambitieux en Afrique, votre place est parmi nous.
+            </p>
+            <a href="devenir-partenaire.html" class="gradient-gold text-black px-10 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg inline-block">
+                Devenir Partenaire
+            </a>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-mode');
+            }
+        });
+    </script>
+
+</body>
+</html>
