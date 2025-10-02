@@ -1522,6 +1522,55 @@
         </div>
     </section>
 
+    <!-- NOUVEAU: Section Partager le Site -->
+    <section id="partager-site" class="py-20" style="background-color: var(--input-bg);">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Faites Découvrir <span class="text-gold">ABMCY</span>
+            </h2>
+            <p class="text-xl max-w-3xl mx-auto mb-12" style="color: var(--text-muted-color);">
+                Aidez-nous à étendre notre réseau en partageant notre site avec vos contacts.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+                <!-- Colonne QR Code -->
+                <div class="flex flex-col items-center">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Scannez pour Partager</h3>
+                    <div class="p-4 bg-white rounded-lg shadow-lg">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://abmcy.vercel.app/" alt="QR Code du site ABMCY" class="w-48 h-48">
+                    </div>
+                </div>
+
+                <!-- Colonne Copier le lien -->
+                <div class="flex flex-col items-center">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Copiez le Lien</h3>
+                    <div class="w-full flex items-center rounded-lg p-2" style="background-color: var(--bg-color); border: 1px solid var(--card-border);">
+                        <input id="site-link-input" type="text" readonly value="https://abmcy.vercel.app/" class="flex-grow bg-transparent text-center focus:outline-none" style="color: var(--text-muted-color);">
+                        <button id="copy-link-btn" class="gradient-gold text-black px-4 py-2 rounded-md font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
+                            <i class="fas fa-copy"></i>
+                            <span id="copy-link-text">Copier</span>
+                        </button>
+                    </div>
+                    <p id="copy-feedback" class="text-sm text-green-400 mt-2 h-5 transition-opacity opacity-0">
+                        Lien copié dans le presse-papiers !
+                    </p>
+                </div>
+
+                <!-- NOUVEAU: Colonne Partage Natif -->
+                <div class="flex flex-col items-center">
+                    <h3 class="text-2xl font-bold text-gold mb-4">Partage Rapide</h3>
+                    <button id="native-share-btn" class="w-full max-w-[240px] border-2 border-gold text-gold px-4 py-3 rounded-lg font-semibold hover:bg-gold hover:text-black transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Partager via...</span>
+                    </button>
+                    <p class="text-sm mt-3 h-5 text-center" style="color: var(--text-subtle-color);">
+                        Ouvre le menu de partage de votre appareil.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Modal Devis -->
     <div id="devisModal" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background-color: rgba(0,0,0,0.75);">
         <div class="luxury-card p-8 rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
@@ -2066,6 +2115,50 @@
                     answer.classList.toggle('hidden');
                     icon.classList.toggle('rotate-180');
                 });
+            });
+
+            // NOUVEAU: Logique pour copier le lien du site
+            const copyBtn = document.getElementById('copy-link-btn');
+            const linkInput = document.getElementById('site-link-input');
+            const copyFeedback = document.getElementById('copy-feedback');
+
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(linkInput.value).then(() => {
+                    // Afficher le message de confirmation
+                    copyFeedback.classList.remove('opacity-0');
+                    copyFeedback.classList.add('opacity-100');
+
+                    // Remettre à l'état initial après 2 secondes
+                    setTimeout(() => {
+                        copyFeedback.classList.remove('opacity-100');
+                        copyFeedback.classList.add('opacity-0');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erreur de copie: ', err);
+                });
+            });
+
+            // NOUVEAU: Logique pour le bouton de partage natif
+            const nativeShareBtn = document.getElementById('native-share-btn');
+            nativeShareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: 'ABMCY - Votre Partenaire en Transformation Digitale',
+                    text: 'Découvrez ABMCY, l\'agence qui accompagne la transformation digitale des entreprises en Afrique.',
+                    url: 'https://abmcy.vercel.app/',
+                };
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (err) {
+                        console.error("Erreur de partage natif: ", err);
+                    }
+                } else {
+                    // Fallback pour les navigateurs non compatibles (copie du lien)
+                    navigator.clipboard.writeText(shareData.url).then(() => {
+                        alert("La fonction de partage n'est pas supportée, mais le lien a été copié dans votre presse-papiers !");
+                    });
+                }
             });
         });
 
