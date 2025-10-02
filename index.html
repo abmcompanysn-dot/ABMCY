@@ -761,27 +761,38 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">🌐 Votre besoin concerne le secteur :</label>
+                        <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">
+                            <i class="fas fa-briefcase mr-2 text-gold"></i>
+                            Votre besoin concerne le secteur :
+                        </label>
                         <select id="secteur-select" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
                             <option value="">Sélectionnez votre secteur</option>
+                            <optgroup label="Services aux Entreprises">
+                                <option value="marketing-strategique">Marketing & Stratégie</option>
+                                <option value="branding-premium">Branding & Identité Visuelle</option>
+                                <option value="automatisation-intelligente">Automatisation & IA</option>
+                                <option value="tableaux-dynamiques">Tableaux de Bord & Data</option>
+                                <option value="cybersecurite-numerique">Cybersécurité</option>
+                            </optgroup>
+                            <optgroup label="Création & Contenu">
+                                <option value="design-graphique">Design Graphique</option>
+                                <option value="audiovisuel-creatif">Audiovisuel & Podcast</option>
+                                <option value="traduction-multilingue">Traduction & Localisation</option>
+                            </optgroup>
+                            <optgroup label="Solutions Techniques">
+                                <option value="developpement-mobile">Développement d'Application Mobile</option>
+                                <option value="ecommerce-moderne">E-commerce & Vente en Ligne</option>
+                                <option value="paiement-connecte">Paiement Connecté (QR/NFC)</option>
+                            </optgroup>
+                            <optgroup label="Secteurs Spécifiques">
+                                <option value="evenementiel-professionnel">Événementiel & Décoration</option>
+                                <option value="voyage-transport-hebergement">Voyage, Transport & Hébergement</option>
+                                <option value="formation-digitale">Formation & E-learning</option>
+                                <option value="agriculture-intelligente">Agriculture Intelligente</option>
+                                <option value="immobilier-construction">Immobilier & Construction</option>
+                                <option value="sante-bien-etre">Santé & Bien-être</option>
+                            </optgroup>
                             <option value="communication-digitale">Communication Digitale</option>
-                            <option value="voyage-transport-hebergement">Voyage, Transport & Hébergement</option>
-                            <option value="marketing-strategique">Marketing Stratégique</option>
-                            <option value="developpement-mobile">Développement Mobile</option>
-                            <option value="automatisation-intelligente">Automatisation Intelligente</option>
-                            <option value="design-graphique">Design Graphique</option>
-                            <option value="decoration-artistique">Décoration Artistique</option>
-                            <option value="evenementiel-professionnel">Événementiel Professionnel</option>
-                            <option value="audiovisuel-creatif">Audiovisuel Créatif</option>
-                            <option value="ecommerce-moderne">E-commerce Moderne</option>
-                            <option value="formation-digitale">Formation Digitale</option>
-                            <option value="cybersecurite-numerique">Cybersécurité Numérique</option>
-                            <option value="reseau-marketing-digital">Réseau & Marketing Digital</option>
-                            <option value="traduction-multilingue">Traduction Multilingue</option>
-                            <option value="branding-premium">Branding Premium</option>
-                            <option value="tableaux-dynamiques">Tableaux Dynamiques</option>
-                            <option value="paiement-connecte">Paiement Connecté</option>
-                            <option value="agriculture-intelligente">Agriculture Intelligente</option>
                         </select>
                     </div>
                     <button id="recommander-btn" class="w-full gradient-gold text-black py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
