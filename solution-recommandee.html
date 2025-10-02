@@ -148,6 +148,19 @@
                         { name: 'budget', text: 'Quel est votre budget marketing mensuel approximatif ?', type: 'radio', options: ['Moins de 50 000 FCFA', '50 000 - 200 000 FCFA', 'Plus de 200 000 FCFA'] }
                     ]
                 },
+                'branding-premium': {
+                    titre: 'Branding & Identité Visuelle',
+                    solutions: [
+                        { titre: 'Branding Premium', desc: 'Création de votre logo, charte graphique et univers de marque.', icone: 'fa-gem' },
+                        { titre: 'Stratégie de Marque', desc: 'Définir votre positionnement, vos valeurs et votre message.', icone: 'fa-lightbulb' },
+                        { titre: 'Supports de Communication', desc: 'Conception de tous vos supports (cartes de visite, flyers, etc.).', icone: 'fa-paint-brush' }
+                    ],
+                    questions: [
+                        { name: 'has_brand', text: 'Avez-vous déjà une identité de marque (logo, couleurs) ?', type: 'radio', options: ['Non, je pars de zéro', 'Oui, mais je veux la moderniser', 'Oui, et elle me convient'] },
+                        { name: 'target_feeling', text: 'Quelle émotion principale votre marque doit-elle évoquer ?', type: 'text', placeholder: 'Ex: Luxe, confiance, innovation, accessibilité...' },
+                        { name: 'supports_needed', text: 'De quels supports avez-vous besoin en priorité ?', type: 'checkbox', options: ['Logo', 'Cartes de visite', 'Signature email', 'Modèles pour réseaux sociaux'] }
+                    ]
+                },
                 'developpement-mobile': {
                     titre: 'Développement Mobile',
                     solutions: [
@@ -306,6 +319,32 @@
                         { name: 'user_type', text: 'Vous êtes :', type: 'radio', options: ['Un Particulier (je cherche un service)', 'Une Entreprise (je veux une solution)'] },
                         { name: 'service_needed', text: 'Quel service recherchez-vous ?', type: 'text', placeholder: 'Ex: Chambre à louer à Dakar, billet d\'avion...' },
                         { name: 'details', text: 'Précisez vos dates, votre budget ou d\'autres détails importants.', type: 'text', placeholder: 'Ex: Du 10 au 20 décembre, budget max 30 000 FCFA/nuit...' }
+                    ]
+                },
+                'immobilier-construction': {
+                    titre: 'Immobilier & Construction',
+                    solutions: [
+                        { titre: 'Stratégie Digitale', desc: 'Création de campagnes publicitaires ciblées pour la vente ou la location.', icone: 'fa-bullhorn' },
+                        { titre: 'Communication & Audiovisuel', desc: 'Visites virtuelles, photos et vidéos professionnelles de vos biens.', icone: 'fa-video' },
+                        { titre: 'Développement Web', desc: 'Création d\'un site web ou d\'une plateforme pour présenter vos projets immobiliers.', icone: 'fa-laptop-code' }
+                    ],
+                    questions: [
+                        { name: 'activity_type', text: 'Quelle est votre activité principale ?', type: 'radio', options: ['Agence immobilière', 'Promoteur', 'Architecte', 'Artisan'] },
+                        { name_realty_type: 'realty_type', text: 'Quel type de biens proposez-vous ?', type: 'checkbox', options: ['Appartements', 'Villas', 'Terrains', 'Bureaux'] },
+                        { name: 'main_goal', text: 'Quel est votre objectif principal ?', type: 'text', placeholder: 'Ex: Vendre plus vite, trouver des locataires, gagner en notoriété...' }
+                    ]
+                },
+                'sante-bien-etre': {
+                    titre: 'Santé & Bien-être',
+                    solutions: [
+                        { titre: 'Développement Mobile', desc: 'Application de prise de rendez-vous et de suivi pour vos patients.', icone: 'fa-mobile-alt' },
+                        { titre: 'Stratégie Digitale', desc: 'Améliorer votre visibilité en ligne pour attirer de nouveaux patients.', icone: 'fa-lightbulb' },
+                        { titre: 'Formation & E-learning', desc: 'Créer des contenus informatifs ou des formations pour vos patients.', icone: 'fa-chalkboard-teacher' }
+                    ],
+                    questions: [
+                        { name: 'profession', text: 'Quelle est votre profession ?', type: 'text', placeholder: 'Ex: Médecin, coach sportif, nutritionniste...' },
+                        { name: 'need_booking', text: 'Avez-vous besoin d\'un système de prise de rendez-vous en ligne ?', type: 'radio', options: ['Oui, absolument', 'Ce serait un plus', 'Non, pas pour l\'instant'] },
+                        { name: 'communication_goal', text: 'Quel est votre objectif de communication ?', type: 'radio', options: ['Éduquer le public', 'Trouver de nouveaux patients', 'Fidéliser ma patientèle'] }
                     ]
                 },
                 // Ajouter d'autres secteurs ici sur le même modèle
