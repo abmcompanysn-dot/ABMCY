@@ -19,38 +19,66 @@ const config = {
     },
 
     /**
-     * Liens EXTERNES pour les boutons "Visiter notre plateforme" sur les pages de détail.
-     * Par défaut, ils pointent vers la page "Bientôt Disponible".
-     */
-    externalPlatformLinks: {
-        'ecommerce': {
-    label: 'Marketplace ABMCY',
+ * Liens EXTERNES pour les boutons "Visiter notre plateforme" sur les pages de détail.
+ * Par défaut, ils pointent vers la page "Bientôt Disponible".
+ */
+export const externalPlatformLinks = {
+  ecommerce: {
     url: 'https://abmcymarket.abmcy.com',
+    label: 'Marketplace ABMCY',
     external: true
   },
-
-        'valorisation-pro': 'feuille-vierge.html',
-        'gestion': 'abmedupilote.abmcy.com',
-        'evenementiel': 'feuille-vierge.html',
-        'elearning': 'feuille-vierge.html'
-    },
-
-    /**
-     * Liens EXTERNES pour les cartes de la section "Réalisations".
-     * Le script donnera la priorité à ces liens. Par défaut, ils pointent tous vers la page "Bientôt Disponible".
-     */
-    externalProjectLinks: {
-        'realisation_ecommerce': {
-    label: 'Marketplace ABMCY',
-    url: 'https://abmcymarket.abmcy.com',
+  valorisationPro: {
+    url: 'feuille-vierge.html',
+    label: 'Valorisation Pro',
+    external: false
+  },
+  gestion: {
+    url: 'https://abmedupilote.abmcy.com',
+    label: 'Gestion ABMedu',
     external: true
   },
+  evenementiel: {
+    url: 'feuille-vierge.html',
+    label: 'Événementiel',
+    external: false
+  },
+  elearning: {
+    url: 'feuille-vierge.html',
+    label: 'E-learning',
+    external: false
+  }
+}
 
-        'realisation_cvpro': 'feuille-vierge.html',
-        'realisation_edupilote': 'abmedupilote.abmcy.com',
-        'realisation_vehicule': 'abmedupilote.abmcy.com',
-        'realisation_abmedu': 'feuille-vierge.html',
-        // 'realisation_reseau': 'feuille-vierge.html' // La page 'realisation-reseau.html' existe, donc on ne met pas de lien externe ici.
-    }
-
-};
+/**
+ * Liens EXTERNES pour les cartes de la section "Réalisations".
+ * Le script donnera la priorité à ces liens. Par défaut, ils pointent tous vers la page "Bientôt Disponible".
+ */
+export const externalProjectLinks = {
+  realisation_ecommerce: {
+    url: 'https://abmcymarket.abmcy.com',
+    label: 'Projet E-commerce',
+    external: true
+  },
+  realisation_cvpro: {
+    url: 'feuille-vierge.html',
+    label: 'CV Pro',
+    external: false
+  },
+  realisation_edupilote: {
+    url: 'https://abmedupilote.abmcy.com',
+    label: 'Édu Pilote',
+    external: true
+  },
+  realisation_vehicule: {
+    url: 'https://abmedupilote.abmcy.com',
+    label: 'Gestion Véhicule',
+    external: true
+  },
+  realisation_abmedu: {
+    url: 'feuille-vierge.html',
+    label: 'Plateforme ABMedu',
+    external: false
+  }
+  // Pas de lien externe pour 'realisation_reseau' car la page existe en interne
+}
