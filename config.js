@@ -23,9 +23,9 @@ const config = {
      * Par défaut, ils pointent vers la page "Bientôt Disponible".
      */
     externalPlatformLinks: {
-        'ecommerce': 'feuille-vierge.html',
+        'ecommerce': 'abmcymarket.abmcy.com|',
         'valorisation-pro': 'feuille-vierge.html',
-        'gestion': 'feuille-vierge.html',
+        'gestion': 'abmedupilote.abmcy.com',
         'evenementiel': 'feuille-vierge.html',
         'elearning': 'feuille-vierge.html'
     },
@@ -35,10 +35,10 @@ const config = {
      * Le script donnera la priorité à ces liens. Par défaut, ils pointent tous vers la page "Bientôt Disponible".
      */
     externalProjectLinks: {
-        'realisation_ecommerce': 'feuille-vierge.html',
+        'realisation_ecommerce': 'abmcymarket.abmcy.com|',
         'realisation_cvpro': 'feuille-vierge.html',
-        'realisation_edupilote': 'feuille-vierge.html',
-        'realisation_vehicule': 'feuille-vierge.html',
+        'realisation_edupilote': 'abmedupilote.abmcy.com',
+        'realisation_vehicule': 'abmedupilote.abmcy.com',
         'realisation_abmedu': 'feuille-vierge.html',
         // 'realisation_reseau': 'feuille-vierge.html' // La page 'realisation-reseau.html' existe, donc on ne met pas de lien externe ici.
     }
