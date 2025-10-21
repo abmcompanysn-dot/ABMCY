@@ -23,7 +23,12 @@ const config = {
      * Par défaut, ils pointent vers la page "Bientôt Disponible".
      */
     externalPlatformLinks: {
-        'ecommerce': 'abmcymarket.abmcy.com|',
+        'ecommerce': {
+    label: 'Marketplace ABMCY',
+    url: 'https://abmcymarket.abmcy.com',
+    external: true
+  },
+
         'valorisation-pro': 'feuille-vierge.html',
         'gestion': 'abmedupilote.abmcy.com',
         'evenementiel': 'feuille-vierge.html',
@@ -35,7 +40,12 @@ const config = {
      * Le script donnera la priorité à ces liens. Par défaut, ils pointent tous vers la page "Bientôt Disponible".
      */
     externalProjectLinks: {
-        'realisation_ecommerce': 'abmcymarket.abmcy.com|',
+        'realisation_ecommerce': {
+    label: 'Marketplace ABMCY',
+    url: 'https://abmcymarket.abmcy.com',
+    external: true
+  },
+
         'realisation_cvpro': 'feuille-vierge.html',
         'realisation_edupilote': 'abmedupilote.abmcy.com',
         'realisation_vehicule': 'abmedupilote.abmcy.com',
