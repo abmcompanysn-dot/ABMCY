@@ -13,15 +13,21 @@
     <meta name="description" content="ABMCY, agence digitale basée au Sénégal, est votre partenaire pour la transformation numérique. Nous offrons des solutions sur mesure : sites web, e-commerce, automatisation, et stratégie digitale pour les entreprises en Afrique.">
     <meta name="keywords" content="ABMCY, Sénégal, Dakar, agence digitale, transformation numérique, création de site web, e-commerce, marketing digital, automatisation, Afrique">
     <meta name="author" content="Africa Business Manager Company (ABMCY)">
-    <link rel="canonical" href="https://abmcy.vercel.app/">
+    <link rel="canonical" href="https://www.abmcy.com/">
 
     <!-- Open Graph (pour le partage sur Facebook, WhatsApp, etc.) -->
     <meta property="og:title" content="ABMCY Sénégal - Votre Partenaire en Transformation Digitale">
     <meta property="og:description" content="Solutions digitales sur mesure pour les entreprises en Afrique : sites web, e-commerce, automatisation et plus.">
     <meta property="og:image" content="https://i.postimg.cc/cJ4h8YXt/Une-image-repr-sentant-la-technologie-et-l-innovation-avec-des-l-ments-futuristes-et-des-lumi-res.jpg">
-    <meta property="og:url" content="https://abmcy.vercel.app/">
+    <meta property="og:url" content="https://www.abmcy.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ABMCY Sénégal">
+
+    <!-- Twitter Cards (pour le partage sur Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ABMCY Sénégal - Votre Partenaire en Transformation Digitale">
+    <meta name="twitter:description" content="Solutions digitales sur mesure pour les entreprises en Afrique : sites web, e-commerce, automatisation et plus.">
+    <meta name="twitter:image" content="https://i.postimg.cc/cJ4h8YXt/Une-image-repr-sentant-la-technologie-et-l-innovation-avec-des-l-ments-futuristes-et-des-lumi-res.jpg">
 
     <!-- Pré-connexion aux domaines externes pour accélérer le chargement des polices et images -->
     <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
@@ -1537,7 +1543,7 @@
                 <div class="flex flex-col items-center">
                     <h3 class="text-2xl font-bold text-gold mb-4">Scannez pour Partager</h3>
                     <div class="p-4 bg-white rounded-lg shadow-lg">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://abmcy.vercel.app/" alt="QR Code du site ABMCY" class="w-48 h-48">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.abmcy.com/" alt="QR Code du site ABMCY" class="w-48 h-48">
                     </div>
                 </div>
 
@@ -1545,7 +1551,7 @@
                 <div class="flex flex-col items-center">
                     <h3 class="text-2xl font-bold text-gold mb-4">Copiez le Lien</h3>
                     <div class="w-full flex items-center rounded-lg p-2" style="background-color: var(--bg-color); border: 1px solid var(--card-border);">
-                        <input id="site-link-input" type="text" readonly value="https://abmcy.vercel.app/" class="flex-grow bg-transparent text-center focus:outline-none" style="color: var(--text-muted-color);">
+                        <input id="site-link-input" type="text" readonly value="https://www.abmcy.com/" class="flex-grow bg-transparent text-center focus:outline-none" style="color: var(--text-muted-color);">
                         <button id="copy-link-btn" class="gradient-gold text-black px-4 py-2 rounded-md font-semibold hover:opacity-90 transition-opacity flex items-center gap-2">
                             <i class="fas fa-copy"></i>
                             <span id="copy-link-text">Copier</span>
@@ -2045,6 +2051,7 @@
                     if (config.externalProjectLinks && config.externalProjectLinks.hasOwnProperty(key)) {
                         link.href = config.externalProjectLinks[key];
                         link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
                     } 
                     // Priorité 2: Lien interne depuis pageLinks
                     else if (config.pageLinks && config.pageLinks[key]) {
@@ -2144,7 +2151,7 @@
                 const shareData = {
                     title: 'ABMCY - Votre Partenaire en Transformation Digitale',
                     text: 'Découvrez ABMCY, l\'agence qui accompagne la transformation digitale des entreprises en Afrique.',
-                    url: 'https://abmcy.vercel.app/',
+                    url: 'https://www.abmcy.com/',
                 };
 
                 if (navigator.share) {

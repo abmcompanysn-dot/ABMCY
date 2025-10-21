@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="icon" type="image/png" href="https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png">
+    
+    <!-- SEO -->
     <title>Plateforme E-commerce - Africa Business Manager Company (ABMCY)</title>
+    <meta name="description" content="Découvrez notre plateforme e-commerce premium, conçue pour offrir une expérience d'achat luxueuse et propulser vos ventes en Afrique.">
+    <link rel="canonical" href="https://www.abmcy.com/plateforme-ecommerce.html">
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:title" content="Plateforme E-commerce - ABMCY">
+    <meta property="og:description" content="Des boutiques en ligne premium pour tous les secteurs.">
+    <meta property="og:url" content="https://www.abmcy.com/plateforme-ecommerce.html">
+    <meta property="og:image" content="https://i.postimg.cc/rFyY4KgT/Une-image-de-bosite-ecomerce-en-ligne-ou-de-commerce-lectronique-avec-des-produits-et-une-interfa.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -37,7 +49,7 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-6 sm:p-10 mt-10">
+    <main class="max-w-6xl mx-auto p-6 sm:p-10 mt-10" role="main">
         <header class="text-center mb-12">
             <h1 class="text-4xl sm:text-5xl font-bold">
                 Plateforme : <span class="text-gold">E-commerce</span>
@@ -49,7 +61,7 @@
             <img src="https://i.postimg.cc/rFyY4KgT/Une-image-de-bosite-ecomerce-en-ligne-ou-de-commerce-lectronique-avec-des-produits-et-une-interfa.jpg" alt="Plateforme E-commerce" class="w-full h-auto max-h-[500px] object-cover">
         </div>
 
-        <div class="space-y-6 text-gray-300 leading-relaxed">
+        <article class="space-y-6 text-gray-300 leading-relaxed">
             <h3 class="text-3xl font-bold text-gold border-b border-gray-700 pb-3">Description de la Plateforme</h3>
             <p>
                 Notre plateforme e-commerce est conçue pour offrir une expérience d'achat luxueuse et fluide. Elle intègre un design sur mesure, une gestion de catalogue avancée, et des solutions de paiement sécurisées pour propulser vos ventes.
@@ -57,14 +69,14 @@
             <p>
                 Que vous vendiez des produits de mode, de l'électronique, ou des biens de consommation, notre solution s'adapte à vos besoins spécifiques pour créer une boutique en ligne qui non seulement est belle, mais qui convertit également les visiteurs en clients fidèles.
             </p>
-        </div>
+        </article>
 
         <!-- NOUVEAU: Section des boutons d'action -->
         <div class="mt-16 luxury-card p-8 rounded-xl text-center">
             <h3 class="text-3xl font-bold text-gold mb-8">Passez à l'action !</h3>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <!-- Bouton 1: Visiter la plateforme -->
-                <a href="feuille-vierge" id="visit-platform-btn" class="gradient-gold text-black px-6 py-3 rounded-lg font-semibold text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full md:w-auto">
+                <a href="feuille-vierge.html" id="visit-platform-btn" class="gradient-gold text-black px-6 py-3 rounded-lg font-semibold text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 w-full md:w-auto">
                     <i class="fas fa-external-link-alt"></i>
                     <span>Visiter notre plateforme</span>
                 </a>
@@ -104,6 +116,7 @@
             if (typeof config !== 'undefined' && config.externalPlatformLinks && config.externalPlatformLinks.ecommerce) {
                 visitPlatformBtn.href = config.externalPlatformLinks.ecommerce;
                 visitPlatformBtn.target = '_blank';
+                visitPlatformBtn.rel = 'noopener noreferrer';
             }
         });
     </script>
