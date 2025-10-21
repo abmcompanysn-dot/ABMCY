@@ -241,6 +241,29 @@
         body.light-mode .services-dot.active, body.light-mode .realisations-dot.active {
             background-color: var(--gold-color);
         }
+
+        /* Amélioration sémantique et accessibilité */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .justify-improved {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Style pour les liens dans le footer */
+        footer a:hover {
+            color: var(--gold-color);
+            transition: color 0.3s;
+        }
     </style>
 </head>
 <body class="font-sans">
@@ -263,12 +286,14 @@
                     <a href="#apropos" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">À Propos</a>
                     <a href="#services" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Services</a>
                     <a href="#plateformes" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Plateformes</a>
+                    <a href="prix.html" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Tarifs</a>
                     <a href="#realisations" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Réalisations</a>
                     <a href="#contact" class="hover:text-gold transition-colors font-medium" style="color: var(--text-muted-color);">Contact</a>
                     
-                    <button id="theme-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-700" style="color: var(--text-muted-color);">
+                    <button id="theme-toggle" type="button" aria-label="Changer le thème" class="p-2 rounded-lg hover:bg-gray-700" style="color: var(--text-muted-color);">
                         <i class="fas fa-sun sun-icon"></i>
                         <i class="fas fa-moon moon-icon"></i>
+                        <span class="sr-only">Changer le thème</span>
                     </button>
 
                     <button id="openModal" class="gradient-gold text-black px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
@@ -294,12 +319,14 @@
         <a href="#apropos" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">À Propos</a>
         <a href="devenir-partenaire.html" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Devenir Partenaire</a>
         <a href="#plateformes" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Plateformes</a>
+        <a href="prix.html" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Tarifs</a>
         <a href="#realisations" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Réalisations</a>
         <a href="#contact" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">Contact</a>
         <a href="#" id="openFaqModalMobile" class="mobile-link text-2xl hover:text-gold" style="color: var(--text-muted-color);">FAQ</a>
-        <button id="theme-toggle-mobile" type="button" class="p-3 mt-4 rounded-lg" style="color: var(--text-muted-color); background-color: var(--input-bg);">
+        <button id="theme-toggle-mobile" type="button" aria-label="Changer le thème" class="p-3 mt-4 rounded-lg" style="color: var(--text-muted-color); background-color: var(--input-bg);">
             <i class="fas fa-sun sun-icon text-xl"></i>
             <i class="fas fa-moon moon-icon text-xl"></i>
+            <span class="sr-only">Changer le thème</span>
         </button>
         <button id="openModalMobile" class="mt-6 gradient-gold text-black px-8 py-3 rounded-lg font-semibold">Demander un Devis</button>
     </div>
@@ -471,9 +498,10 @@
             <!-- et modifiez l'icône, le titre, la description, et les points. N'oubliez pas de mettre à jour le `data-service-value`. -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
                 <!-- Événementiel -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="evenementiel" data-service-name="Événementiel">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="evenementiel" data-service-name="Événementiel">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
+                        <span class="sr-only">Partager le service Événementiel</span>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-calendar-check text-3xl text-black"></i>
@@ -486,10 +514,10 @@
                         <li>• Gestion des prestataires</li>
                         <li>• Expérience client mémorable</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Décoration Artistique -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="decoration-artistique" data-service-name="Décoration Artistique">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="decoration-artistique" data-service-name="Décoration Artistique">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -503,10 +531,10 @@
                         <li>• Thématiques artistiques variées</li>
                         <li>• Conception et réalisation</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Automatisation Workflow -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="automatisation-workflow" data-service-name="Automatisation Workflow">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="automatisation-workflow" data-service-name="Automatisation Workflow">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -520,10 +548,10 @@
                         <li>• Analyse comportementale (IA)</li>
                         <li>• Gestion multi-canaux</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Dashboards Intelligents -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="dashboards-intelligents" data-service-name="Dashboards Intelligents">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="dashboards-intelligents" data-service-name="Dashboards Intelligents">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -537,10 +565,10 @@
                         <li>• Alertes personnalisées</li>
                         <li>• Exportation multi-formats</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Branding Premium -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="branding-premium" data-service-name="Branding Premium">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="branding-premium" data-service-name="Branding Premium">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -554,10 +582,10 @@
                         <li>• Définition de stratégie de marque</li>
                         <li>• Guide d'image cohérente</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Intégration QR/NFC -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="integration-qr-nfc" data-service-name="Intégration QR/NFC">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="integration-qr-nfc" data-service-name="Intégration QR/NFC">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -571,10 +599,10 @@
                         <li>• Menus et supports interactifs</li>
                         <li>• Suivi et analyse des interactions</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Communication & Audiovisuel -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="communication-audiovisuel" data-service-name="Communication & Audiovisuel">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="communication-audiovisuel" data-service-name="Communication & Audiovisuel">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -588,10 +616,10 @@
                         <li>• Couverture d'événements</li>
                         <li>• Gestion des réseaux sociaux</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Stratégie Digitale -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="strategie-digitale" data-service-name="Stratégie Digitale">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="strategie-digitale" data-service-name="Stratégie Digitale">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -605,10 +633,10 @@
                         <li>• Campagnes publicitaires</li>
                         <li>• Analyse et optimisation</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Développement Mobile -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="developpement-mobile" data-service-name="Développement Mobile">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="developpement-mobile" data-service-name="Développement Mobile">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -622,10 +650,10 @@
                         <li>• Intégration API et bases de données</li>
                         <li>• Maintenance et mises à jour</li>
                     </ul>
-                </div>
+                </article>
                 <!-- E-commerce & Ventes en ligne -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="ecommerce-ventes-ligne" data-service-name="E-commerce & Ventes en ligne">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="ecommerce-ventes-ligne" data-service-name="E-commerce & Ventes en ligne">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -639,10 +667,10 @@
                         <li>• Gestion des stocks et commandes</li>
                         <li>• Optimisation du tunnel de vente</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Formation & Coaching -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="formation-coaching" data-service-name="Formation & Coaching">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="formation-coaching" data-service-name="Formation & Coaching">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -656,10 +684,10 @@
                         <li>• Ateliers sur l'automatisation</li>
                         <li>• Transformation digitale</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Cybersécurité & Protection des données -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="cybersecurite-protection" data-service-name="Cybersécurité & Protection">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="cybersecurite-protection" data-service-name="Cybersécurité & Protection">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -673,10 +701,10 @@
                         <li>• Sauvegarde et récupération</li>
                         <li>• Mise en conformité légale</li>
                     </ul>
-                </div>
+                </article>
                 <!-- Traduction & Localisation -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="traduction-localisation" data-service-name="Traduction & Localisation">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="traduction-localisation" data-service-name="Traduction & Localisation">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -690,10 +718,10 @@
                         <li>• Relecture et correction</li>
                         <li>• Sous-titrage et doublage</li>
                     </ul>
-                </div>
+                </article>
                 <!-- NOUVEAU: Service Réseau & Marketing Digital -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="reseau-marketing-digital" data-service-name="Réseau & Marketing Digital">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="reseau-marketing-digital" data-service-name="Réseau & Marketing Digital">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -707,10 +735,10 @@
                         <li>• Tunnels de vente automatisés</li>
                         <li>• Suivi des performances</li>
                     </ul>
-                </div>
+                </article>
                 <!-- NOUVEAU: Service Voyage, Transport & Hébergement -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="voyage-transport-hebergement" data-service-name="Voyage & Tourisme">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="voyage-transport-hebergement" data-service-name="Voyage & Tourisme">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -724,10 +752,10 @@
                         <li>• Marketing digital ciblé</li>
                         <li>• Paiements en ligne sécurisés</li>
                     </ul>
-                </div>
+                </article>
                 <!-- NOUVEAU: Carte pour les solutions sur mesure -->
-                <div class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="autre" data-service-name="Solution Sur Mesure">
-                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" style="color: var(--text-subtle-color);">
+                <article class="luxury-card p-8 rounded-xl service-card-clickable cursor-pointer relative" data-service-value="autre" data-service-name="Solution Sur Mesure">
+                    <button class="share-btn absolute top-4 right-4 p-2 rounded-full hover:bg-gray-700 transition-colors z-10" aria-label="Partager ce service" style="color: var(--text-subtle-color);">
                         <i class="fas fa-share-alt"></i>
                     </button>
                     <div class="w-16 h-16 gradient-gold rounded-lg flex items-center justify-center mb-6">
@@ -741,7 +769,7 @@
                         <li>• Proposition personnalisée</li>
                         <li>• Gestion de projet de A à Z</li>
                     </ul>
-                </div>
+                </article>
 
             </div>
         </div>
@@ -1081,37 +1109,37 @@
                 <h3 class="text-3xl font-bold text-gold text-center mb-12">Nos Valeurs Fondamentales</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Valeur 1: Excellence -->
-                    <div class="luxury-card text-center p-6 rounded-xl">
+                    <article class="luxury-card text-center p-6 rounded-xl">
                         <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-award text-3xl text-black"></i>
                         </div>
                         <h4 class="text-xl font-bold" style="color: var(--text-color);">Excellence</h4>
                         <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous visons la plus haute qualité dans chaque projet, sans compromis.</p>
-                    </div>
+                    </article>
                     <!-- Valeur 2: Innovation -->
-                    <div class="luxury-card text-center p-6 rounded-xl">
+                    <article class="luxury-card text-center p-6 rounded-xl">
                         <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-lightbulb text-3xl text-black"></i>
                         </div>
                         <h4 class="text-xl font-bold" style="color: var(--text-color);">Innovation</h4>
                         <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous repoussons les limites pour créer des solutions technologiques d'avenir.</p>
-                    </div>
+                    </article>
                     <!-- Valeur 3: Partenariat -->
-                    <div class="luxury-card text-center p-6 rounded-xl">
+                    <article class="luxury-card text-center p-6 rounded-xl">
                         <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-handshake text-3xl text-black"></i>
                         </div>
                         <h4 class="text-xl font-bold" style="color: var(--text-color);">Partenariat</h4>
                         <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Nous croyons en la force de la collaboration pour atteindre des objectifs communs.</p>
-                    </div>
+                    </article>
                     <!-- Valeur 4: Impact -->
-                    <div class="luxury-card text-center p-6 rounded-xl">
+                    <article class="luxury-card text-center p-6 rounded-xl">
                         <div class="w-20 h-20 gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-globe-africa text-3xl text-black"></i>
                         </div>
                         <h4 class="text-xl font-bold" style="color: var(--text-color);">Impact</h4>
                         <p class="text-sm mt-2" style="color: var(--text-subtle-color);">Chaque action est guidée par notre volonté de contribuer positivement au développement de l'Afrique.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
 
@@ -1811,7 +1839,10 @@
                     <ul class="space-y-2 text-sm" style="color: var(--text-muted-color);">
                         <li><i class="fas fa-map-marker-alt w-4"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">Dakar</span>, <span itemprop="addressCountry">Sénégal</span></span></li>
                         <li><i class="fab fa-whatsapp w-4"></i> +221 76 904 79 99</li>
-                        <li><i class="fas fa-envelope w-4"></i> abmcompanysn@gmail.com</li>
+                        <li>
+                            <i class="fas fa-envelope w-4"></i>
+                            <a href="mailto:abmcompanysn@gmail.com" class="hover:text-gold transition-colors">abmcompanysn@gmail.com</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1827,6 +1858,32 @@
         </div>
     </footer>
 
+    <!-- =================================================================
+         DONNÉES STRUCTURÉES (SCHEMA.ORG) POUR LE SEO AVANCÉ
+         ================================================================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Africa Business Manager Company (ABMCY)",
+      "alternateName": "ABMCY",
+      "url": "https://www.abmcy.com/",
+      "logo": "https://i.postimg.cc/dvjbX8zD/nano-banana-2025-09-30-T14-43-19.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+221-76-904-79-99",
+        "contactType": "customer service",
+        "areaServed": "SN",
+        "availableLanguage": ["French"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dakar",
+        "addressCountry": "SN"
+      },
+      "sameAs": []
+    }
+    </script>
 
     <script src="config.js" defer></script>
     <script>

@@ -55,6 +55,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Pages Réalisations -->
+  <url>
+    <loc>https://www.abmcy.com/realisation-reseau.html</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Pages Légales et Autres -->
   <url>
     <loc>https://www.abmcy.com/mentions-legales.html</loc>
