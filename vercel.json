@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://www.abmcy.com/$1",
+      "destination": "https://abmcy.com/$1",
       "permanent": true
     }
   ]
