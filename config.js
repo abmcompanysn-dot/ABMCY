@@ -16,7 +16,8 @@ const config = {
         'realisation_vehicule': 'realisation-vehicule',
         'realisation_abmedu': 'realisation-abmedu',
         'realisation_reseau': 'realisation-reseau'
-    },
+    }
+  }
 
    
 /**
