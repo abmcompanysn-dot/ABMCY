@@ -118,6 +118,9 @@
                 visitPlatformBtn.target = '_blank';
                 visitPlatformBtn.rel = 'noopener noreferrer';
             }
+
+            // Désactiver le clic droit
+            document.addEventListener('contextmenu', event => event.preventDefault());
         });
     </script>
 
