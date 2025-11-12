@@ -2323,18 +2323,8 @@
             submitButton.textContent = 'Envoi en cours...';
 
             const formData = new FormData(this);
-            const data = {
-                nom: formData.get('nom-complet') || '',
-                user_type: formData.get('user_type') || 'entreprise', // NOUVEAU
-                entreprise: formData.get('entreprise') || '',
-                email: formData.get('email') || '',
-                telephone: formData.get('telephone') || '',
-                service: formData.get('service'),
-                budget: formData.get('budget'),
-                delai: formData.get('delai'),
-                description: formData.get('description'),
-                newsletter: formData.get('newsletter') === 'on'
-            };
+            // Utilisation de la méthode robuste pour collecter toutes les données du formulaire
+            const data = Object.fromEntries(formData.entries());
 
             if (typeof config === 'undefined' || !config.scriptUrl || config.scriptUrl === 'VOTRE_URL_APPS_SCRIPT_ICI') {
                 alert("Erreur: L'URL du script n'est pas configurée. Veuillez contacter l'administrateur.");
