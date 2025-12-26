@@ -29,6 +29,13 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- NOUVEAU: Page Vision 2026 -->
+  <url>
+    <loc>https://www.abmcy.com/vision-2026.html</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <!-- Pages Plateformes -->
   <url>
