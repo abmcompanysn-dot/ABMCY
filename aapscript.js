@@ -7,6 +7,7 @@ const SECTORS_SHEET_NAME = 'Secteurs';
 const PARTNERS_SHEET_NAME = 'Partenaires';
 const CONFIG_SHEET_NAME = 'Configuration';
 const VISION_SHEET_NAME = 'Candidatures Vision 2026';
+const LOGS_SHEET_NAME = 'Logs du Projet';
 
 // Variables globales pour la mise en cache de la configuration pendant une exécution
 let scriptConfig = null;
@@ -26,6 +27,8 @@ function onOpen() {
         .addItem('Approuver le Partenaire', 'approvePartner')
         .addSeparator()
         .addItem('Envoyer au Partenaire', 'sendToPartner')
+        .addSeparator()
+        .addItem('Tester Alerte WhatsApp', 'testCallMeBotError')
         .addToUi();
 }
 
@@ -54,6 +57,10 @@ function setup() {
     // Formatage de la feuille Vision 2026
     const visionHeaders = ['Timestamp', 'Nom', 'Entreprise', 'Email', 'Téléphone', 'Secteur', 'Niveau', 'Description', 'Statut'];
     formatSheet(spreadsheet, VISION_SHEET_NAME, visionHeaders);
+
+    // Formatage de la feuille des Logs
+    const logsHeaders = ['Timestamp', 'Type', 'Message', 'Détails'];
+    formatSheet(spreadsheet, LOGS_SHEET_NAME, logsHeaders);
 
     // Formatage de la feuille des Secteurs avec administrateurs
     const sectorsHeaders = ['ID', 'Nom du Secteur', 'Admin Email', 'Admin WhatsApp', 'Admin Webhook URL'];
@@ -95,7 +102,8 @@ function setup() {
         configSheet.appendRow(['WHATSAPP_WEBHOOK_URL', 'URL_WEBHOOK_WHATSAPP_A_REMPLACER', 'URL du service de webhook WhatsApp (ex: CallMeBot). Laissez vide pour désactiver.']);
         configSheet.appendRow(['WHATSAPP_ADMIN_NUMBERS', 'VOTRE_NUMERO_ICI', 'Numéros des admins principaux (séparés par une virgule).']);
         configSheet.appendRow(['DEFAULT_REDIRECT_URL', 'https://abmcy.vercel.app/', 'URL par défaut si une plateforme n\'est pas trouvée.']);
-        configSheet.appendRow(['SUPER_ADMIN_WHATSAPP_URL', '', 'URL CallMeBot pour l\'admin principal (ex: https://api.callmebot.com/whatsapp.php?phone=XXX&apikey=YYY).']);
+        configSheet.appendRow(['CALLMEBOT_PHONE', '', 'Numéro WhatsApp pour CallMeBot (avec indicatif, ex: +221...).']);
+        configSheet.appendRow(['CALLMEBOT_API_KEY', '', 'Clé API CallMeBot.']);
         configSheet.appendRow(['ADMIN_ACCESS_CODE', '1234', 'Code pour accéder à la page de configuration.']);
     }
 
@@ -113,6 +121,10 @@ function updateSchema() {
     const visionHeaders = ['Timestamp', 'Nom', 'Entreprise', 'Email', 'Téléphone', 'Secteur', 'Niveau', 'Description', 'Statut'];
     ensureSheetExists(spreadsheet, VISION_SHEET_NAME, visionHeaders);
 
+    // S'assurer que la feuille Logs existe
+    const logsHeaders = ['Timestamp', 'Type', 'Message', 'Détails'];
+    ensureSheetExists(spreadsheet, LOGS_SHEET_NAME, logsHeaders);
+
     // Vérification et ajout des clés de configuration manquantes dans la feuille Configuration
     const configSheet = getSheet(CONFIG_SHEET_NAME);
     const data = configSheet.getDataRange().getValues();
@@ -121,7 +133,8 @@ function updateSchema() {
 
     const requiredConfigs = [
         ['ADMIN_ACCESS_CODE', '1234', 'Code pour accéder à la page de configuration.'],
-        ['SUPER_ADMIN_WHATSAPP_URL', '', 'URL CallMeBot pour l\'admin principal (ex: https://api.callmebot.com/whatsapp.php?phone=XXX&apikey=YYY).']
+        ['CALLMEBOT_PHONE', '', 'Numéro WhatsApp pour CallMeBot (avec indicatif).'],
+        ['CALLMEBOT_API_KEY', '', 'Clé API CallMeBot.']
     ];
 
     requiredConfigs.forEach(config => {
@@ -235,7 +248,7 @@ function doPost(e) {
 
     } catch (err) {
         console.error("Erreur dans doPost: " + err.toString());
-        sendSuperAdminAlert("⚠️ ERREUR CRITIQUE SCRIPT:\n" + err.message);
+        logToSheet('ERROR', 'Erreur critique doPost', err.message);
         return ContentService.createTextOutput(JSON.stringify({ 'result': 'error', 'error': err.message })).setMimeType(ContentService.MimeType.JSON);
     } finally {
         lock.releaseLock();
@@ -254,6 +267,7 @@ function handleDevisRequest(data) {
             data.newsletter ? 'Oui' : 'Non', 'Nouveau' // Statut initial
         ];
         sheet.appendRow(newRow);
+        logToSheet('INFO', 'Nouveau Devis', `Client: ${data.nom}, Service: ${data.service}`);
 
         // Notification Super Admin
         let adminMsg = `🔔 *Nouveau Devis*\n`;
@@ -306,6 +320,7 @@ function handlePartnershipRequest(data) {
         'Nouveau' // Statut initial
     ];
     sheet.appendRow(newRow);
+    logToSheet('INFO', 'Nouvelle Demande Partenariat', `Entreprise: ${data.company_name}, Secteur: ${data.sector}`);
 
     // Notification Super Admin
     let adminMsg = `🤝 *Nouvelle Demande Partenariat*\n`;
@@ -364,6 +379,7 @@ function handleVisionRequest(data) {
         'Nouveau'
     ];
     sheet.appendRow(newRow);
+    logToSheet('INFO', 'Candidature Vision 2026', `Nom: ${data.nom_complet}, Niveau: ${data.niveau}`);
 
     // Notification Super Admin
     let adminMsg = `🚀 *Candidature Vision 2026*\n`;
@@ -488,18 +504,46 @@ function sendEmailNotification(data) {
  */
 function sendSuperAdminAlert(message) {
     const config = getScriptConfig();
-    let url = config.SUPER_ADMIN_WHATSAPP_URL;
+    const phone = config.CALLMEBOT_PHONE;
+    const apiKey = config.CALLMEBOT_API_KEY;
     
-    if (!url || url.length < 10) return; // Pas configuré
+    if (!phone || !apiKey) return; // Pas configuré
 
     try {
-        // Ajout du paramètre text si pas présent
-        const separator = url.includes('?') ? '&' : '?';
-        const finalUrl = url + separator + "text=" + encodeURIComponent(message);
-        UrlFetchApp.fetch(finalUrl);
+        const encodedPhone = encodeURIComponent(phone);
+        const encodedMessage = encodeURIComponent(message);
+        const url = `https://api.callmebot.com/whatsapp.php?phone=${encodedPhone}&text=${encodedMessage}&apikey=${apiKey}`;
+        
+        UrlFetchApp.fetch(url, { muteHttpExceptions: true });
     } catch (e) {
-        console.error("Erreur envoi Super Admin WhatsApp: " + e.toString());
+        console.error("Erreur CallMeBot: " + e.message);
     }
+}
+
+/**
+ * Enregistre une action ou une erreur dans la feuille de logs.
+ * Si c'est une erreur, envoie aussi une alerte WhatsApp.
+ */
+function logToSheet(type, message, details = '') {
+    try {
+        const sheet = getSheet(LOGS_SHEET_NAME);
+        sheet.appendRow([new Date(), type, message, details]);
+    } catch (e) {
+        console.error("Erreur lors de l'écriture dans les logs: " + e.toString());
+    }
+
+    if (type === 'ERROR' || type === 'CRITICAL') {
+        sendSuperAdminAlert(`⚠️ [${type}] ${message}\n${details}`);
+    }
+}
+
+/**
+ * Fonction de test pour vérifier l'envoi d'alertes WhatsApp via CallMeBot.
+ * À exécuter manuellement depuis le menu ou l'éditeur.
+ */
+function testCallMeBotError() {
+    logToSheet('ERROR', 'Test Manuel CallMeBot', 'Ceci est un test pour vérifier que les alertes WhatsApp fonctionnent correctement.');
+    SpreadsheetApp.getUi().alert('Test envoyé ! Vérifiez votre WhatsApp et la feuille Logs.');
 }
 
 /**
