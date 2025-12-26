@@ -1474,14 +1474,18 @@
                 <div class="luxury-card p-8 rounded-xl">
                     <h3 class="text-2xl font-bold text-gold mb-6">Demande de Devis</h3>
                     <form class="space-y-6">
+                    <form id="contactForm" class="space-y-6">
+                        <input type="hidden" name="form_type" value="devis">
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom complet</label>
                                 <input type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
+                                <input name="nom" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Entreprise</label>
                                 <input type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Nom de l'entreprise">
+                                <input name="entreprise" type="text" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Nom de l'entreprise">
                             </div>
                         </div>
                         
@@ -1489,16 +1493,19 @@
                             <div>
                                 <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Email</label>
                                 <input type="email" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
+                                <input name="email" type="email" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="votre@email.com">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Téléphone</label>
                                 <input type="tel" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="+221 XX XXX XX XX">
+                                <input name="telephone" type="tel" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="+221 XX XXX XX XX">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Service souhaité</label>
                             <select class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
+                            <select name="service" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);">
                                 <option value="">Sélectionnez un service</option>
                                 <option value="evenementiel">Événementiel</option>
                                 <option value="decoration-artistique">Décoration Artistique</option>
@@ -1521,6 +1528,7 @@
                         <div>
                             <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Décrivez votre projet</label>
                             <textarea rows="4" class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Détaillez vos besoins et objectifs..."></textarea>
+                            <textarea name="description" rows="4" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Détaillez vos besoins et objectifs..."></textarea>
                         </div>
                         
                         <button type="submit" class="w-full gradient-gold text-black py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
@@ -1686,6 +1694,7 @@
                     <div>
                         <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Nom complet *</label>
                         <input name="nom-complet" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
+                        <input name="nom" type="text" required class="w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-500" style="background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-color);" placeholder="Votre nom">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-2" style="color: var(--text-muted-color);">Entreprise *</label>
@@ -2441,19 +2450,35 @@
                 });
         });
 
-        // Gestion de la soumission du formulaire de la section Contact (exemple simple)
-        document.querySelector('#contact form').addEventListener('submit', function(e) {
+        // Gestion de la soumission du formulaire de la section Contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const form = this;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
             
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
-            
-            // Reset form
-            this.reset();
+            if (typeof config === 'undefined' || !config.scriptUrl || config.scriptUrl === 'VOTRE_URL_APPS_SCRIPT_ICI') {
+                alert("Erreur: L'URL du script n'est pas configurée.");
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                return;
+            }
+
+            fetch(config.scriptUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+                .then(() => {
+                    alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
+                    form.reset();
+                })
+                .catch(error => alert('Erreur lors de l\'envoi : ' + error))
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                });
         });
 
         // Effet sur la barre de navigation au défilement (déjà géré par CSS)
