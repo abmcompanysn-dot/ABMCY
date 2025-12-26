@@ -270,9 +270,10 @@ function handleDevisRequest(data) {
         logToSheet('INFO', 'Nouveau Devis', `Client: ${data.nom}, Service: ${data.service}`);
 
         // Notification Super Admin
-        let adminMsg = `🔔 *Nouveau Devis*\n`;
+        const userType = data.user_type === 'particulier' ? 'Particulier' : 'Entreprise';
+        let adminMsg = `🔔 *Nouveau Devis* [${new Date().toLocaleString()}]\n`;
         adminMsg += `👤 Nom: ${data.nom}\n`;
-        adminMsg += `🏢 Entreprise: ${data.entreprise} (${data.user_type})\n`;
+        adminMsg += `🏢 Entreprise: ${data.entreprise} (${userType})\n`;
         adminMsg += `📧 Email: ${data.email}\n`;
         adminMsg += `📞 Tel: ${data.telephone}\n`;
         adminMsg += `🛠 Service: ${data.service}\n`;
@@ -281,6 +282,13 @@ function handleDevisRequest(data) {
         adminMsg += `📝 Description: ${data.description}\n`;
         adminMsg += `📰 Newsletter: ${data.newsletter ? 'Oui' : 'Non'}`;
         sendSuperAdminAlert(adminMsg);
+
+        // Envoyer email de confirmation au client (NOUVEAU)
+        try {
+            sendClientConfirmationEmail(data, 'devis');
+        } catch (e) {
+            console.error("Erreur confirmation client: " + e.toString());
+        }
 
         // Envoyer les notifications après avoir enregistré les données
         try {
@@ -323,10 +331,11 @@ function handlePartnershipRequest(data) {
     logToSheet('INFO', 'Nouvelle Demande Partenariat', `Entreprise: ${data.company_name}, Secteur: ${data.sector}`);
 
     // Notification Super Admin
-    let adminMsg = `🤝 *Nouvelle Demande Partenariat*\n`;
+    const userType = data.user_type === 'particulier' ? 'Particulier' : 'Entreprise';
+    let adminMsg = `🤝 *Nouvelle Demande Partenariat* [${new Date().toLocaleString()}]\n`;
     adminMsg += `🆔 ID: ${demandId}\n`;
     adminMsg += `👤 Nom: ${data.contact_name}\n`;
-    adminMsg += `🏢 Entreprise: ${data.company_name} (${data.user_type})\n`;
+    adminMsg += `🏢 Entreprise: ${data.company_name} (${userType})\n`;
     adminMsg += `📧 Email: ${data.email}\n`;
     adminMsg += `📞 Tel: ${phone}\n`;
     adminMsg += `🏗 Secteur: ${data.sector}\n`;
@@ -345,20 +354,12 @@ function handlePartnershipRequest(data) {
         MailApp.sendEmail(adminEmail, subject, body);
     }
 
-    // NOUVEAU: Envoyer un email de confirmation au candidat
-    const applicantEmail = data.email;
-    if (applicantEmail) {
-        const applicantSubject = `Votre demande de partenariat avec ABMCY a été reçue`;
-        const applicantBody = `
-            Bonjour ${data.contact_name},<br><br>
-            Nous avons bien reçu votre candidature pour rejoindre notre réseau de partenaires. Merci de votre intérêt pour ABMCY.<br><br>
-            Votre demande est enregistrée sous le numéro : <strong>${demandId}</strong><br><br>
-            Veuillez conserver ce numéro. Si vous souhaitez nous envoyer des exemples de vos réalisations ou d'autres documents, merci de les adresser à notre email de contact en mentionnant ce numéro de demande.<br><br>
-            Notre équipe examinera votre candidature et reviendra vers vous dans les plus brefs délais.<br><br>
-            Cordialement,<br>
-            L'équipe ABMCY
-        `;
-        MailApp.sendEmail(applicantEmail, applicantSubject, "", { htmlBody: applicantBody, name: 'ABMCY Partenariats' });
+    // Envoyer un email de confirmation au candidat (HTML Pro)
+    try {
+        data.demandId = demandId; // On ajoute l'ID pour l'email
+        sendClientConfirmationEmail(data, 'partnership');
+    } catch (e) {
+        console.error("Erreur confirmation client: " + e.toString());
     }
 }
 
@@ -382,7 +383,7 @@ function handleVisionRequest(data) {
     logToSheet('INFO', 'Candidature Vision 2026', `Nom: ${data.nom_complet}, Niveau: ${data.niveau}`);
 
     // Notification Super Admin
-    let adminMsg = `🚀 *Candidature Vision 2026*\n`;
+    let adminMsg = `🚀 *Candidature Vision 2026* [${new Date().toLocaleString()}]\n`;
     adminMsg += `👤 Nom: ${data.nom_complet}\n`;
     adminMsg += `🏢 Entreprise: ${data.nom_entreprise}\n`;
     adminMsg += `📧 Email: ${data.email}\n`;
@@ -399,11 +400,11 @@ function handleVisionRequest(data) {
         MailApp.sendEmail(adminEmail, `[ABMCY] Nouvelle candidature Vision 2026`, `Une nouvelle candidature a été reçue pour le programme Vision 2026.\n\nNom: ${data.nom_complet}\nEntreprise: ${data.nom_entreprise}\nSecteur: ${data.secteur}`);
     }
     
-    // Email de confirmation au candidat
-    if (data.email) {
-        const subject = "Confirmation de votre pré-inscription - Vision 2026";
-        const body = `Bonjour ${data.nom_complet},\n\nNous avons bien reçu votre pré-inscription pour le programme Vision 2026 (Niveau: ${data.niveau}).\nNotre équipe technique vous contactera prochainement pour la mise en place de votre boutique.\n\nCordialement,\nL'équipe ABMCY`;
-        MailApp.sendEmail(data.email, subject, body);
+    // Email de confirmation au candidat (HTML Pro)
+    try {
+        sendClientConfirmationEmail(data, 'vision');
+    } catch (e) {
+        console.error("Erreur confirmation client: " + e.toString());
     }
 }
 
@@ -923,4 +924,123 @@ function saveSectorsConfig(sectors) {
 function showConfigDialog() {
     const html = HtmlService.createHtmlOutputFromFile('configuration.html').setWidth(1000).setHeight(750);
     SpreadsheetApp.getUi().showModalDialog(html, 'Panneau de Configuration ABMCY');
+}
+
+/**
+ * Envoie un email de confirmation HTML soigné au client.
+ */
+function sendClientConfirmationEmail(data, type) {
+    if (!data.email) return;
+
+    let subject = "";
+    let title = "";
+    let intro = "";
+    let details = {};
+
+    const name = data.nom || data.contact_name || data.nom_complet || 'Client';
+
+    if (type === 'devis') {
+        subject = "Confirmation de réception - Votre devis ABMCY";
+        title = "Demande de Devis Reçue";
+        intro = "Nous avons bien reçu votre demande de devis. Voici un récapitulatif des informations transmises :";
+        details = {
+            "Service souhaité": data.service,
+            "Entreprise": data.entreprise,
+            "Budget estimé": data.budget,
+            "Délai souhaité": data.delai,
+            "Description": data.description
+        };
+    } else if (type === 'partnership') {
+        subject = "Candidature Partenaire ABMCY - Confirmation";
+        title = "Candidature Enregistrée";
+        intro = `Merci de votre intérêt pour rejoindre le réseau ABMCY. Votre candidature a été enregistrée sous la référence <strong>${data.demandId}</strong>.`;
+        details = {
+            "Référence": data.demandId,
+            "Entreprise": data.company_name,
+            "Secteur": data.sector,
+            "Message": data.message
+        };
+    } else if (type === 'vision') {
+        subject = "Vision 2026 - Confirmation de pré-inscription";
+        title = "Pré-inscription Validée";
+        intro = "Votre pré-inscription au programme Vision 2026 est confirmée. Nos équipes techniques vous contacteront prochainement.";
+        details = {
+            "Programme": "Vision 2026",
+            "Niveau": data.niveau,
+            "Secteur": data.secteur,
+            "Entreprise": data.nom_entreprise
+        };
+    }
+
+    const htmlBody = createBeautifulEmailTemplate(name, title, intro, details);
+    
+    MailApp.sendEmail({
+        to: data.email,
+        subject: subject,
+        htmlBody: htmlBody,
+        name: 'ABMCY'
+    });
+}
+
+function createBeautifulEmailTemplate(name, title, intro, details) {
+    let detailsHtml = "";
+    for (const [key, value] of Object.entries(details)) {
+        if (value) {
+            detailsHtml += `<li style="margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 8px;"><strong style="color: #333; display:inline-block; width: 140px;">${key}:</strong> <span style="color: #555;">${value}</span></li>`;
+        }
+    }
+
+    return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; color: #333; }
+            .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+            .header { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); padding: 35px 20px; text-align: center; }
+            .header h1 { color: #FFD700; margin: 0; font-size: 32px; letter-spacing: 1px; font-weight: 700; }
+            .header p { color: #cccccc; margin: 8px 0 0; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; }
+            .content { padding: 40px 30px; }
+            .h2-title { color: #111; font-size: 24px; margin-top: 0; margin-bottom: 20px; font-weight: 600; }
+            .intro-text { font-size: 16px; line-height: 1.6; color: #444; margin-bottom: 30px; }
+            .details-box { background-color: #fafafa; border-left: 5px solid #FFD700; padding: 25px; margin-bottom: 30px; border-radius: 4px; }
+            .details-list { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+            .footer { background-color: #111; color: #777; padding: 25px; text-align: center; font-size: 13px; border-top: 3px solid #FFD700; }
+            .footer a { color: #FFD700; text-decoration: none; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>ABMCY</h1>
+                <p>Africa Business Manager Company</p>
+            </div>
+            <div class="content">
+                <h2 class="h2-title">${title}</h2>
+                <p class="intro-text">Bonjour <strong>${name}</strong>,<br><br>${intro}</p>
+                
+                <div class="details-box">
+                    <ul class="details-list">
+                        ${detailsHtml}
+                    </ul>
+                </div>
+
+                <p style="line-height: 1.6; color: #555;">
+                    Notre équipe analyse actuellement votre demande. Nous nous engageons à vous apporter une réponse personnalisée dans les meilleurs délais.
+                </p>
+                
+                <p style="margin-top: 30px; font-weight: bold; color: #333;">
+                    Cordialement,<br>L'équipe ABMCY
+                </p>
+            </div>
+            <div class="footer">
+                <p>&copy; ${new Date().getFullYear()} ABMCY. Tous droits réservés.</p>
+                <p><a href="https://www.abmcy.com">www.abmcy.com</a></p>
+                <p>Dakar, Sénégal | +221 76 904 79 99</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    `;
 }

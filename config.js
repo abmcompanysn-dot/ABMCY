@@ -1,6 +1,6 @@
 const config = {
     // IMPORTANT : Remplacez ceci par l'URL de votre application web Apps Script déployée
-    scriptUrl: "https://script.google.com/macros/s/AKfycbw1-uiWsbs0M5vbWPDuuJa20XsBgaGjfQoYMVGQoTTYluULtBgxqtcPvWRKHR5T5fuBcg/exec",
+    scriptUrl: "https://script.google.com/macros/s/AKfycbyLVQw2hjHP879GORk-OnqYcic7e5qiiRzSSZjo5esb40tZaDnHqDGvRIdCsghaZt_FxQ/exec",
 
     // Liens vers vos plateformes externes (pour les boutons "Visiter")
     externalPlatformLinks: {
