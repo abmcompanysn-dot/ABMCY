@@ -95,6 +95,8 @@ function setup() {
         configSheet.appendRow(['WHATSAPP_WEBHOOK_URL', 'URL_WEBHOOK_WHATSAPP_A_REMPLACER', 'URL du service de webhook WhatsApp (ex: CallMeBot). Laissez vide pour désactiver.']);
         configSheet.appendRow(['WHATSAPP_ADMIN_NUMBERS', 'VOTRE_NUMERO_ICI', 'Numéros des admins principaux (séparés par une virgule).']);
         configSheet.appendRow(['DEFAULT_REDIRECT_URL', 'https://abmcy.vercel.app/', 'URL par défaut si une plateforme n\'est pas trouvée.']);
+        configSheet.appendRow(['SUPER_ADMIN_WHATSAPP_URL', '', 'URL CallMeBot pour l\'admin principal (ex: https://api.callmebot.com/whatsapp.php?phone=XXX&apikey=YYY).']);
+        configSheet.appendRow(['ADMIN_ACCESS_CODE', '1234', 'Code pour accéder à la page de configuration.']);
     }
 
     SpreadsheetApp.flush();
@@ -111,7 +113,22 @@ function updateSchema() {
     const visionHeaders = ['Timestamp', 'Nom', 'Entreprise', 'Email', 'Téléphone', 'Secteur', 'Niveau', 'Description', 'Statut'];
     ensureSheetExists(spreadsheet, VISION_SHEET_NAME, visionHeaders);
 
-    // On peut ajouter d'autres vérifications ici si nécessaire
+    // Vérification et ajout des clés de configuration manquantes dans la feuille Configuration
+    const configSheet = getSheet(CONFIG_SHEET_NAME);
+    const data = configSheet.getDataRange().getValues();
+    // On suppose que la colonne A (index 0) contient les clés 'Key'
+    const existingKeys = data.map(row => row[0]);
+
+    const requiredConfigs = [
+        ['ADMIN_ACCESS_CODE', '1234', 'Code pour accéder à la page de configuration.'],
+        ['SUPER_ADMIN_WHATSAPP_URL', '', 'URL CallMeBot pour l\'admin principal (ex: https://api.callmebot.com/whatsapp.php?phone=XXX&apikey=YYY).']
+    ];
+
+    requiredConfigs.forEach(config => {
+        if (!existingKeys.includes(config[0])) {
+            configSheet.appendRow(config);
+        }
+    });
     
     SpreadsheetApp.getUi().alert('Structure mise à jour avec succès !');
 }
@@ -129,12 +146,19 @@ function ensureSheetExists(spreadsheet, sheetName, headers) {
 function doGet(e) {
     const params = e.parameter;
     const action = params.action;
+    const config = getScriptConfig();
 
-    // Par défaut, servir la page de configuration
-    if (!action) {
-        return HtmlService.createHtmlOutputFromFile('configuration.html')
-            .setTitle('Panneau de Configuration ABMCY')
-            .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.DEFAULT);
+    // Accès au panneau d'administration (nécessite ?action=admin)
+    if (action === 'admin') {
+        const correctCode = config.ADMIN_ACCESS_CODE || '1234';
+        // Vérification du code d'accès
+        if (params.code === correctCode) {
+            return HtmlService.createHtmlOutputFromFile('configuration.html')
+                .setTitle('Panneau de Configuration ABMCY')
+                .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.DEFAULT);
+        } else {
+            return createLoginPage();
+        }
     }
 
     // Action pour récupérer des données (ex: témoignages, projets)
@@ -142,7 +166,45 @@ function doGet(e) {
         return ContentService.createTextOutput(JSON.stringify(getDataFromSheet(params.sheet))).setMimeType(ContentService.MimeType.JSON);
     }
 
-    return ContentService.createTextOutput("Action non valide.");
+    // Par défaut : Message de succès pour confirmer que l'API est en ligne
+    return ContentService.createTextOutput("ABMCY API Active Success");
+}
+
+/**
+ * Crée la page de connexion pour l'accès admin.
+ */
+function createLoginPage() {
+    const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion Admin ABMCY</title>
+        <style>
+            body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #1a1a1a; color: #fff; }
+            .card { background: #2d2d2d; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: center; width: 100%; max-width: 400px; border: 1px solid #444; }
+            h2 { color: #FFD700; margin-bottom: 1.5rem; }
+            input { padding: 12px; border: 1px solid #555; background: #333; color: white; border-radius: 6px; margin-bottom: 1.5rem; width: 100%; box-sizing: border-box; font-size: 16px; outline: none; }
+            button { background: linear-gradient(135deg, #FFD700, #FFA500); border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; color: #000; font-size: 16px; }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h2>🔒 Accès Sécurisé</h2>
+            <form method="GET">
+                <input type="hidden" name="action" value="admin">
+                <input type="password" name="code" placeholder="Code d'accès Admin" required autofocus>
+                <button type="submit">Accéder</button>
+            </form>
+        </div>
+    </body>
+    </html>
+    `;
+    return HtmlService.createHtmlOutput(html)
+        .setTitle('Connexion Admin ABMCY')
+        .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.DEFAULT)
+        .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
 /**
@@ -173,6 +235,7 @@ function doPost(e) {
 
     } catch (err) {
         console.error("Erreur dans doPost: " + err.toString());
+        sendSuperAdminAlert("⚠️ ERREUR CRITIQUE SCRIPT:\n" + err.message);
         return ContentService.createTextOutput(JSON.stringify({ 'result': 'error', 'error': err.message })).setMimeType(ContentService.MimeType.JSON);
     } finally {
         lock.releaseLock();
@@ -191,6 +254,19 @@ function handleDevisRequest(data) {
             data.newsletter ? 'Oui' : 'Non', 'Nouveau' // Statut initial
         ];
         sheet.appendRow(newRow);
+
+        // Notification Super Admin
+        let adminMsg = `🔔 *Nouveau Devis*\n`;
+        adminMsg += `👤 Nom: ${data.nom}\n`;
+        adminMsg += `🏢 Entreprise: ${data.entreprise} (${data.user_type})\n`;
+        adminMsg += `📧 Email: ${data.email}\n`;
+        adminMsg += `📞 Tel: ${data.telephone}\n`;
+        adminMsg += `🛠 Service: ${data.service}\n`;
+        adminMsg += `💰 Budget: ${data.budget}\n`;
+        adminMsg += `⏳ Délai: ${data.delai}\n`;
+        adminMsg += `📝 Description: ${data.description}\n`;
+        adminMsg += `📰 Newsletter: ${data.newsletter ? 'Oui' : 'Non'}`;
+        sendSuperAdminAlert(adminMsg);
 
         // Envoyer les notifications après avoir enregistré les données
         try {
@@ -230,6 +306,20 @@ function handlePartnershipRequest(data) {
         'Nouveau' // Statut initial
     ];
     sheet.appendRow(newRow);
+
+    // Notification Super Admin
+    let adminMsg = `🤝 *Nouvelle Demande Partenariat*\n`;
+    adminMsg += `🆔 ID: ${demandId}\n`;
+    adminMsg += `👤 Nom: ${data.contact_name}\n`;
+    adminMsg += `🏢 Entreprise: ${data.company_name} (${data.user_type})\n`;
+    adminMsg += `📧 Email: ${data.email}\n`;
+    adminMsg += `📞 Tel: ${phone}\n`;
+    adminMsg += `🏗 Secteur: ${data.sector}\n`;
+    adminMsg += `💬 Message: ${data.message}\n`;
+    if (data.example1) adminMsg += `🔗 Ex 1: ${data.example1}\n`;
+    if (data.example2) adminMsg += `🔗 Ex 2: ${data.example2}\n`;
+    if (data.example3) adminMsg += `🔗 Ex 3: ${data.example3}`;
+    sendSuperAdminAlert(adminMsg);
 
     // Notifier l'admin principal
     const config = getScriptConfig();
@@ -274,6 +364,17 @@ function handleVisionRequest(data) {
         'Nouveau'
     ];
     sheet.appendRow(newRow);
+
+    // Notification Super Admin
+    let adminMsg = `🚀 *Candidature Vision 2026*\n`;
+    adminMsg += `👤 Nom: ${data.nom_complet}\n`;
+    adminMsg += `🏢 Entreprise: ${data.nom_entreprise}\n`;
+    adminMsg += `📧 Email: ${data.email}\n`;
+    adminMsg += `📞 Tel: ${data.telephone}\n`;
+    adminMsg += `🏗 Secteur: ${data.secteur}\n`;
+    adminMsg += `📊 Niveau: ${data.niveau}\n`;
+    adminMsg += `📝 Description: ${data.description}`;
+    sendSuperAdminAlert(adminMsg);
 
     // Notification simple à l'admin
     const config = getScriptConfig();
@@ -379,6 +480,26 @@ function sendEmailNotification(data) {
         htmlBody: htmlBody,
         name: 'ABMCY Notifier' // Nom de l'expéditeur
     });
+}
+
+/**
+ * Envoie une alerte WhatsApp à l'administrateur principal (Super Admin) via CallMeBot.
+ * Utilisé pour le monitoring global (nouvelles demandes, erreurs).
+ */
+function sendSuperAdminAlert(message) {
+    const config = getScriptConfig();
+    let url = config.SUPER_ADMIN_WHATSAPP_URL;
+    
+    if (!url || url.length < 10) return; // Pas configuré
+
+    try {
+        // Ajout du paramètre text si pas présent
+        const separator = url.includes('?') ? '&' : '?';
+        const finalUrl = url + separator + "text=" + encodeURIComponent(message);
+        UrlFetchApp.fetch(finalUrl);
+    } catch (e) {
+        console.error("Erreur envoi Super Admin WhatsApp: " + e.toString());
+    }
 }
 
 /**
