@@ -1472,8 +1472,12 @@
             
             <div class="grid lg:grid-cols-2 gap-12">
                 <div class="luxury-card p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold text-gold mb-6">Demande de Devis</h3>
-                    <form class="space-y-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gold">Demande de Devis</h3>
+                        <button id="share-devis-btn" class="p-2 rounded-full hover:bg-gray-700 transition-colors" aria-label="Partager la demande de devis" style="color: var(--text-subtle-color);">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
                     <form id="contactForm" class="space-y-6">
                         <input type="hidden" name="form_type" value="devis">
                         <div class="grid md:grid-cols-2 gap-4">
@@ -2314,6 +2318,24 @@
                     } else {
                         alert('Lien copié dans le presse-papiers !');
                         navigator.clipboard.writeText(shareData.url);
+                    }
+                });
+            }
+
+            // NOUVEAU: Partage de la section Devis
+            const shareDevisBtn = document.getElementById('share-devis-btn');
+            if(shareDevisBtn) {
+                shareDevisBtn.addEventListener('click', async () => {
+                    const shareData = {
+                        title: 'Demander un devis - ABMCY',
+                        text: 'Obtenez un devis personnalisé pour votre projet digital avec ABMCY.',
+                        url: window.location.href.split('?')[0].split('#')[0] + '#contact'
+                    };
+                    if (navigator.share) {
+                        try { await navigator.share(shareData); } catch (err) { console.log('Partage annulé'); }
+                    } else {
+                        navigator.clipboard.writeText(shareData.url);
+                        alert('Lien copié dans le presse-papiers !');
                     }
                 });
             }
