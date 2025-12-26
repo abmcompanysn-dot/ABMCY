@@ -242,6 +242,11 @@ function doPost(e) {
             return ContentService.createTextOutput(JSON.stringify({ 'result': 'success', 'type': 'vision_2026' })).setMimeType(ContentService.MimeType.JSON);
         }
 
+        if (formType === 'simulation') {
+            handleDevisRequest(postData);
+            return ContentService.createTextOutput(JSON.stringify({ 'result': 'success', 'type': 'simulation' })).setMimeType(ContentService.MimeType.JSON);
+        }
+
         // Si c'est un devis, continuer comme avant
         handleDevisRequest(postData);
         return ContentService.createTextOutput(JSON.stringify({ 'result': 'success', 'type': 'devis' })).setMimeType(ContentService.MimeType.JSON);
@@ -267,11 +272,12 @@ function handleDevisRequest(data) {
             data.newsletter ? 'Oui' : 'Non', 'Nouveau' // Statut initial
         ];
         sheet.appendRow(newRow);
-        logToSheet('INFO', 'Nouveau Devis', `Client: ${data.nom}, Service: ${data.service}`);
+        const typeLabel = (data.form_type === 'simulation') ? 'Simulation' : 'Devis';
+        logToSheet('INFO', `Nouveau ${typeLabel}`, `Client: ${data.nom}, Service: ${data.service}`);
 
         // Notification Super Admin
         const userType = data.user_type === 'particulier' ? 'Particulier' : 'Entreprise';
-        let adminMsg = `🔔 *Nouveau Devis* [${new Date().toLocaleString()}]\n`;
+        let adminMsg = `🔔 *Nouveau ${typeLabel}* [${new Date().toLocaleString()}]\n`;
         adminMsg += `👤 Nom: ${data.nom}\n`;
         adminMsg += `🏢 Entreprise: ${data.entreprise} (${userType})\n`;
         adminMsg += `📧 Email: ${data.email}\n`;
@@ -470,26 +476,26 @@ function sendEmailNotification(data) {
     }
 
     const userType = data.user_type === 'particulier' ? 'Particulier' : 'Entreprise';
-    const subject = `[ABMCY] Devis (${userType}) pour ${data.service} - ${data.nom}`;
-    const htmlBody = `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-            <h2 style="color: #FFD700;">Nouvelle Demande de Devis sur ABMCY</h2>
-            <p>Une nouvelle demande de devis a été soumise. Voici les détails :</p>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Type de Client :</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><strong>${userType}</strong></td></tr>
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Nom :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.nom}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Entreprise :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.entreprise}</td></tr>
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Email :</strong></td><td style="padding: 8px; border: 1px solid #ddd;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Téléphone :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.telephone}</td></tr>
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Service :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.service}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Budget :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.budget}</td></tr>
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Délai :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.delai}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Description :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.description}</td></tr>
-                <tr style="background-color: #f2f2f2;"><td style="padding: 8px; border: 1px solid #ddd;"><strong>Newsletter :</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${data.newsletter ? 'Oui' : 'Non'}</td></tr>
-            </table>
-            <p>Connectez-vous à la feuille de calcul pour voir toutes les demandes.</p>
-        </div>
-    `;
+    const typeLabel = (data.form_type === 'simulation') ? 'Simulation' : 'Devis';
+    const subject = `[ABMCY] Nouveau ${typeLabel} (${userType}) - ${data.nom}`;
+    
+    const title = `Nouvelle Demande : ${typeLabel}`;
+    const intro = `Une nouvelle demande de ${typeLabel.toLowerCase()} a été reçue sur la plateforme. Voici les détails :`;
+    
+    const details = {
+        "Type de Client": userType,
+        "Nom": data.nom,
+        "Entreprise": data.entreprise,
+        "Email": data.email,
+        "Téléphone": data.telephone,
+        "Service": data.service,
+        "Budget": data.budget,
+        "Délai": data.delai,
+        "Description": data.description,
+        "Newsletter": data.newsletter ? 'Oui' : 'Non'
+    };
+
+    const htmlBody = createBeautifulEmailTemplate("Admin", title, intro, details);
 
     MailApp.sendEmail({
         to: recipients.emails.join(','),
@@ -946,6 +952,8 @@ function sendClientConfirmationEmail(data, type) {
         details = {
             "Service souhaité": data.service,
             "Entreprise": data.entreprise,
+            "Type Client": data.user_type === 'particulier' ? 'Particulier' : 'Entreprise',
+            "Téléphone": data.telephone,
             "Budget estimé": data.budget,
             "Délai souhaité": data.delai,
             "Description": data.description
