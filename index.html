@@ -452,9 +452,14 @@
                 <p class="text-xl max-w-3xl mx-auto mb-8" style="color: var(--text-muted-color);">
                     Devenez le "Shopify" local de votre secteur. Obtenez votre propre boutique virtuelle, encaissez vos paiements et gérez votre activité avec notre écosystème numérique.
                 </p>
-                <a href="vision-2026.html" class="gradient-gold text-black px-8 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition-opacity shadow-lg inline-block transform hover:scale-105 transition-transform">
-                    Découvrir le Programme
-                </a>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="vision-2026.html" class="gradient-gold text-black px-8 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition-opacity shadow-lg inline-block transform hover:scale-105 transition-transform">
+                        Découvrir le Programme
+                    </a>
+                    <button id="share-vision-btn" class="border-2 border-gold text-gold px-8 py-4 rounded-lg font-bold text-lg hover:bg-gold hover:text-black transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-share-alt"></i> Partager
+                    </button>
+                </div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
@@ -873,6 +878,9 @@
                     </div>
                     <button id="recommander-btn" class="w-full gradient-gold text-black py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-md hover:shadow-lg">
                         Voir les Solutions Recommandées
+                    </button>
+                    <button id="share-simulator-btn" class="mt-4 w-full border border-gray-600 text-gray-300 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                        <i class="fas fa-share-alt"></i> Partager le Simulateur
                     </button>
                 </div>
             </div>
@@ -2271,6 +2279,42 @@
                     });
                 }
             });
+
+            // NOUVEAU: Partage Vision 2026 (Section Index)
+            const shareVisionBtn = document.getElementById('share-vision-btn');
+            if(shareVisionBtn) {
+                shareVisionBtn.addEventListener('click', async () => {
+                    const shareData = {
+                        title: 'Vision 2026 - ABMCY',
+                        text: 'Découvrez le programme Vision 2026 d\'ABMCY : Devenez le "Shopify" local de votre secteur.',
+                        url: window.location.origin + '/vision-2026.html'
+                    };
+                    if (navigator.share) {
+                        try { await navigator.share(shareData); } catch (err) { console.log('Partage annulé'); }
+                    } else {
+                        alert('Lien copié dans le presse-papiers !');
+                        navigator.clipboard.writeText(shareData.url);
+                    }
+                });
+            }
+
+            // NOUVEAU: Partage Simulateur (Section Index)
+            const shareSimBtn = document.getElementById('share-simulator-btn');
+            if(shareSimBtn) {
+                shareSimBtn.addEventListener('click', async () => {
+                    const shareData = {
+                        title: 'Simulateur de Besoin Digital - ABMCY',
+                        text: 'Trouvez la solution digitale idéale pour votre activité avec le simulateur ABMCY.',
+                        url: window.location.href.split('?')[0] + '#simulateur'
+                    };
+                    if (navigator.share) {
+                        try { await navigator.share(shareData); } catch (err) { console.log('Partage annulé'); }
+                    } else {
+                        alert('Lien copié dans le presse-papiers !');
+                        navigator.clipboard.writeText(shareData.url);
+                    }
+                });
+            }
         });
 
         /* =================================================================

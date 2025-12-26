@@ -79,6 +79,11 @@
             <p class="text-xl max-w-3xl mx-auto" style="color: var(--text-muted-color);">
                 Nous transformons notre place de marché en un véritable écosystème numérique. Devenez le "Shopify" local de votre secteur avec votre propre boutique virtuelle.
             </p>
+            <div class="mt-8 flex justify-center">
+                <button id="share-page-btn" class="border-2 border-gold text-gold px-6 py-3 rounded-lg font-semibold hover:bg-gold hover:text-black transition-all flex items-center gap-2">
+                    <i class="fas fa-share-alt"></i> Partager l'opportunité
+                </button>
+            </div>
         </header>
 
         <!-- Les 3 Piliers de la Vision -->
@@ -226,6 +231,24 @@
             // Gestion du thème
             if (localStorage.getItem('theme') === 'light') {
                 document.body.classList.add('light-mode');
+            }
+
+            // NOUVEAU: Gestion du bouton de partage
+            const shareBtn = document.getElementById('share-page-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    const shareData = {
+                        title: 'Vision 2026 : ABMCY Market SaaS',
+                        text: 'Transformez votre activité avec l\'écosystème numérique ABMCY. Créez votre boutique virtuelle dès maintenant.',
+                        url: window.location.href
+                    };
+                    if (navigator.share) {
+                        try { await navigator.share(shareData); } catch (err) {}
+                    } else {
+                        navigator.clipboard.writeText(shareData.url);
+                        alert('Lien copié !');
+                    }
+                });
             }
 
             // Gestion du formulaire
