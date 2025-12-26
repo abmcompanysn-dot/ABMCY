@@ -265,6 +265,9 @@ function doPost(e) {
  * @param {Object} data Les données du formulaire de devis.
  */
 function handleDevisRequest(data) {
+    // Correction : Le formulaire HTML envoie 'nom-complet', on le mappe vers 'nom'
+    data.nom = data.nom || data['nom-complet'] || '';
+
     const sheet = getSheet(DEVIS_SHEET_NAME);
         const newRow = [
             new Date(), data.nom || '', data.user_type || '', data.entreprise || '', data.email || '', 
@@ -278,14 +281,14 @@ function handleDevisRequest(data) {
         // Notification Super Admin
         const userType = data.user_type === 'particulier' ? 'Particulier' : 'Entreprise';
         let adminMsg = `🔔 *Nouveau ${typeLabel}* [${new Date().toLocaleString()}]\n`;
-        adminMsg += `👤 Nom: ${data.nom}\n`;
-        adminMsg += `🏢 Entreprise: ${data.entreprise} (${userType})\n`;
-        adminMsg += `📧 Email: ${data.email}\n`;
-        adminMsg += `📞 Tel: ${data.telephone}\n`;
-        adminMsg += `🛠 Service: ${data.service}\n`;
-        adminMsg += `💰 Budget: ${data.budget}\n`;
-        adminMsg += `⏳ Délai: ${data.delai}\n`;
-        adminMsg += `📝 Description: ${data.description}\n`;
+        adminMsg += `👤 Nom: ${data.nom || 'Non renseigné'}\n`;
+        adminMsg += `🏢 Entreprise: ${data.entreprise || 'Non renseigné'} (${userType})\n`;
+        adminMsg += `📧 Email: ${data.email || 'Non renseigné'}\n`;
+        adminMsg += `📞 Tel: ${data.telephone || 'Non renseigné'}\n`;
+        adminMsg += `🛠 Service: ${data.service || 'Non renseigné'}\n`;
+        adminMsg += `💰 Budget: ${data.budget || 'Non renseigné'}\n`;
+        adminMsg += `⏳ Délai: ${data.delai || 'Non renseigné'}\n`;
+        adminMsg += `📝 Description: ${data.description || 'Non renseigné'}\n`;
         adminMsg += `📰 Newsletter: ${data.newsletter ? 'Oui' : 'Non'}`;
         sendSuperAdminAlert(adminMsg);
 
@@ -511,12 +514,20 @@ function sendEmailNotification(data) {
  */
 function sendSuperAdminAlert(message) {
     const config = getScriptConfig();
-    const phone = config.CALLMEBOT_PHONE;
+    let phone = config.CALLMEBOT_PHONE;
     const apiKey = config.CALLMEBOT_API_KEY;
     
     if (!phone || !apiKey) return; // Pas configuré
 
+    // Nettoyage du numéro (suppression des espaces et tirets pour éviter les erreurs)
+    phone = String(phone).replace(/[\s-]/g, '');
+
     try {
+        // Troncature du message pour éviter les erreurs d'URL trop longue (limite API)
+        if (message.length > 1500) {
+            message = message.substring(0, 1500) + "... [Tronqué]";
+        }
+
         const encodedPhone = encodeURIComponent(phone);
         const encodedMessage = encodeURIComponent(message);
         const url = `https://api.callmebot.com/whatsapp.php?phone=${encodedPhone}&text=${encodedMessage}&apikey=${apiKey}`;
