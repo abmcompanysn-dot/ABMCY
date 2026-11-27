@@ -362,6 +362,48 @@ select.inp option{background:#14120e}
 .pl:after{content:"↗";position:absolute;top:18px;right:20px;color:var(--or);transition:transform .3s var(--ease)}
 .pl:hover:after{transform:translate(3px,-3px)}
 
+
+/* ---------- Tarifs ---------- */
+.bill{display:inline-grid;grid-template-columns:1fr 1fr;gap:4px;padding:5px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.35);margin-top:30px;position:relative}
+.bill button{position:relative;z-index:1;border:0;background:none;border-radius:999px;padding:11px 22px;font-weight:800;font-size:14.5px;color:var(--mut);cursor:pointer;transition:color .3s}
+.bill button[aria-pressed=true]{color:#1a1206}
+.bill i{position:absolute;z-index:0;top:5px;bottom:5px;left:5px;width:calc(50% - 7px);border-radius:999px;background:var(--gold);transition:transform .5s var(--ease)}
+.bill.etale i{transform:translateX(calc(100% + 4px))}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;align-items:stretch}
+.plan{position:relative;border-radius:30px;padding:30px 28px;border:1px solid var(--line);background:linear-gradient(170deg,var(--noir3),#0b0a08);display:flex;flex-direction:column;gap:16px;transition:transform .5s var(--ease)}
+.plan:hover{transform:translateY(-6px)}
+.plan.star{border-color:transparent;background:linear-gradient(170deg,#1d180e,#0d0b07) padding-box,conic-gradient(from var(--ang),#a97b2c,#fbe7a6,#e0b75c,#5c431a,#a97b2c) border-box;border:1.5px solid transparent;animation:ang 6s linear infinite;box-shadow:0 30px 80px -40px rgba(212,166,74,.55)}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes ang{to{--ang:360deg}}
+.plan .pop2{position:absolute;top:-13px;left:50%;transform:translateX(-50%);padding:6px 14px;border-radius:999px;background:var(--gold);color:#1a1206;font-size:12px;font-weight:800;white-space:nowrap}
+.plan small{color:var(--or);font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.plan h3{font-family:Cinzel,serif;font-size:25px;line-height:1.15;margin-top:4px}
+.plan .for{color:var(--mut);font-size:14.5px}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price b{font-family:Cinzel,serif;font-size:clamp(34px,3.6vw,44px);line-height:1}
+.price span{color:var(--mut);font-weight:700}
+.price s{color:#7d776b;font-size:15px}
+.steps{display:none;flex-direction:column;gap:8px}
+.bill-etale .steps{display:flex}
+.bill-etale .price{opacity:.55}
+.steps .bar{display:flex;height:8px;border-radius:99px;overflow:hidden;gap:3px}
+.steps .bar i{height:100%;border-radius:99px;background:var(--gold);transform-origin:left;animation:grow .9s var(--ease) both;animation-delay:calc(var(--k)*150ms)}
+.steps .bar i:nth-child(even){background:#6b5426}
+@keyframes grow{from{transform:scaleX(0)}}
+.steps ul{list-style:none;display:grid;gap:5px;font-size:13.5px}
+.steps li{display:flex;justify-content:space-between;gap:10px;color:#cfc6b2}
+.steps li b{color:var(--ivoire);white-space:nowrap}
+.plan ul.inc{list-style:none;display:grid;gap:8px;font-size:14px;color:#d9cfb8;border-top:1px solid var(--line2);padding-top:16px}
+.plan ul.inc li{display:flex;gap:10px}
+.plan ul.inc li:before{content:"";flex:none;width:17px;height:17px;margin-top:2px;border-radius:50%;background:rgba(98,201,124,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%238fe0a5' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
+.plan .dur{font-size:13px;color:var(--mut);font-weight:700}
+.plan .btn{margin-top:auto;align-self:stretch;justify-content:space-between}
+.plan:not(.star) .btn{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ivoire);box-shadow:none}
+.plan:not(.star) .btn i{background:var(--gold);color:#1a1206}
+.tnote{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;color:var(--mut);font-size:14px}
+.tnote b{color:var(--ivoire)}
+.tnote a{color:var(--or2);font-weight:800}
+@media (max-width:960px){.plans{grid-template-columns:1fr;max-width:520px}}
 /* ---------- À propos ---------- */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px)}
 .about .vm{display:grid;gap:22px;margin-top:30px}
@@ -498,14 +540,14 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
     <a href="#services">Services</a>
     <a href="#plateformes">Plateformes</a>
     <a href="#apropos">À propos</a>
-    <a href="/prix">Tarifs</a>
+    <a href="#tarifs">Tarifs</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="btn btn-or" href="#contact" data-devis>Devis <i><svg><use href="#fl"/></svg></i></a>
   <button id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
 </header>
 <div id="menu" role="dialog" aria-label="Menu">
-  <a href="#objectif-2026">Objectif 2026</a><a href="#services">Services</a><a href="#plateformes">Plateformes</a><a href="#apropos">À propos</a><a href="/prix">Tarifs</a><a href="/vision-2026">Vision 2026</a><a href="#contact">Contact</a>
+  <a href="#objectif-2026">Objectif 2026</a><a href="#services">Services</a><a href="#plateformes">Plateformes</a><a href="#apropos">À propos</a><a href="#tarifs">Tarifs</a><a href="/vision-2026">Vision 2026</a><a href="#contact">Contact</a>
 </div>
 
 <main>
@@ -790,6 +832,54 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
   </div>
 </section>
 
+<!-- ================= Tarifs ================= -->
+<section id="tarifs" class="sec" style="padding-top:0">
+  <div class="wrap">
+    <span class="kick rv">Tarifs</span>
+    <h2 class="words" data-words>Un site qui vend, <span class="goldtxt">à prix clair.</span></h2>
+    <p class="lead rv">Création, hébergement et nom de domaine compris la première année. Payez en une fois, ou par étapes au rythme du projet.</p>
+    <div class="bill rv" id="bill" role="group" aria-label="Mode de paiement"><i></i><button type="button" aria-pressed="true" data-mode="classique">Paiement classique</button><button type="button" aria-pressed="false" data-mode="etale">Paiement étalé</button></div>
+    <div class="plans" id="plans">
+
+      <article class="plan rv">
+        <div><small>L'Accélérateur</small><h3>Landing page / One-page</h3></div>
+        <p class="for">Pour un lancement rapide, un événement ou un produit unique.</p>
+        <div class="price"><b class="goldtxt" data-count="359800" data-fmt="fr">359 800</b><span>FCFA</span></div>
+        <div class="steps"><div class="bar"><i style="flex:50;--k:0"></i><i style="flex:50;--k:1"></i></div>
+          <ul><li>À la commande (50 %)<b>180 000 FCFA</b></li><li>À la livraison (50 %)<b>179 800 FCFA</b></li></ul></div>
+        <ul class="inc"><li>Site ultra-rapide (score Google 98/100)</li><li>Hébergement et domaine 1 an</li><li>Outil d'administration simple</li><li>Bouton de chat WhatsApp</li><li>Référencement Google avancé</li></ul>
+        <span class="dur">Livré en 2 semaines environ</span>
+        <button class="btn btn-or" type="button" data-offre="L'Accélérateur — Landing page (359 800 FCFA)">Lancer mon projet <i><svg><use href="#fl"/></svg></i></button>
+      </article>
+
+      <article class="plan star rv" style="--d:.08s">
+        <span class="pop2">★ Le plus choisi</span>
+        <div><small>Le Partenaire</small><h3>Site vitrine</h3></div>
+        <p class="for">Pour présenter votre entreprise, vos services et asseoir votre crédibilité.</p>
+        <div class="price"><b class="goldtxt" data-count="729800" data-fmt="fr">729 800</b><span>FCFA</span><s>780 000</s></div>
+        <div class="steps"><div class="bar"><i style="flex:30;--k:0"></i><i style="flex:40;--k:1"></i><i style="flex:30;--k:2"></i></div>
+          <ul><li>À la commande (30 %)<b>219 000 FCFA</b></li><li>Développement (40 %)<b>291 920 FCFA</b></li><li>À la livraison (30 %)<b>218 880 FCFA</b></li></ul></div>
+        <ul class="inc"><li>Site moderne et évolutif</li><li>Hébergement, domaine et sécurité renforcée 1 an</li><li>Outil d'administration facile</li><li>Assistant IA qui répond 24 h/24</li><li>Référencement Google avancé</li><li>Maquette offerte avant de commencer</li></ul>
+        <span class="dur">Livré en 2 mois environ</span>
+        <button class="btn btn-or" type="button" data-offre="Le Partenaire — Site vitrine (729 800 FCFA)">Demander ma maquette <i><svg><use href="#fl"/></svg></i></button>
+      </article>
+
+      <article class="plan rv" style="--d:.16s">
+        <div><small>Le Leader du marché</small><h3>E-commerce / Portail</h3></div>
+        <p class="for">Pour vendre en ligne, gérer des réservations ou lancer une plateforme.</p>
+        <div class="price"><b class="goldtxt" data-count="1049800" data-fmt="fr">1 049 800</b><span>FCFA</span></div>
+        <div class="steps"><div class="bar"><i style="flex:25;--k:0"></i><i style="flex:30;--k:1"></i><i style="flex:30;--k:2"></i><i style="flex:15;--k:3"></i></div>
+          <ul><li>À la commande (25 %)<b>262 500 FCFA</b></li><li>Étape 2 (30 %)<b>314 940 FCFA</b></li><li>Étape 3 (30 %)<b>314 940 FCFA</b></li><li>À la livraison (15 %)<b>157 420 FCFA</b></li></ul></div>
+        <ul class="inc"><li>Boutique ou plateforme complète, installable sur téléphone</li><li>Paiement mobile money intégré</li><li>Hébergement haute disponibilité 1 an</li><li>Administration e-commerce</li><li>Recommandations de produits par IA</li><li>Référencement Google avancé</li></ul>
+        <span class="dur">Livré en 3 mois environ</span>
+        <button class="btn btn-or" type="button" data-offre="Le Leader du marché — E-commerce / Portail (1 049 800 FCFA)">Planifier ma démo <i><svg><use href="#fl"/></svg></i></button>
+      </article>
+
+    </div>
+    <div class="tnote rv"><span>✦ <b>Le code vous appartient</b> à 100 % à la livraison.</span><span>✦ Après la 1re année : hébergement et domaine <b>≈ 35 000 FCFA / an</b>.</span><span>✦ Score Google garanti : <b>80/100 minimum</b>, sinon on continue gratuitement.</span><a href="/prix">Voir le comparatif complet →</a></div>
+  </div>
+</section>
+
 <!-- ================= À propos ================= -->
 <section id="apropos" class="sec" style="padding-top:0">
   <div class="wrap about">
@@ -936,7 +1026,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
         <button class="share" type="button" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Partager le site</button>
       </div>
       <div><h4>Objectif 2026</h4><ul><li><a href="https://miadmarket.com" target="_blank" rel="noopener">MIAD Market</a></li><li><a href="https://abmcymarket.abmcy.com" target="_blank" rel="noopener">ABMCY Market</a></li><li><a href="https://jeldem.abmcy.com" target="_blank" rel="noopener">JEL DEM</a></li><li><a href="https://diarra.app" target="_blank" rel="noopener">DIARRA</a></li><li><a href="https://mahu.cards" target="_blank" rel="noopener">Mahu Cards</a></li><li><a href="https://yes.abmcy.com" target="_blank" rel="noopener">Yes.abmcy</a></li><li><a href="https://hani.abmcy.com" target="_blank" rel="noopener">HANI'S</a></li><li><a href="https://eed.abmcy.com" target="_blank" rel="noopener">Église Évangélique de Dakar</a></li><li>Shcode · bientôt</li></ul></div>
-      <div><h4>ABMCY</h4><ul><li><a href="/vision-2026">Vision 2026</a></li><li><a href="/prix">Tarifs</a></li><li><a href="#simulateur">Simulateur de besoin</a></li><li><a href="/devenir-partenaire">Devenir partenaire</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>ABMCY</h4><ul><li><a href="/vision-2026">Vision 2026</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="/prix">Comparatif des offres</a></li><li><a href="#simulateur">Simulateur de besoin</a></li><li><a href="/devenir-partenaire">Devenir partenaire</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4>Contact</h4><ul><li>Dakar, Sénégal</li><li><a href="https://wa.me/221769047999" target="_blank" rel="noopener">+221 76 904 79 99</a></li><li><a href="mailto:abmcompanysn@gmail.com">abmcompanysn@gmail.com</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 ABMCY — African Business Manager Company. Tous droits réservés.</span><a href="/mentions-legales">Mentions légales</a></div>
@@ -1004,8 +1094,8 @@ if (!intro.isConnected) revealHero();
 /* Compteurs */
 const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; cio.unobserve(e.target);
   const el = e.target, to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
-  const step = t => { const k = Math.min(1, (t - t0) / 1300); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (k < 1 ? '' : suf); if (k < 1) requestAnimationFrame(step); };
-  reduce ? el.textContent = to + suf : requestAnimationFrame(step); }), {threshold:.6});
+  const step = t => { const k = Math.min(1, (t - t0) / 1300); const v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = (el.dataset.fmt ? v.toLocaleString('fr-FR').replace(/\s/g, ' ') : v) + (k < 1 ? '' : suf); if (k < 1) requestAnimationFrame(step); };
+  reduce ? el.textContent = (el.dataset.fmt ? to.toLocaleString('fr-FR').replace(/\s/g, ' ') : to) + suf : requestAnimationFrame(step); }), {threshold:.6});
 $$('[data-count]').forEach(el => cio.observe(el));
 
 /* ---------- En-tête : pilule flottante au défilement ---------- */
@@ -1134,6 +1224,18 @@ form.addEventListener('submit', e => {
     .finally(() => { btn.disabled = false; btn.innerHTML = label; });
 });
 
+
+/* ---------- Tarifs ---------- */
+const bill = $('#bill'), plans = $('#plans');
+bill.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const et = b.dataset.mode === 'etale';
+  bill.classList.toggle('etale', et); plans.classList.toggle('bill-etale', et);
+  bill.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  if (et) plans.querySelectorAll('.steps .bar i').forEach(i => { i.style.animation = 'none'; void i.offsetWidth; i.style.animation = ''; }); });
+plans.addEventListener('click', e => { const b = e.target.closest('[data-offre]'); if (!b) return;
+  $('#service').value = 'sites-web';
+  const d = $('#devisForm [name=description]'); const etale = plans.classList.contains('bill-etale') ? ' — paiement étalé' : '';
+  d.value = `Offre choisie : ${b.dataset.offre}${etale}.\n` + d.value.replace(/^Offre choisie : .*\n/, '');
+  $('#contact').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); setTimeout(() => $('#devisForm [name=nom]').focus({preventScroll:true}), 700); });
 /* ---------- Partage ---------- */
 const toast = t => { const el = $('#toast'); el.textContent = t; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2200); };
 $('#share').addEventListener('click', async () => {
@@ -1144,7 +1246,7 @@ $('#share').addEventListener('click', async () => {
 
 /* Lien actif dans le menu */
 $$('.tl').forEach(t => io.observe(t));
-const secs = ['objectif-2026','services','plateformes','apropos','contact'].map(id => document.getElementById(id));
+const secs = ['objectif-2026','services','plateformes','tarifs','apropos','contact'].map(id => document.getElementById(id));
 const nio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$('#hd nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), {rootMargin:'-45% 0px -50% 0px'});
 secs.forEach(s => nio.observe(s));
 })();
