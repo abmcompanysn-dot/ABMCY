@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ABMCY — African Business Manager Company · Transformation digitale à Dakar</title>
-<meta name="description" content="ABMCY, agence de transformation digitale basée à Dakar : sites web, plateformes, e-commerce, automatisation et tableaux de bord. En 2026 : onze plateformes lancées, dont MIAD Market, ABMCY Market, JEL DEM, DIARRA et Mahu Cards.">
+<meta name="description" content="ABMCY, agence de transformation digitale basée à Dakar : sites web, plateformes, e-commerce, automatisation et tableaux de bord. En 2026 : douze plateformes lancées, dont MIAD Market, ABMCY Market, JEL DEM, DIARRA, Mahu Cards et HANI'S.">
 <meta name="theme-color" content="#07070a">
 <link rel="canonical" href="https://abmcy.com/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abmcy.com/">
 <meta property="og:title" content="ABMCY — Nous construisons le numérique de l'Afrique">
-<meta property="og:description" content="Sites, plateformes, e-commerce, automatisation. Objectif 2026 : onze plateformes lancées, de MIAD Market à Mahu Cards.">
+<meta property="og:description" content="Sites, plateformes, e-commerce, automatisation. Objectif 2026 : douze plateformes lancées, de MIAD Market à HANI'S.">
 <meta property="og:image" content="https://abmcy.com/assets/og-abmcy.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -237,6 +237,7 @@ body.menu #burger span:last-child{transform:translateY(-2.75px) rotate(-45deg)}
 .tl{position:relative;display:flex;flex-direction:column;border-radius:26px;border:1px solid var(--line);background:linear-gradient(160deg,var(--noir3),#0b0a08);overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
 .tl:hover{transform:translateY(-6px);border-color:rgba(243,213,138,.45)}
 .tl.w2{grid-column:span 2}
+.tl.w4{grid-column:1/-1}
 .tl .vis{position:relative;height:170px;border-bottom:1px solid var(--line2);background:radial-gradient(80% 100% at 50% 100%,rgba(212,166,74,.12),transparent 70%)}
 .tl .vis svg{position:absolute;inset:0;width:100%;height:100%}
 .tl .tx{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
@@ -284,6 +285,12 @@ body.menu #burger span:last-child{transform:translateY(-2.75px) rotate(-45deg)}
 .eed .halo{transform-box:fill-box;transform-origin:center;animation:hub 3s ease-in-out infinite}
 .eed .ev{opacity:0;animation:lab 4s ease infinite;animation-delay:var(--dl)}
 @media (max-width:1020px){.bento{grid-template-columns:repeat(2,1fr)}}
+/* HANI'S : arches, mètre ruban, étiquettes */
+.hanis .arch{transform-box:fill-box;transform-origin:center bottom;animation:arch 4.5s var(--ease) infinite;animation-delay:var(--dl)}
+@keyframes arch{0%{transform:translateY(30px);opacity:0}15%,85%{transform:none;opacity:1}100%{opacity:0}}
+.hanis .tape{animation:flow 1.4s linear infinite}
+.hanis .pop{opacity:0;transform-box:fill-box;transform-origin:left center;animation:bub 4.5s var(--ease) infinite;animation-delay:var(--dl)}
+@keyframes bub{0%{opacity:0;transform:scale(.5)}8%,80%{opacity:1;transform:none}92%,100%{opacity:0}}
 @media (max-width:560px){.bento{grid-template-columns:1fr}.tl.w2{grid-column:auto}}
 
 /* ---------- Services ---------- */
@@ -489,7 +496,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
         <a class="btn btn-ghost" href="#simulateur">Trouver ma solution</a>
       </div>
       <div class="proof rv" style="--d:.65s">
-        <div><b data-count="11">0</b>plateformes lancées en 2026</div>
+        <div><b data-count="12">0</b>plateformes lancées en 2026</div>
         <div><b data-count="840" data-suffix="+">0</b>utilisateurs sur nos plateformes</div>
         <div><b>24 h</b>pour répondre à un devis</div>
       </div>
@@ -519,12 +526,12 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
       <div>
         <span class="kick rv">Récap · Objectif 2026</span>
         <h2 class="words" data-words>Bâtir nos propres plateformes. <span class="goldtxt">Objectif atteint.</span></h2>
-        <p class="lead rv">En 2026, nous nous étions fixé un défi : ne plus seulement livrer des sites, mais créer et faire tourner nos propres plateformes, conçues et hébergées par notre équipe. Onze sont en ligne. Voici le bilan.</p>
+        <p class="lead rv">En 2026, nous nous étions fixé un défi : ne plus seulement livrer des sites, mais créer et faire tourner nos propres plateformes, conçues et hébergées par notre équipe. Douze sont en ligne. Voici le bilan.</p>
       </div>
       <div class="year cz" id="year" aria-label="2026">2026<b aria-hidden="true">2026</b></div>
     </div>
     <div class="stats">
-      <div class="stat rv"><b class="goldtxt" data-count="11">0</b><small>plateformes lancées en 2026</small></div>
+      <div class="stat rv"><b class="goldtxt" data-count="12">0</b><small>plateformes lancées en 2026</small></div>
       <div class="stat rv" style="--d:.1s"><b class="goldtxt" data-count="840" data-suffix="+">0</b><small>utilisateurs sur MIAD Market et DIARRA</small></div>
       <div class="stat rv" style="--d:.15s"><b class="goldtxt" data-count="1">0</b><small>en préparation : Shcode</small></div>
       <div class="stat rv" style="--d:.2s"><b class="goldtxt">100 %</b><small>conçu et hébergé par ABMCY</small></div>
@@ -709,7 +716,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
   </div>
   <div class="wrap more">
     <span class="kick rv">Et aussi, lancés en 2026</span>
-    <h3 class="t rv">Six autres plateformes, conçues et mises en ligne par notre équipe.</h3>
+    <h3 class="t rv">Sept autres plateformes, conçues et mises en ligne par notre équipe.</h3>
     <div class="bento">
 
       <a class="tl nfc w2 rv" href="https://mahu.cards" target="_blank" rel="noopener">
@@ -743,20 +750,17 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
         <div class="tx"><small>IA générative</small><b>Mahu IA</b><p>Textes, images, voix off, musique et vidéos générés par l'intelligence artificielle.</p><span class="lk">ai.mahu.cards</span></div>
       </a>
 
-      <a class="tl core w2 rv" style="--d:.06s" href="https://cors.abmcy.com" target="_blank" rel="noopener">
+      <a class="tl hanis w2 rv" href="https://hani.abmcy.com" target="_blank" rel="noopener">
         <div class="vis"><svg viewBox="0 0 640 170" aria-hidden="true">
-          <defs><path id="c1" d="M320 85 L150 40"/><path id="c2" d="M320 85 L140 130"/><path id="c3" d="M320 85 L490 40"/><path id="c4" d="M320 85 L500 130"/></defs>
-          <g stroke="rgba(212,166,74,.3)" stroke-dasharray="3 5"><use href="#c1"/><use href="#c2"/><use href="#c3"/><use href="#c4"/></g>
-          <g font-family="Manrope" font-size="11" font-weight="700" fill="#f4eddd">
-            <g transform="translate(70 24)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique A</text></g>
-            <g transform="translate(60 114)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique B</text></g>
-            <g transform="translate(482 24)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique C</text></g>
-            <g transform="translate(492 114)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique D</text></g>
-          </g>
-          <circle class="pulse" r="4" style="offset-path:path('M320 85 L150 40');--dl:0s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L140 130');--dl:.55s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L490 40');--dl:1.1s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L500 130');--dl:1.65s"/>
-          <g class="hub"><circle cx="320" cy="85" r="38" fill="#14120e" stroke="url(#gor)" stroke-width="2"/><text x="320" y="82" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="13" fill="#f3d58a">ABMCY</text><text x="320" y="98" text-anchor="middle" font-family="Manrope" font-weight="700" font-size="10" fill="#a59e8f">CORE</text></g>
+          <g class="arch" style="--dl:0s"><path d="M150 160V70a40 40 0 0 1 80 0v90z" fill="#14120e" stroke="rgba(212,166,74,.5)"/><path d="M190 64c-8 0-12 6-12 12l-6 8 8 2-10 52h40l-10-52 8-2-6-8c0-6-4-12-12-12z" fill="#e0b75c"/></g>
+          <g class="arch" style="--dl:.25s"><path d="M250 160V56a40 40 0 0 1 80 0v104z" fill="#14120e" stroke="rgba(212,166,74,.5)"/><path d="M290 52c-8 0-12 6-12 12l-4 10 6 2-14 70h48l-14-70 6-2-4-10c0-6-4-12-12-12z" fill="#d18b3c"/></g>
+          <g class="arch" style="--dl:.5s"><path d="M350 160V70a40 40 0 0 1 80 0v90z" fill="#14120e" stroke="rgba(212,166,74,.5)"/><path d="M390 64c-8 0-12 6-12 12l-6 8 8 2-8 52h36l-8-52 8-2-6-8c0-6-4-12-12-12z" fill="#b9a26a"/></g>
+          <path class="tape" d="M60 140 C 90 120, 110 150, 140 128" fill="none" stroke="#f3d58a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 6"/>
+          <g class="pop" style="--dl:1s"><rect x="456" y="40" width="136" height="30" rx="15" fill="url(#gor)"/><text x="524" y="60" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="800" fill="#1a1206">Sur mesure</text></g>
+          <g class="pop" style="--dl:1.5s"><rect x="456" y="82" width="136" height="30" rx="15" fill="#14120e" stroke="rgba(212,166,74,.5)"/><text x="524" y="102" text-anchor="middle" font-family="Manrope" font-size="11.5" font-weight="800" fill="#f3d58a">Choix du tissu</text></g>
+          <g class="pop" style="--dl:2s"><rect x="456" y="124" width="136" height="30" rx="15" fill="#14120e" stroke="rgba(212,166,74,.5)"/><text x="524" y="144" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="800" fill="#a59e8f">Wave · OM · Free Money</text></g>
         </svg></div>
-        <div class="tx"><small>Moteur des boutiques</small><b>ABMCY Core</b><p>Un seul moteur pour toutes les boutiques que nous accompagnons : chacune garde ses données à part, son tableau de bord, ses commandes et ses paiements.</p><span class="lk">cors.abmcy.com</span></div>
+        <div class="tx"><small>Boutique en ligne · couture</small><b>HANI'S</b><p>Maison de couture à Dakar : collections femme et homme, créations sur mesure avec choix du tissu, commande en ligne et paiement Wave, Orange Money ou Free Money.</p><span class="lk">hani.abmcy.com</span></div>
       </a>
 
       <a class="tl brvm rv" style="--d:.12s" href="https://brvm.abmcy.com" target="_blank" rel="noopener">
@@ -778,6 +782,21 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
         <div class="tx"><small>Site institutionnel</small><b>Église Évangélique de Dakar</b><p>« Lumière du Futur » : cultes, événements, ministères et ressources en ligne.</p><span class="lk">eed.abmcy.com</span></div>
       </a>
 
+      <a class="tl core w4 rv" style="--d:.06s" href="https://cors.abmcy.com" target="_blank" rel="noopener">
+        <div class="vis"><svg viewBox="0 0 640 170" aria-hidden="true">
+          <defs><path id="c1" d="M320 85 L150 40"/><path id="c2" d="M320 85 L140 130"/><path id="c3" d="M320 85 L490 40"/><path id="c4" d="M320 85 L500 130"/></defs>
+          <g stroke="rgba(212,166,74,.3)" stroke-dasharray="3 5"><use href="#c1"/><use href="#c2"/><use href="#c3"/><use href="#c4"/></g>
+          <g font-family="Manrope" font-size="11" font-weight="700" fill="#f4eddd">
+            <g transform="translate(70 24)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique A</text></g>
+            <g transform="translate(60 114)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique B</text></g>
+            <g transform="translate(482 24)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique C</text></g>
+            <g transform="translate(492 114)"><rect width="88" height="32" rx="10" fill="#14120e" stroke="rgba(212,166,74,.4)"/><text x="14" y="20">Boutique D</text></g>
+          </g>
+          <circle class="pulse" r="4" style="offset-path:path('M320 85 L150 40');--dl:0s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L140 130');--dl:.55s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L490 40');--dl:1.1s"/><circle class="pulse" r="4" style="offset-path:path('M320 85 L500 130');--dl:1.65s"/>
+          <g class="hub"><circle cx="320" cy="85" r="38" fill="#14120e" stroke="url(#gor)" stroke-width="2"/><text x="320" y="82" text-anchor="middle" font-family="Cinzel" font-weight="700" font-size="13" fill="#f3d58a">ABMCY</text><text x="320" y="98" text-anchor="middle" font-family="Manrope" font-weight="700" font-size="10" fill="#a59e8f">CORE</text></g>
+        </svg></div>
+        <div class="tx"><small>Moteur des boutiques</small><b>ABMCY Core</b><p>Un seul moteur pour toutes les boutiques que nous accompagnons : chacune garde ses données à part, son tableau de bord, ses commandes et ses paiements.</p><span class="lk">cors.abmcy.com</span></div>
+      </a>
     </div>
   </div>
 </section>
@@ -787,7 +806,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
   <div class="wrap">
     <span class="kick rv">Services</span>
     <h2 class="words" data-words>Tout ce qu'il faut pour <span class="goldtxt">grandir en ligne.</span></h2>
-    <p class="lead rv">Seize savoir-faire, réunis en quatre familles. Choisissez, nous nous occupons du reste.</p>
+    <p class="lead rv">Dix-huit savoir-faire, réunis en quatre familles. Choisissez, nous nous occupons du reste.</p>
     <div class="tabs" role="tablist" id="tabs"><span class="pillbg" id="pillbg"></span></div>
     <div class="svc" id="svc" role="tabpanel"></div>
   </div>
@@ -919,6 +938,8 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
                 <option value="evenementiel">Événementiel</option>
                 <option value="decoration-artistique">Décoration artistique</option>
                 <option value="automatisation-workflow">Automatisation workflow</option>
+                <option value="automatisation-marketing">Relances &amp; marketing automatisé</option>
+                <option value="serveur-mail">Serveur mail professionnel</option>
                 <option value="dashboards-intelligents">Dashboards intelligents</option>
                 <option value="branding-premium">Branding premium</option>
                 <option value="integration-qr-nfc">Intégration QR/NFC</option>
@@ -980,7 +1001,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
       <span class="kick rv">Questions fréquentes</span>
       <h2 class="words" data-words>Vous vous demandez <span class="goldtxt">peut-être…</span></h2>
       <div class="faq">
-        <details class="rv"><summary>Quels services proposez-vous ?</summary><p>Sites web, applications mobiles, boutiques en ligne, automatisation (WhatsApp, IA), tableaux de bord, branding, stratégie digitale, formation et bien plus. Voyez la section Services pour la liste complète.</p></details>
+        <details class="rv"><summary>Quels services proposez-vous ?</summary><p>Sites web, applications mobiles, boutiques en ligne, automatisation (WhatsApp, IA, relances), serveur mail professionnel, tableaux de bord, branding, stratégie digitale, formation et bien plus. Voyez la section Services pour la liste complète.</p></details>
         <details class="rv"><summary>Travaillez-vous uniquement au Sénégal ?</summary><p>Nous sommes basés à Dakar, mais notre vision est panafricaine : nous travaillons avec des clients et des partenaires dans toute l'Afrique.</p></details>
         <details class="rv"><summary>Comment obtenir un devis ?</summary><p>Remplissez le formulaire de contact ou écrivez-nous sur WhatsApp. Le simulateur de besoin vous donne aussi une première idée des solutions adaptées. Nous répondons sous 24 h.</p></details>
         <details class="rv"><summary>Comment devenir partenaire ?</summary><p>Rendez-vous sur la page « Devenir partenaire » et remplissez le formulaire de candidature. Notre équipe étudie votre profil et vous recontacte.</p></details>
@@ -998,7 +1019,7 @@ footer{border-top:1px solid var(--line);padding:70px 0 34px;margin-top:40px;back
         <p>African Business Manager Company. Votre partenaire de confiance pour la transformation digitale en Afrique.</p>
         <button class="share" type="button" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Partager le site</button>
       </div>
-      <div><h4>Objectif 2026</h4><ul><li><a href="https://miadmarket.com" target="_blank" rel="noopener">MIAD Market</a></li><li><a href="https://abmcymarket.abmcy.com" target="_blank" rel="noopener">ABMCY Market</a></li><li><a href="https://jeldem.abmcy.com" target="_blank" rel="noopener">JEL DEM</a></li><li><a href="https://diarra.app" target="_blank" rel="noopener">DIARRA</a></li><li><a href="https://mahu.cards" target="_blank" rel="noopener">Mahu Cards</a></li><li><a href="https://yes.abmcy.com" target="_blank" rel="noopener">Yes.abmcy</a></li><li><a href="https://eed.abmcy.com" target="_blank" rel="noopener">Église Évangélique de Dakar</a></li><li>Shcode · bientôt</li></ul></div>
+      <div><h4>Objectif 2026</h4><ul><li><a href="https://miadmarket.com" target="_blank" rel="noopener">MIAD Market</a></li><li><a href="https://abmcymarket.abmcy.com" target="_blank" rel="noopener">ABMCY Market</a></li><li><a href="https://jeldem.abmcy.com" target="_blank" rel="noopener">JEL DEM</a></li><li><a href="https://diarra.app" target="_blank" rel="noopener">DIARRA</a></li><li><a href="https://mahu.cards" target="_blank" rel="noopener">Mahu Cards</a></li><li><a href="https://yes.abmcy.com" target="_blank" rel="noopener">Yes.abmcy</a></li><li><a href="https://hani.abmcy.com" target="_blank" rel="noopener">HANI'S</a></li><li><a href="https://eed.abmcy.com" target="_blank" rel="noopener">Église Évangélique de Dakar</a></li><li>Shcode · bientôt</li></ul></div>
       <div><h4>ABMCY</h4><ul><li><a href="/vision-2026">Vision 2026</a></li><li><a href="/prix">Tarifs</a></li><li><a href="#simulateur">Simulateur de besoin</a></li><li><a href="/devenir-partenaire">Devenir partenaire</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4>Contact</h4><ul><li>Dakar, Sénégal</li><li><a href="https://wa.me/221769047999" target="_blank" rel="noopener">+221 76 904 79 99</a></li><li><a href="mailto:abmcompanysn@gmail.com">abmcompanysn@gmail.com</a></li></ul></div>
     </div>
@@ -1080,7 +1101,7 @@ burger.addEventListener('click', () => { const o = document.body.classList.toggl
 $$('#menu a').forEach(a => a.addEventListener('click', () => { document.body.classList.remove('menu'); burger.setAttribute('aria-expanded', false); }));
 
 /* ---------- Bande défilante ---------- */
-const bandItems = ['Sites web premium','Boutiques en ligne','Applications mobiles','Automatisation & IA','Tableaux de bord','Branding','Paiement mobile money','Cybersécurité'];
+const bandItems = ['Sites web premium','Boutiques en ligne','Applications mobiles','Automatisation & IA','Serveur mail professionnel','Relances automatiques','Tableaux de bord','Branding','Paiement mobile money','Cybersécurité'];
 $('#band').innerHTML = [...bandItems, ...bandItems].map(t => `<span>${esc(t)}</span>`).join('');
 
 /* ---------- Récap 2026 : piste horizontale pilotée par le défilement ---------- */
@@ -1122,7 +1143,9 @@ const I = {
   star:'<path d="m12 3 2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7L12 3Z"/>',
   home:'<path d="M3 11 12 4l9 7v9H3v-9Z"/><path d="M9 20v-6h6v6"/>',
   plane:'<path d="M10 14 3 11l1-2 8 1 5-6c1-1 3-1 3 1l-5 6 1 8-2 1-3-7"/>',
-  plus:'<path d="M12 5v14M5 12h14"/>'
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/><path d="M17 15h4M19 13v4"/>',
+  loop:'<path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/>'
 };
 const S = [
   {t:'Créer', items:[
@@ -1134,7 +1157,9 @@ const S = [
     ['bolt','Automatisation & IA','Vos processus automatisés via WhatsApp, n8n et l\'intelligence artificielle.',['Chatbots','Scénarios n8n','Multicanal'],'automatisation-workflow'],
     ['chart','Dashboards intelligents','Vos indicateurs clés en temps réel pour décider vite et bien.',['Visualisation dynamique','Rapports automatiques','Alertes'],'dashboards-intelligents'],
     ['qr','Intégration QR / NFC','Paiements, cartes de visite et menus sans contact.',['Paiement rapide','Cartes digitales','Suivi des scans'],'integration-qr-nfc'],
-    ['shield','Cybersécurité & protection','Vos outils et vos données sécurisés et conformes.',['Audit de sécurité','Sauvegardes','Conformité'],'cybersecurite-protection']]},
+    ['shield','Cybersécurité & protection','Vos outils et vos données sécurisés et conformes.',['Audit de sécurité','Sauvegardes','Conformité'],'cybersecurite-protection'],
+    ['mail','Serveur mail professionnel','Vos adresses email à votre nom (contact@votre-entreprise), sur un serveur mis en place et suivi par nos soins.',['Adresses à votre domaine','Anti-spam et webmail','Sauvegardes'],'serveur-mail'],
+    ['loop','Relances & marketing automatisé','Vos relances WhatsApp et email partent toutes seules, et vos publications sortent à l\'heure sur vos réseaux.',['Relances WhatsApp et email','Publication sur 5 réseaux','Suivi des résultats et des ventes'],'automatisation-marketing']]},
   {t:'Faire connaître', items:[
     ['target','Stratégie digitale','Un plan numérique clair, efficace et rentable.',['Audit digital','Campagnes publicitaires','Analyse et optimisation'],'strategie-digitale'],
     ['cam','Communication & audiovisuel','Vidéos, contenus et couverture qui font parler de vous.',['Production vidéo','Réseaux sociaux','Couverture d\'événements'],'communication-audiovisuel'],
