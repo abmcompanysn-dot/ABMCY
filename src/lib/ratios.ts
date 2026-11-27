@@ -49,5 +49,7 @@ export const RATIOS: Record<string, number> = {
  "jsgk-pc": 1.806,
  "jsgk-tel": 5.641,
  "managers-pc": 0.625,
- "managers-tel": 2.382
+ "managers-tel": 2.382,
+ "alit-pc": 1.806,
+ "alit-tel": 5.641
 };

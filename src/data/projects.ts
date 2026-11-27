@@ -66,6 +66,8 @@ export const PROJECTS: Project[] = [
   // --- Tous les autres projets en ligne ---
   { id: 'miadtalent', name: 'MIAD Talent', host: 'alanni.abmcy.com', url: 'https://alanni.abmcy.com', cat: 'entreprises', y2026: true, shot: 'miadtalent',
     kicker: 'Recrutement', desc: 'Les meilleurs talents africains, avec vidéo de présentation et CV, pour les entreprises qui recrutent : profils anonymisés, identité transmise avec l’accord du candidat.' },
+  { id: 'alit', name: 'ALIT', host: 'alit.abmcy.com', url: 'https://alit.abmcy.com', cat: 'entreprises', y2026: true, shot: 'alit',
+    kicker: 'Énergie solaire', desc: 'Installations photovoltaïques, pompage solaire et matériel certifié pour particuliers, entreprises, agriculteurs et collectivités, partout au Sénégal.' },
   { id: 'peniel', name: 'Peniel Fashion', host: 'pf.abmcy.com', url: 'https://pf.abmcy.com', cat: 'commerce', y2026: true, shot: 'peniel',
     kicker: 'Costumes sur mesure', desc: 'Costumes, smokings et tenues de cérémonie sur mesure : on choisit son modèle, on envoie ses mesures, la maison confectionne.' },
   { id: 'shoppro', name: 'SHOP PRO', host: 'memane.abmcy.com', url: 'https://memane.abmcy.com', cat: 'commerce', y2026: true, shot: 'shoppro',
