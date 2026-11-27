@@ -3,3 +3,5 @@ config.js
 
 # Fichiers système et de l'éditeur
 .DS_Store
+.vercel
+.env*
