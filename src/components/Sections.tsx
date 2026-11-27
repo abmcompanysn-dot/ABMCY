@@ -297,7 +297,7 @@ export function PartnerFaq() {
 export function Footer() {
   const [toast, setToast] = useState('');
   const share = async () => {
-    const d = { title: 'ABMCY', text: "ABMCY, l'agence digitale qui construit le numérique de l'Afrique.", url: 'https://abmcy.com/' };
+    const d = { title: 'ABMCY', text: "ABMCY, l'agence digitale qui construit la robotique et le numérique de l'Afrique.", url: 'https://abmcy.com/' };
     if (navigator.share) { try { await navigator.share(d); } catch { /* annulé */ } return; }
     try { await navigator.clipboard.writeText(d.url); setToast('Lien copié !'); } catch { setToast('abmcy.com'); }
     setTimeout(() => setToast(''), 2200);

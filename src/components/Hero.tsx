@@ -81,9 +81,9 @@ export default function Hero({ ready }: { ready: boolean }) {
     <section id="accueil" className="hero-s" ref={ref}>
       <motion.div className="wrap hero" style={{ y, opacity: fade }}>
         <div>
-          <motion.span className="kick" initial={{ opacity: 0, y: 28 }} animate={show} transition={{ duration: 0.9, ease: EASE }}>Agence digitale · Dakar, Sénégal</motion.span>
-          {ready && <Words as="h1">Nous construisons le numérique <Gold>de l'Afrique.</Gold></Words>}
-          {!ready && <h1 style={{ opacity: 0 }}>Nous construisons le numérique de l'Afrique.</h1>}
+          <motion.span className="kick" initial={{ opacity: 0, y: 28 }} animate={show} transition={{ duration: 0.9, ease: EASE }}>Robotique & numérique · Dakar</motion.span>
+          {ready && <Words as="h1">Nous construisons la robotique et le numérique <Gold>de l'Afrique.</Gold></Words>}
+          {!ready && <h1 style={{ opacity: 0 }}>Nous construisons la robotique et le numérique de l'Afrique.</h1>}
           <motion.p className="lead" initial={{ opacity: 0, y: 28 }} animate={show} transition={{ duration: 0.9, ease: EASE, delay: 0.35 }}>
             Sites, plateformes, boutiques en ligne, automatisation et tableaux de bord : ABMCY conçoit, lance et fait grandir les projets digitaux des entreprises africaines.
           </motion.p>

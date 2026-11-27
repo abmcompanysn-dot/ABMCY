@@ -8,7 +8,7 @@ import { setMeta } from '../lib/form';
 
 export default function Home({ ready }: { ready: boolean }) {
   useEffect(() => setMeta('ABMCY — African Business Manager Company · Agence digitale à Dakar',
-    "ABMCY, agence de transformation digitale basée à Dakar : sites web, plateformes, e-commerce, automatisation, serveur mail et tableaux de bord. Plus de vingt projets lancés en 2026."), []);
+    "ABMCY construit la robotique et le numérique de l'Afrique depuis Dakar : sites web, plateformes, e-commerce, automatisation, serveur mail et tableaux de bord. Plus de vingt projets lancés en 2026."), []);
   return (
     <>
       <Hero ready={ready} />
