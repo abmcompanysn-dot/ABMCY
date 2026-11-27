@@ -5,13 +5,32 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/:page(prix|devenir-partenaire|vision-2026|solution-recommandee|mentions-legales|feuille-vierge|plateforme-ecommerce|plateforme-elearning|plateforme-evenementiel|plateforme-gestion|plateforme-valorisation-pro|realisation-edupilote|realisation-reseau).html", "destination": "/:page", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:page(prix|devenir-partenaire|vision-2026|solution-recommandee|mentions-legales|feuille-vierge|plateforme-ecommerce|plateforme-elearning|plateforme-evenementiel|plateforme-gestion|plateforme-valorisation-pro|realisation-edupilote|realisation-reseau).html",
+      "destination": "/:page",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/((?!assets/|config\.js|sitemap\.xml|aapscript\.js).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!assets/|config\\.js|sitemap\\.xml|aapscript\\.js).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] }
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    }
   ]
 }
