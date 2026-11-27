@@ -51,5 +51,7 @@ export const RATIOS: Record<string, number> = {
  "managers-pc": 0.625,
  "managers-tel": 2.382,
  "alit-pc": 1.806,
- "alit-tel": 5.641
+ "alit-tel": 5.641,
+ "eana-pc": 1.806,
+ "eana-tel": 5.641,
 };

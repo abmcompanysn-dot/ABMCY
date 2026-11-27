@@ -68,6 +68,8 @@ export const PROJECTS: Project[] = [
     kicker: 'Recrutement', desc: 'Les meilleurs talents africains, avec vidéo de présentation et CV, pour les entreprises qui recrutent : profils anonymisés, identité transmise avec l’accord du candidat.' },
   { id: 'alit', name: 'ALIT', host: 'alit.abmcy.com', url: 'https://alit.abmcy.com', cat: 'entreprises', y2026: true, shot: 'alit',
     kicker: 'Énergie solaire', desc: 'Installations photovoltaïques, pompage solaire et matériel certifié pour particuliers, entreprises, agriculteurs et collectivités, partout au Sénégal.' },
+  { id: 'eana', name: 'EANA HOLDING', host: 'eanaholding.com', url: 'https://eanaholding.com', cat: 'entreprises', y2026: true, shot: 'eana',
+    kicker: 'Groupe panafricain · Abidjan', desc: 'Le site du groupe et de ses cinq filiales (énergie, agroalimentaire, finance numérique, eau minérale, télécoms) : présence sur un globe interactif et accès direct au site de chaque filiale.' },
   { id: 'peniel', name: 'Peniel Fashion', host: 'pf.abmcy.com', url: 'https://pf.abmcy.com', cat: 'commerce', y2026: true, shot: 'peniel',
     kicker: 'Costumes sur mesure', desc: 'Costumes, smokings et tenues de cérémonie sur mesure : on choisit son modèle, on envoie ses mesures, la maison confectionne.' },
   { id: 'shoppro', name: 'SHOP PRO', host: 'memane.abmcy.com', url: 'https://memane.abmcy.com', cat: 'commerce', y2026: true, shot: 'shoppro',
