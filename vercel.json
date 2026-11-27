@@ -18,7 +18,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|config\\.js|sitemap\\.xml|aapscript\\.js).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
