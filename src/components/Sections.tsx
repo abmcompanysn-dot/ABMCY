@@ -4,6 +4,7 @@ import { BUDGETS, CONTACT, DELAIS, FAQ, FORM_URL_FALLBACK, PLANS, QUOTES, SECTEU
 import { PROJECTS } from '../data/projects';
 import { Africa, Arrow, Counter, EASE, Gold, Icon, Reveal, Words, usePauseOffscreen } from './ui';
 import { scrollToId } from '../lib/scroll';
+import { navigate } from '../lib/router';
 
 /* Préremplir le formulaire de devis depuis n'importe quelle section */
 type Prefill = { service?: string; offre?: string };
@@ -66,7 +67,7 @@ export function Simulator() {
             <h2>Pas sûr de ce qu'il vous faut ?</h2>
             <p className="lead">Dites-nous qui vous êtes et votre secteur : nous vous montrons les solutions adaptées, en une minute.</p>
           </div>
-          <form onSubmit={e => { e.preventDefault(); if (!sect) { setErr(true); return; } location.href = '/solution-recommandee?secteur=' + encodeURIComponent(sect); }}>
+          <form onSubmit={e => { e.preventDefault(); if (!sect) { setErr(true); return; } navigate('/solution-recommandee?secteur=' + encodeURIComponent(sect)); }}>
             <div className="seg" role="radiogroup" aria-label="Vous êtes">
               <label><input type="radio" name="user_type_simulator" value="entreprise" defaultChecked />Une entreprise</label>
               <label><input type="radio" name="user_type_simulator" value="particulier" />Un particulier</label>
@@ -307,12 +308,12 @@ export function Footer() {
       <div className="wrap">
         <div className="ft">
           <div>
-            <a className="brand" href="#accueil" onClick={e => { e.preventDefault(); scrollToId('accueil'); }}><Africa style={{ width: 34 }} /><b className="goldtxt" style={{ fontSize: 22 }}>ABMCY</b></a>
+            <a className="brand" href="/" onClick={e => { e.preventDefault(); scrollToId('accueil'); }}><Africa style={{ width: 34 }} /><b className="goldtxt" style={{ fontSize: 22 }}>ABMCY</b></a>
             <p>African Business Manager Company. Votre partenaire de confiance pour la transformation digitale en Afrique.</p>
             <button className="share" type="button" onClick={share}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4" /></svg>Partager le site</button>
           </div>
-          <div><h4>Objectif 2026</h4><ul>{y26.map(p => <li key={p.id}><a href={p.url} target="_blank" rel="noopener">{p.name}</a></li>)}<li><a href="#projets" onClick={e => { e.preventDefault(); scrollToId('projets'); }}>Tous les projets →</a></li></ul></div>
-          <div><h4>ABMCY</h4><ul><li><a href="/vision-2026">Vision 2026</a></li><li><a href="/prix">Comparatif des offres</a></li><li><a href="#simulateur" onClick={e => { e.preventDefault(); scrollToId('simulateur'); }}>Simulateur de besoin</a></li><li><a href="/devenir-partenaire">Devenir partenaire</a></li><li><a href="#faq" onClick={e => { e.preventDefault(); scrollToId('faq'); }}>FAQ</a></li></ul></div>
+          <div><h4>Objectif 2026</h4><ul>{y26.map(p => <li key={p.id}><a href={p.url} target="_blank" rel="noopener">{p.name}</a></li>)}<li><a href="/#projets" onClick={e => { e.preventDefault(); scrollToId('projets'); }}>Tous les projets →</a></li></ul></div>
+          <div><h4>ABMCY</h4><ul><li><a href="/vision-2026">Vision 2026</a></li><li><a href="/prix">Tarifs et comparatif</a></li><li><a href="/plateforme-ecommerce">Plateforme e-commerce</a></li><li><a href="/realisation-reseau">Réseau ABMCY</a></li><li><a href="/#simulateur" onClick={e => { e.preventDefault(); scrollToId('simulateur'); }}>Simulateur de besoin</a></li><li><a href="/devenir-partenaire">Devenir partenaire</a></li><li><a href="/#faq" onClick={e => { e.preventDefault(); scrollToId('faq'); }}>FAQ</a></li></ul></div>
           <div><h4>Contact</h4><ul><li>{CONTACT.city}</li><li><a href={CONTACT.wa} target="_blank" rel="noopener">{CONTACT.phone}</a></li><li><a href={'mailto:' + CONTACT.email}>{CONTACT.email}</a></li></ul></div>
         </div>
         <div className="legal"><span>© 2026 ABMCY — African Business Manager Company. Tous droits réservés.</span><a href="/mentions-legales">Mentions légales</a></div>
