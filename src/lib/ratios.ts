@@ -54,4 +54,6 @@ export const RATIOS: Record<string, number> = {
  "alit-tel": 5.641,
  "eana-pc": 1.806,
  "eana-tel": 5.641,
+ "caisnir-pc": 0.869,
+ "caisnir-tel": 5.641,
 };

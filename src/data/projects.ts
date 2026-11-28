@@ -80,6 +80,8 @@ export const PROJECTS: Project[] = [
     kicker: 'Chambres & prestations', desc: 'Chambres à louer et services du quotidien (ménage, blanchisserie, sécurité, accueil) à Dakar et dans d’autres villes, sur une seule plateforme.' },
   { id: 'pilote', name: 'PILOTE', host: 'auto-ecole.abmcy.com', url: 'https://auto-ecole.abmcy.com', cat: 'education', y2026: true, shot: 'pilote',
     kicker: 'Logiciel auto-école', desc: 'Toute l’auto-école dans un seul outil : inscriptions, code en ligne avec prédiction de réussite, planning de conduite, livret numérique et examens.' },
+  { id: 'caisnir', name: 'CAISNIR', host: 'caisnir.abmcy.com', url: 'https://caisnir.abmcy.com', cat: 'education', y2026: true, shot: 'caisnir',
+    kicker: 'IA pour l’enseignement', desc: 'Écoute le professeur et illustre le cours en direct au projecteur : les animations suivent ce qu’il dit, un réseau neuronal apprend de ses corrections, une bibliothèque en ligne explique le reste.' },
   { id: 'ensetp', name: 'Gala ENSETP 2026', host: 'ensetp.abmcy.com', url: 'https://ensetp.abmcy.com', cat: 'education', y2026: true, shot: 'ensetp',
     kicker: 'Événement', desc: 'Le dîner de gala de fin d’année de l’ENSETP : artistes en live, confirmation de présence, partenaires et espace d’administration.' },
   { id: 'ifl', name: 'IFL Bénin', host: 'ifl.abmcy.com', url: 'https://ifl.abmcy.com', cat: 'entreprises', y2026: true, shot: 'ifl',
